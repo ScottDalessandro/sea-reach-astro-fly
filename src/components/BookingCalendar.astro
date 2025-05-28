@@ -1,0 +1,777 @@
+---
+// Booking Calendar Component for Astro
+
+const { isModal = false } = Astro.props;
+---
+
+<div class={`booking-calendar ${isModal ? 'modal-calendar' : ''}`} id="booking-calendar">
+  <div class="booking-header">
+    {!isModal && (
+      <>
+        <h2>Check Availability & Book</h2>
+        <p>Weekly rentals Saturday to Saturday • Select your preferred week</p>
+      </>
+    )}
+    {isModal && <h3>Quick Booking</h3>}
+  </div>
+
+  <div class="booking-form">
+    <!-- Guest Selection -->
+    <div class="guest-selector">
+      <h4>👥 Guests (Max 8)</h4>
+      <div class="guest-controls">
+        <div class="guest-type">
+          <span>Adults</span>
+          <div class="counter">
+            <button class="guest-btn" data-type="adults" data-action="decrease" disabled>-</button>
+            <span class="guest-count" data-type="adults">2</span>
+            <button class="guest-btn" data-type="adults" data-action="increase">+</button>
+          </div>
+        </div>
+        <div class="guest-type">
+          <span>Children</span>
+          <div class="counter">
+            <button class="guest-btn" data-type="children" data-action="decrease" disabled>-</button>
+            <span class="guest-count" data-type="children">0</span>
+            <button class="guest-btn" data-type="children" data-action="increase">+</button>
+          </div>
+        </div>
+      </div>
+      <p class="guest-note">
+        Total: <span id="total-guests">2</span> of 8 guests
+      </p>
+    </div>
+
+    <!-- Year Selection -->
+    <div class="year-selector">
+      <h4>📅 Season</h4>
+      <select id="year-select" class="year-select">
+        <option value="2025">2025 Season</option>
+      </select>
+    </div>
+
+    <!-- Week Selection -->
+    <div class="week-selector">
+      <h4>🗓️ Available Weeks</h4>
+      <div class="months-grid">
+        <div class="month-section">
+          <h5>June</h5>
+          <div class="weeks-list">
+            <div class="week-option" data-week="June 7-14" data-price="6500" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">June 7-14</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$6,500</div>
+            </div>
+            <div class="week-option" data-week="June 14-21" data-price="6500" data-available="false">
+              <div class="week-info">
+                <span class="week-dates">June 14-21</span>
+                <span class="week-status booked">Booked</span>
+              </div>
+              <div class="week-price">$6,500</div>
+            </div>
+            <div class="week-option" data-week="June 21-28" data-price="7200" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">June 21-28</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$7,200</div>
+            </div>
+            <div class="week-option" data-week="June 28-July 5" data-price="7800" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">June 28-July 5</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$7,800</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="month-section">
+          <h5>July</h5>
+          <div class="weeks-list">
+            <div class="week-option" data-week="July 5-12" data-price="7800" data-available="false">
+              <div class="week-info">
+                <span class="week-dates">July 5-12</span>
+                <span class="week-status booked">Booked</span>
+              </div>
+              <div class="week-price">$7,800</div>
+            </div>
+            <div class="week-option" data-week="July 12-19" data-price="7800" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">July 12-19</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$7,800</div>
+            </div>
+            <div class="week-option" data-week="July 19-26" data-price="7800" data-available="false">
+              <div class="week-info">
+                <span class="week-dates">July 19-26</span>
+                <span class="week-status booked">Booked</span>
+              </div>
+              <div class="week-price">$7,800</div>
+            </div>
+            <div class="week-option" data-week="July 26-Aug 2" data-price="7800" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">July 26-Aug 2</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$7,800</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="month-section">
+          <h5>August</h5>
+          <div class="weeks-list">
+            <div class="week-option" data-week="Aug 2-9" data-price="7800" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">Aug 2-9</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$7,800</div>
+            </div>
+            <div class="week-option" data-week="Aug 9-16" data-price="7800" data-available="false">
+              <div class="week-info">
+                <span class="week-dates">Aug 9-16</span>
+                <span class="week-status booked">Booked</span>
+              </div>
+              <div class="week-price">$7,800</div>
+            </div>
+            <div class="week-option" data-week="Aug 16-23" data-price="7200" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">Aug 16-23</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$7,200</div>
+            </div>
+            <div class="week-option" data-week="Aug 23-30" data-price="6800" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">Aug 23-30</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$6,800</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="month-section">
+          <h5>September</h5>
+          <div class="weeks-list">
+            <div class="week-option" data-week="Aug 30-Sep 6" data-price="6500" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">Aug 30-Sep 6</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$6,500</div>
+            </div>
+            <div class="week-option" data-week="Sep 6-13" data-price="6000" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">Sep 6-13</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$6,000</div>
+            </div>
+            <div class="week-option" data-week="Sep 13-20" data-price="5500" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">Sep 13-20</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$5,500</div>
+            </div>
+            <div class="week-option" data-week="Sep 20-27" data-price="5500" data-available="true">
+              <div class="week-info">
+                <span class="week-dates">Sep 20-27</span>
+                <span class="week-status available">Available</span>
+              </div>
+              <div class="week-price">$5,500</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Summary -->
+    <div class="booking-summary" id="booking-summary" style="display: none;">
+      <h4>📋 Booking Summary</h4>
+      <div class="summary-details">
+        <div class="summary-line">
+          <span>Week:</span>
+          <span id="summary-week">-</span>
+        </div>
+        <div class="summary-line">
+          <span>Guests:</span>
+          <span id="summary-guests">-</span>
+        </div>
+        <div class="summary-line">
+          <span>Platform Rate:</span>
+          <span class="crossed-out" id="summary-platform-rate">-</span>
+        </div>
+        <div class="summary-line highlight">
+          <span>Direct Booking Rate:</span>
+          <span id="summary-direct-rate">-</span>
+        </div>
+        <div class="summary-line savings">
+          <span>You Save:</span>
+          <span id="summary-savings">-</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book Now Button -->
+    <button class="book-now-btn" id="book-now-btn" disabled>
+      Select a Week to Book
+    </button>
+
+    <p class="booking-disclaimer">
+      <em>
+        *Clicking "Send Booking Request" will open your email client with booking details. Security deposit of
+        $1,000 required. All bookings subject to availability confirmation.
+      </em>
+    </p>
+  </div>
+</div>
+
+<script>
+  // Booking Calendar JavaScript
+  class BookingCalendar {
+    constructor() {
+      this.guests = { adults: 2, children: 0 };
+      this.selectedWeek = null;
+      this.selectedPrice = 0;
+      this.maxGuests = 8;
+      
+      this.init();
+    }
+
+    init() {
+      this.setupGuestControls();
+      this.setupWeekSelection();
+      this.setupBookingButton();
+      this.updateGuestDisplay();
+    }
+
+    setupGuestControls() {
+      const guestButtons = document.querySelectorAll('.guest-btn');
+      guestButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          const type = e.target.dataset.type;
+          const action = e.target.dataset.action;
+          this.handleGuestChange(type, action === 'increase');
+        });
+      });
+    }
+
+    setupWeekSelection() {
+      const weekOptions = document.querySelectorAll('.week-option');
+      weekOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+          const available = e.currentTarget.dataset.available === 'true';
+          if (!available) return;
+
+          // Remove previous selection
+          document.querySelectorAll('.week-option.selected').forEach(el => {
+            el.classList.remove('selected');
+          });
+
+          // Add selection to clicked week
+          e.currentTarget.classList.add('selected');
+          
+          this.selectedWeek = e.currentTarget.dataset.week;
+          this.selectedPrice = parseInt(e.currentTarget.dataset.price);
+          
+          this.updateBookingSummary();
+          this.updateBookingButton();
+        });
+      });
+    }
+
+    setupBookingButton() {
+      const bookButton = document.getElementById('book-now-btn');
+      bookButton.addEventListener('click', () => {
+        this.handleBooking();
+      });
+    }
+
+    handleGuestChange(type, increment) {
+      const newValue = increment ? this.guests[type] + 1 : Math.max(0, this.guests[type] - 1);
+      const newTotal = type === 'adults' ? newValue + this.guests.children : this.guests.adults + newValue;
+
+      if (newTotal <= this.maxGuests && (type === 'adults' ? newValue >= 1 : true)) {
+        this.guests[type] = newValue;
+        this.updateGuestDisplay();
+        this.updateBookingSummary();
+      }
+    }
+
+    updateGuestDisplay() {
+      // Update guest counts
+      document.querySelector(`[data-type="adults"].guest-count`).textContent = this.guests.adults;
+      document.querySelector(`[data-type="children"].guest-count`).textContent = this.guests.children;
+      
+      // Update total
+      const total = this.guests.adults + this.guests.children;
+      document.getElementById('total-guests').textContent = total;
+
+      // Update button states
+      const totalGuests = this.guests.adults + this.guests.children;
+      
+      // Adults buttons
+      const adultsDecrease = document.querySelector('[data-type="adults"][data-action="decrease"]');
+      const adultsIncrease = document.querySelector('[data-type="adults"][data-action="increase"]');
+      adultsDecrease.disabled = this.guests.adults <= 1;
+      adultsIncrease.disabled = totalGuests >= this.maxGuests;
+
+      // Children buttons
+      const childrenDecrease = document.querySelector('[data-type="children"][data-action="decrease"]');
+      const childrenIncrease = document.querySelector('[data-type="children"][data-action="increase"]');
+      childrenDecrease.disabled = this.guests.children <= 0;
+      childrenIncrease.disabled = totalGuests >= this.maxGuests;
+    }
+
+    updateBookingSummary() {
+      const summaryDiv = document.getElementById('booking-summary');
+      
+      if (!this.selectedWeek) {
+        summaryDiv.style.display = 'none';
+        return;
+      }
+
+      summaryDiv.style.display = 'block';
+      
+      const directRate = Math.round(this.selectedPrice * 0.83);
+      const savings = Math.round(this.selectedPrice * 0.17);
+      
+      document.getElementById('summary-week').textContent = this.selectedWeek;
+      document.getElementById('summary-guests').textContent = 
+        `${this.guests.adults} adults${this.guests.children > 0 ? `, ${this.guests.children} children` : ''}`;
+      document.getElementById('summary-platform-rate').textContent = `$${this.selectedPrice.toLocaleString()}`;
+      document.getElementById('summary-direct-rate').textContent = `$${directRate.toLocaleString()}`;
+      document.getElementById('summary-savings').textContent = `$${savings.toLocaleString()} (17%)`;
+    }
+
+    updateBookingButton() {
+      const button = document.getElementById('book-now-btn');
+      
+      if (this.selectedWeek) {
+        button.disabled = false;
+        button.textContent = '📧 Send Booking Request';
+      } else {
+        button.disabled = true;
+        button.textContent = 'Select a Week to Book';
+      }
+    }
+
+    handleBooking() {
+      if (!this.selectedWeek) {
+        alert('Please select a week first!');
+        return;
+      }
+
+      const directRate = Math.round(this.selectedPrice * 0.83);
+      const savings = Math.round(this.selectedPrice * 0.17);
+      
+      const bookingDetails = {
+        week: this.selectedWeek,
+        guests: `${this.guests.adults} adults${this.guests.children > 0 ? `, ${this.guests.children} children` : ''}`,
+        total: directRate,
+        savings: savings
+      };
+
+      const emailSubject = `Sea Reach Booking Inquiry - ${bookingDetails.week}`;
+      const emailBody = `Hi! I'd like to book Sea Reach for:
+
+Week: ${bookingDetails.week}
+Guests: ${bookingDetails.guests}
+Total: $${bookingDetails.total.toLocaleString()}
+
+I understand I save $${bookingDetails.savings.toLocaleString()} by booking direct!
+
+Please let me know the next steps.
+
+Thank you!`;
+
+      window.location.href = `mailto:info@searench.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    }
+  }
+
+  // Initialize booking calendar when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    new BookingCalendar();
+  });
+
+  // Modal functionality
+  window.showBookingModal = function() {
+    const modal = document.getElementById('booking-modal');
+    if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.hideBookingModal = function() {
+    const modal = document.getElementById('booking-modal');
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  };
+</script>
+
+<style>
+  /* Booking Calendar Styles */
+  .booking-calendar {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .modal-calendar {
+    padding: 30px;
+    max-width: 800px;
+  }
+
+  .booking-calendar h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+
+  .booking-calendar h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+
+  .booking-calendar p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+  }
+
+  .booking-form {
+    display: grid;
+    gap: 30px;
+  }
+
+  /* Guest Selector */
+  .guest-selector h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+
+  .guest-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .guest-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+  }
+
+  .guest-type span {
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .counter {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .counter button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #2e8b8b;
+    background: white;
+    color: #2e8b8b;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .counter button:hover:not(:disabled) {
+    background: #2e8b8b;
+    color: white;
+  }
+
+  .counter button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .counter span {
+    font-weight: 700;
+    color: #2c3e50;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  .guest-note {
+    margin-top: 10px;
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* Year Selector */
+  .year-selector h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+
+  .year-select {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: white;
+    color: #2c3e50;
+    cursor: pointer;
+  }
+
+  .year-select:focus {
+    outline: none;
+    border-color: #2e8b8b;
+  }
+
+  /* Week Selector */
+  .week-selector h4 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+
+  .months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+
+  .month-section h5 {
+    color: #2e8b8b;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 700;
+  }
+
+  .weeks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .week-option {
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+  }
+
+  .week-option:hover {
+    border-color: #2e8b8b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .week-option.selected {
+    border-color: #2e8b8b;
+    background: linear-gradient(135deg, rgba(46, 139, 139, 0.1), rgba(32, 178, 170, 0.1));
+  }
+
+  .week-option[data-available="false"] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #f5f5f5;
+  }
+
+  .week-option[data-available="false"]:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #e0e0e0;
+  }
+
+  .week-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .week-dates {
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .week-status {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 15px;
+  }
+
+  .week-status.available {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .week-status.booked {
+    background: #f8d7da;
+    color: #721c24;
+  }
+
+  .week-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2e8b8b;
+    text-align: right;
+  }
+
+  /* Booking Summary */
+  .booking-summary {
+    background: linear-gradient(135deg, rgba(46, 139, 139, 0.1), rgba(32, 178, 170, 0.1));
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid #2e8b8b;
+  }
+
+  .booking-summary h4 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+
+  .summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(46, 139, 139, 0.2);
+  }
+
+  .summary-line:last-child {
+    border-bottom: none;
+  }
+
+  .summary-line.highlight {
+    font-weight: 700;
+    color: #2e8b8b;
+  }
+
+  .summary-line.savings {
+    font-weight: 700;
+    color: #27ae60;
+    font-size: 1.1rem;
+  }
+
+  .crossed-out {
+    text-decoration: line-through;
+    color: #999;
+  }
+
+  /* Book Now Button */
+  .book-now-btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #2e8b8b, #20b2aa);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .book-now-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(46, 139, 139, 0.3);
+  }
+
+  .book-now-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .booking-disclaimer {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 15px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .months-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .guest-controls {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .months-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .booking-calendar {
+      padding: 30px 20px;
+    }
+
+    .modal-calendar {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .booking-calendar {
+      padding: 20px 15px;
+    }
+
+    .guest-type {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .week-info {
+      flex-direction: column;
+      gap: 5px;
+      text-align: center;
+    }
+
+    .summary-line {
+      flex-direction: column;
+      gap: 5px;
+      text-align: center;
+    }
+  }
+</style>

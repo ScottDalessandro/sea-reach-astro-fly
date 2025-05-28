@@ -1,6 +1,7 @@
 ---
 // Sea Reach - Point Pleasant Beach Rental Property
 import { Image } from 'astro:assets';
+import BookingCalendar from '../components/BookingCalendar.astro';
 
 // Import local images for optimization
 import houseBackyard from '../../public/images/house-backyard.jpg';
@@ -92,6 +93,43 @@ const seoData = {
         ]
       }
     </script>
+	    <script>
+			// This script will run on the client side
+			document.addEventListener('DOMContentLoaded', () => {
+			  // Modal functionality
+			  const showModalButtons = document.querySelectorAll('[data-show-modal]');
+			  const hideModalButtons = document.querySelectorAll('[data-hide-modal]');
+			  const modal = document.getElementById('booking-modal');
+			  
+			  showModalButtons.forEach(button => {
+				button.addEventListener('click', () => {
+				  if (modal) {
+					modal.style.display = 'flex';
+					document.body.style.overflow = 'hidden';
+				  }
+				});
+			  });
+			  
+			  hideModalButtons.forEach(button => {
+				button.addEventListener('click', () => {
+				  if (modal) {
+					modal.style.display = 'none';
+					document.body.style.overflow = 'auto';
+				  }
+				});
+			  });
+			  
+			  // Close modal when clicking outside content
+			  if (modal) {
+				modal.addEventListener('click', (e) => {
+				  if (e.target === modal) {
+					modal.style.display = 'none';
+					document.body.style.overflow = 'auto';
+				  }
+				});
+			  }
+			});
+		  </script>
   </head>
   <body>
     <div class="min-h-screen">
@@ -255,6 +293,17 @@ const seoData = {
 	  </div>
 	</div>
   </section>
+
+        <!-- Booking Calendar Section -->
+		<section class="booking-section" id="booking">
+			<div class="container">
+			  <div class="booking-header">
+				<h2>Check Availability & Book Your Stay</h2>
+				<p class="booking-subtitle">Weekly rentals Saturday to Saturday • June through September</p>
+			  </div>
+			  <BookingCalendar />
+			</div>
+		  </section>
 
 
       <!-- About Section -->
@@ -1095,6 +1144,14 @@ const seoData = {
           <p>&copy; 2024 Sea Reach. Point Pleasant Beach, NJ. All rights reserved.</p>
         </div>
       </footer>
+
+	        <!-- Booking Modal -->
+			<div id="booking-modal" class="modal-overlay" style="display: none;" onclick="hideBookingModal()">
+				<div class="modal-content" onclick="event.stopPropagation()">
+				  <button class="modal-close" onclick="hideBookingModal()">×</button>
+				  <BookingCalendar isModal={true} />
+				</div>
+			  </div>
     </div>
   </body>
   <style>
@@ -2824,5 +2881,27 @@ const seoData = {
     line-height: 1.6;
     margin: 0;
   }
+  /* Booking Section */
+  .booking-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, rgba(46, 139, 139, 0.05), rgba(32, 178, 170, 0.1));
+    }
+
+    .booking-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .booking-header h2 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    .booking-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      font-style: italic;
+    }
   </style>
 </html>
