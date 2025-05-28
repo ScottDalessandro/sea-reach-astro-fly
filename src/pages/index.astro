@@ -1,0 +1,2828 @@
+---
+// Sea Reach - Point Pleasant Beach Rental Property
+import { Image } from 'astro:assets';
+
+// Import local images for optimization
+import houseBackyard from '../../public/images/house-backyard.jpg';
+import kitchen from '../../public/images/kitchen.jpeg';
+import outdoorSeatsFirePit from '../../public/images/outdoor-seats-fire-pit.jpg';
+import masterBedroom1 from '../../public/images/master-bedroom-1.jpg';
+import masterBedroom2 from '../../public/images/Master-BD-2.jpg';
+import diningRoom from '../../public/images/dining-room.jpg';
+import diningRoomFull from '../../public/images/dining-room-full.jpg';
+import livingRoomWide from '../../public/images/living-room-wide.jpg';
+import livingRoomTv from '../../public/images/living-room-tv.jpg';
+import livingRoomOppo from '../../public/images/Living-Room-Oppo copy.jpg';
+import garageGameroom from '../../public/images/garage-gameroom.jpg';
+import outdoorShower from '../../public/images/outdoor-shower.jpg';
+import office1Upstairs from '../../public/images/office-1-upstairs.jpg';
+import frontCouch from '../../public/images/front-couch.jpg';
+import porchDesk from '../../public/images/porch-desk.jpg';
+import fireplaceWithTv from '../../public/images/fireplace-with-TV.jpg';
+import bedroomSurf from '../../public/images/bedroom-surf.jpg';
+import bedroomBunk from '../../public/images/bedroom-bunk.jpeg';
+import bedroom3 from '../../public/images/bedroom-3.jpeg';
+import outdoorDining from '../../public/images/outdoor-dining.jpg';
+import backyardSlipNSlide from '../../public/images/backyard-slip-n-slide.webp';
+
+const seoData = {
+  title: "Sea Reach - Point Pleasant Beach Rental | 4BR Beach House",
+  description: "Beautiful 4BR beach house just 4 minutes from Point Pleasant Beach. Includes 8 beach badges, modern amenities, and prime location near boardwalk.",
+  canonical: "https://sea-reach.com",
+  ogImage: "https://sea-reach.com/images/outdoor-seats-fire-pit.png"
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{seoData.title}</title>
+    <meta name="description" content={seoData.description} />
+    <link rel="canonical" href={seoData.canonical} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={seoData.canonical} />
+    <meta property="og:title" content={seoData.title} />
+    <meta property="og:description" content={seoData.description} />
+    <meta property="og:image" content={seoData.ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={seoData.canonical} />
+    <meta property="twitter:title" content={seoData.title} />
+    <meta property="twitter:description" content={seoData.description} />
+    <meta property="twitter:image" content={seoData.ogImage} />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sea-reach-logo-light-cropped-zujlBNUhCgWBAkFmdlGWFhjygiQxvT.png" as="image" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "Sea Reach Beach House",
+        "description": "4BR beach house rental in Point Pleasant Beach, NJ",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "106 Atlantic Ave",
+          "addressLocality": "Point Pleasant Beach",
+          "addressRegion": "NJ",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "40.0909",
+          "longitude": "-74.0487"
+        },
+        "url": "https://searench.com",
+        "telephone": "info@searench.com",
+        "priceRange": "$6500-$7800",
+        "amenityFeature": [
+          "Beach Access",
+          "WiFi",
+          "Parking",
+          "Kitchen",
+          "Air Conditioning",
+          "Fireplace",
+          "Outdoor Space"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen">
+      <!-- Navigation Bar -->
+      <nav class="navbar">
+        <div class="container">
+          <div class="nav-content">
+            <div class="nav-logo">
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sea-reach-logo-light-cropped-zujlBNUhCgWBAkFmdlGWFhjygiQxvT.png"
+                alt="Sea Reach Logo"
+                width="60"
+                height="60"
+                class="nav-logo-img"
+                loading="eager"
+              />
+              <span class="nav-brand">Sea Reach</span>
+            </div>
+            <div class="nav-links">
+              <a href="#gallery" class="nav-link">Photos</a>
+              <a href="#outdoor" class="nav-link">🌊 Outside</a>
+              <a href="#interior" class="nav-link">🏠 Interior</a>
+              <a href="#bedrooms" class="nav-link">🛏️ Bedrooms</a>
+              <a href="#attractions" class="nav-link">📍 Local Attractions</a>
+              <a href="#contact" class="nav-link">Book Now</a>
+            </div>
+            <div class="nav-mobile">
+              <button class="nav-toggle">☰</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section with Beach House Photo -->
+      <section class="hero-beach">
+        <div class="hero-background">
+          <Image
+            src={houseBackyard || "/placeholder.svg"}
+            alt="Sea Reach Beach House Exterior"
+            class="hero-bg-image"
+            loading="eager"
+            format="webp"
+            quality={85}
+          />
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+          <div class="hero-content">
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sea-reach-logo-light-cropped-zujlBNUhCgWBAkFmdlGWFhjygiQxvT.png"
+              alt="Sea Reach Logo"
+              width="180"
+              height="180"
+              class="logo-hero"
+            />
+            <h1 class="hero-title">Your Beach Home Away From Home</h1>
+            <p class="hero-subtitle">
+              🏖️106 Atlantic Ave • 4-Min Walk to Beach & Jenkinson's Boardwalk • 8 Beach Badges + Beach Gear Included =
+              $900+ Savings! 🏖️
+            </p>
+            <div class="hero-highlights">
+              <div class="highlight-beach">
+                <span class="highlight-number">4</span>
+                <span class="highlight-text">Bedrooms</span>
+              </div>
+              <div class="highlight-beach">
+                <span class="highlight-number">2</span>
+                <span class="highlight-text">Bathrooms</span>
+              </div>
+              <div class="highlight-beach">
+                <span class="highlight-number">4</span>
+                <span class="highlight-text">Min Walk to Beach</span>
+              </div>
+              <div class="highlight-beach">
+                <span class="highlight-icon">🚿</span>
+                <span class="highlight-text">Outdoor Shower</span>
+              </div>
+            </div>
+            <div class="hero-cta">
+              <a href="#gallery" class="btn-beach">
+                Explore the House
+              </a>
+              <a
+                href="https://www.vrbo.com/2823698"
+                class="btn-beach-outline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book Now on VRBO
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+<!-- Property Gallery - Clean Layout -->
+<section class="property-gallery" id="gallery">
+	<div class="container">
+	  <div class="gallery-header">
+		<h2>Welcome to Sea Reach</h2>
+		<p class="gallery-subtitle">Your perfect beach getaway awaits</p>
+	  </div>
+	  
+	  <div class="gallery-grid-clean">
+		<div class="gallery-item-clean">
+		  <Image
+			src={livingRoomWide || "/placeholder.svg"}
+			alt="Sea Reach - Beautiful Open Living Space"
+			class="gallery-image-clean"
+			format="webp"
+			quality={90}
+			loading="lazy"
+		  />
+		  <div class="gallery-info-clean">
+			<h3>🛋️ Open Concept Living</h3>
+			<p>Spacious, modern design with hardwood floors perfect for family gatherings</p>
+		  </div>
+		</div>
+		<div class="gallery-item-clean">
+		  <Image
+			src={outdoorSeatsFirePit || "/placeholder.svg"}
+			alt="Evening Fire Pit"
+			class="gallery-image-clean"
+			format="webp"
+			quality={90}
+			loading="lazy"
+		  />
+		  <div class="gallery-info-clean">
+			<h3>🔥 Fire Pit Nights</h3>
+			<p>Perfect for evening relaxation and making memories</p>
+		  </div>
+		</div>
+		
+		<div class="gallery-item-clean">
+		  <Image
+			src={kitchen || "/placeholder.svg"}
+			alt="Gourmet Kitchen"
+			class="gallery-image-clean"
+			format="webp"
+			quality={90}
+			loading="lazy"
+		  />
+		  <div class="gallery-info-clean">
+			<h3>🍳 Gourmet Kitchen</h3>
+			<p>Fully equipped with granite countertops and stainless steel appliances</p>
+		  </div>
+		</div>
+		
+		
+		<div class="gallery-item-clean">
+		  <Image
+			src={outdoorShower || "/placeholder.svg"}
+			alt="Private Outdoor Shower"
+			class="gallery-image-clean"
+			loading="lazy"
+		  />
+		  <div class="gallery-info-clean">
+			<h3>🚿 Private Outdoor Shower</h3>
+			<p>Rinse off the sand and salt after perfect beach days</p>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>
+
+
+      <!-- About Section -->
+      <section class="about">
+        <div class="container">
+          <h2>About Sea Reach</h2>
+          <div class="about-content">
+            <p class="lead">This beach home has it all - ease, comfort and LOCATION!</p>
+            <p>
+              Located at 106 Atlantic Ave, this 4BR + 2BA home boasts a modern kitchen, hardwood floors, enclosed
+              wraparound front porch and private outdoor living and dining space. Garage lounge features extra living
+              space and a ping pong table - perfect for indoor/outdoor hangouts, sandy feet and all.
+            </p>
+            <p>
+              Just steps from Point Pleasant Beach's beautiful beaches and sprawling boardwalk. Rides, games, food,
+              beach and entertainment are only a short walk away - no need to drive around looking for parking!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Outside Spaces Section -->
+      <section class="outdoor-gallery" id="outdoor">
+        <div class="container">
+          <h2>🌊 Outside Spaces</h2>
+          <p class="section-subtitle">something here</p>
+          <div class="outdoor-grid">
+            <div class="outdoor-large">
+              <Image
+                src={garageGameroom || "/placeholder.svg"}
+                alt="Detached Garage with TV and Game Room"
+                width="800"
+                height="500"
+                class="gallery-image"
+                loading="lazy"
+              />
+              <div class="photo-overlay">
+                <h3>Detached Garage with TV and Game Room</h3>
+                <p>Great for indoor/outdoor hangouts, sandy feet and all.</p>
+              </div>
+            </div>
+            <div class="outdoor-small-grid">
+              <div class="outdoor-small">
+                <Image
+                  src={outdoorDining || "/placeholder.svg"}
+                  alt="Outdoor Dining"
+                  width="380"
+                  height="240"
+                  class="gallery-image"
+                  loading="lazy"
+                />
+                <div class="photo-overlay">
+                  <h4>Outdoor Dining & BBQ</h4>
+                </div>
+              </div>
+              <div class="outdoor-small">
+                <Image
+                  src={backyardSlipNSlide || "/placeholder.svg"}
+                  alt="Backyard Fun"
+                  width="380"
+                  height="240"
+                  class="gallery-image"
+                  loading="lazy"
+                />
+                <div class="photo-overlay">
+                  <h4>Backyard fun!</h4>
+                </div>
+              </div>
+              <div class="outdoor-small">
+                <Image
+                  src={outdoorShower || "/placeholder.svg"}
+                  alt="Outdoor Shower"
+                  width="380"
+                  height="240"
+                  class="gallery-image"
+                  loading="lazy"
+                />
+                <div class="photo-overlay">
+                  <h4>Private Outdoor Shower</h4>
+                </div>
+              </div>
+              <div class="outdoor-small">
+                <img
+                  src="/placeholder.svg?height=240&width=380&query=large driveway with 6 car parking spaces"
+                  alt="Parking Area"
+                  width="380"
+                  height="240"
+                  class="gallery-image"
+                  loading="lazy"
+                />
+                <div class="photo-overlay">
+                  <h4>6-Car Driveway</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interior Spaces Section -->
+      <section class="interior-gallery" id="interior">
+        <div class="container">
+          <h2>🏠 Interior Spaces</h2>
+          <p class="section-subtitle">Comfortable, modern spaces designed for relaxation</p>
+          <div class="interior-grid">
+            <div class="interior-item">
+              <Image
+                src={livingRoomWide || "/placeholder.svg"}
+                alt="Open Concept Living Room"
+                width={600}
+                height={400}
+                class="gallery-image"
+                format="webp"
+                quality={75}
+                loading="lazy"
+              />
+              <div class="interior-info">
+                <h3>Open Concept Living</h3>
+                <p>Spacious living area with hardwood floors and modern coastal design</p>
+              </div>
+            </div>
+            <div class="interior-item">
+              <Image
+                src={kitchen || "/placeholder.svg"}
+                alt="Fully Equipped Modern Kitchen"
+                width={600}
+                height={400}
+                class="gallery-image"
+                format="webp"
+                quality={75}
+                loading="lazy"
+              />
+              <div class="interior-info">
+                <h3>Gourmet Kitchen</h3>
+                <p>Fully equipped with modern appliances and everything you need</p>
+              </div>
+            </div>
+            <div class="interior-item">
+              <Image
+                src={diningRoom || "/placeholder.svg"}
+                alt="Elegant Dining Room"
+                width={600}
+                height={400}
+                class="gallery-image"
+                format="webp"
+                quality={75}
+                loading="lazy"
+              />
+              <div class="interior-info">
+                <h3>Dining Room</h3>
+                <p>Perfect for family meals with coastal artwork</p>
+              </div>
+            </div>
+            <div class="interior-item">
+              <Image
+                src={frontCouch || "/placeholder.svg"}
+                alt="Front Couch"
+                width={600}
+                height={400}
+                class="gallery-image"
+                format="webp"
+                quality={75}
+                loading="lazy"
+              />
+              <div class="interior-info">
+                <h3>Front Room</h3>
+                <p>Get away from the kids in this cozy spot or hang out with them on the couch. Great second living room.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bedrooms Section -->
+      <section class="bedrooms-gallery" id="bedrooms">
+        <div class="container">
+          <h2>🛏️ Bedrooms</h2>
+          <p class="section-subtitle">Comfortable sleeping arrangements for up to 8 guests</p>
+          <div class="bedrooms-grid">
+            <div class="bedroom-item">
+              <Image
+                src={masterBedroom1 || "/placeholder.svg"}
+                alt="Master Bedroom with Vaulted Ceiling"
+                width={600}
+                height={400}
+                class="gallery-image"
+                format="webp"
+                quality={75}
+                loading="lazy"
+              />
+              <div class="bedroom-info">
+                <h3>Master Bedroom</h3>
+                <p>King bed with vaulted ceiling and compass decor</p>
+                <div class="bed-details">
+                  <span class="bed-type">👑 King Bed</span>
+                  <span class="sleeps">Sleeps 2</span>
+                </div>
+              </div>
+            </div>
+            <div class="bedroom-item">
+              <Image
+                src={masterBedroom2 || "/placeholder.svg"}
+                alt="Queen Bedroom"
+                width="600"
+                height="400"
+                class="gallery-image"
+                loading="lazy"
+              />
+              <div class="bedroom-info">
+                <h3>Queen Bedroom</h3>
+                <p>Comfortable queen bed with coastal-themed decor</p>
+                <div class="bed-details">
+                  <span class="bed-type">👸 Queen Bed</span>
+                  <span class="sleeps">Sleeps 2</span>
+                </div>
+              </div>
+            </div>
+            <div class="bedroom-item">
+              <Image
+                src={masterBedroom2 || "/placeholder.svg"}
+                alt="Second Queen Bedroom"
+                width="600"
+                height="400"
+                class="gallery-image"
+                loading="lazy"
+              />
+              <div class="bedroom-info">
+                <h3>Third Bedroom</h3>
+                <p>Another comfortable full bed with beach-themed touches</p>
+                <div class="bed-details">
+                  <span class="bed-type">👸 Full Bed</span>
+                  <span class="sleeps">Sleeps 2</span>
+                </div>
+              </div>
+            </div>
+            <div class="bedroom-item">
+              <Image
+                src={bedroom3 || "/placeholder.svg"}
+                alt="Bunk Room"
+                width="600"
+                height="400"
+                class="gallery-image"
+                loading="lazy"
+              />
+              <div class="bedroom-info">
+                <h3>Bunk Room</h3>
+                <p>Perfect for kids with twin bunk beds</p>
+                <div class="bed-details">
+                  <span class="bed-type">🛏️ Twin Bunks</span>
+                  <span class="sleeps">Sleeps 2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Location & Beach Access -->
+      <section class="beach-access">
+        <div class="container">
+          <h2>Just Steps to Paradise</h2>
+          <p class="section-subtitle">Experience the best of Point Pleasant Beach</p>
+          <div class="beach-grid">
+            <div class="beach-info">
+              <div class="distance-card">
+                <div class="distance-number">4</div>
+                <div class="distance-text">
+                  <strong>Minutes</strong>
+                  <span>Walk to Beach</span>
+                </div>
+              </div>
+              <div class="distance-card">
+                <div class="distance-number">1.5</div>
+                <div class="distance-text">
+                  <strong>Blocks</strong>
+                  <span>from Ocean</span>
+                </div>
+              </div>
+              <div class="distance-card">
+                <div class="distance-number">15</div>
+                <div class="distance-text">
+                  <strong>Minutes</strong>
+                  <span>to Downtown</span>
+                </div>
+              </div>
+            </div>
+            <div class="beach-photos">
+              <img
+                src="/placeholder.svg?height=400&width=600&query=Point Pleasant Beach boardwalk with rides and attractions"
+                alt="Point Pleasant Beach Boardwalk"
+                width="600"
+                height="400"
+                class="gallery-image"
+                loading="lazy"
+              />
+              <div class="photo-overlay">
+                <h3>Point Pleasant Beach Boardwalk</h3>
+                <p>Rides, games, food & entertainment</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Location & Dining */
+      <section class="maps-dining" id="dining">
+        <div class="container">
+          <h2>Perfect Location</h2>
+          <p class="section-subtitle">Everything within easy walking distance</p>
+
+          <div class="location-grid">
+            <div class="walking-distances">
+              <h3>🚶‍♂️ Walking Times from Sea Reach</h3>
+              <div class="distance-list">
+                <div class="distance-item">
+                  <span class="time">4 min</span>
+                  <span class="destination">Point Pleasant Beach</span>
+                </div>
+                <div class="distance-item">
+                  <span class="time">5 min</span>
+                  <span class="destination">Jenkinson's Mini Golf</span>
+                </div>
+                <div class="distance-item">
+                  <span class="time">6 min</span>
+                  <span class="destination">Jenkinson's Arcade & Food Shack</span>
+                </div>
+                <div class="distance-item">
+                  <span class="time">8 min</span>
+                  <span class="destination">Jenkinson's Rides</span>
+                </div>
+                <div class="distance-item">
+                  <span class="time">11 min</span>
+                  <span class="destination">Tiki Bar</span>
+                </div>
+                <div class="distance-item">
+                  <span class="time">15 min</span>
+                  <span class="destination">Downtown Dining</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="family-benefits">
+              <h3>👨‍👩‍👧‍👦 Family-Friendly Highlights</h3>
+              <div class="benefit-list">
+                <div class="benefit-item">
+                  <span class="benefit-icon">🎆</span>
+                  <span class="benefit-text">Thursday Night Fireworks</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">🏖️</span>
+                  <span class="benefit-text">8 Beach Badges Included = $900+ Savings</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">🎢</span>
+                  <span class="benefit-text">Boardwalk Rides & Games</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">🍦</span>
+                  <span class="benefit-text">Boardwalk Treats & Ice Cream</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="savings-section">
+              <h3>💰 Beach Badge & Equipment Savings</h3>
+              <p class="dining-section-subtitle">
+                See how much you save with included beach badges, chairs & umbrellas!
+              </p>
+
+              <div class="savings-breakdown">
+                <div class="savings-card">
+                  <h4>If You Bought Daily</h4>
+                  <div class="price-breakdown">
+                    <div class="price-line">
+                      8 Adult Beach Badges × $14 = <strong>$112/day</strong>
+                    </div>
+                    <div class="price-line">
+                      8 Beach Chairs × $11 = <strong>$88/day</strong>
+                    </div>
+                    <div class="price-line">
+                      4 Beach Umbrellas × $12 = <strong>$48/day</strong>
+                    </div>
+                    <div class="price-line total-line">
+                      Daily Total = <strong>$248/day</strong>
+                    </div>
+                    <div class="price-line">
+                      7 Days × $248 = <strong>$1,736/week</strong>
+                    </div>
+                    <div class="weekend-note">*Weekends & holidays are $15 for badges - even more savings!</div>
+                  </div>
+                </div>
+
+                <div class="savings-vs">VS</div>
+
+                <div class="savings-card included">
+                  <h4>Sea Reach Includes</h4>
+                  <div class="price-breakdown">
+                    <div class="price-line">
+                      8 Adult Beach Badges = <strong>FREE</strong>
+                    </div>
+                    <div class="price-line">
+                      8 Beach Chairs = <strong>FREE</strong>
+                    </div>
+                    <div class="price-line">
+                      Beach Umbrellas = <strong>FREE</strong>
+                    </div>
+                    <div class="price-line">
+                      All Week Long = <strong>$0</strong>
+                    </div>
+                    <div class="savings-highlight">You Save $900+!</div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="savings-note">
+                <em>
+                  *Based on Point Pleasant Beach 2024 rates: $14/day badges (ages 12+), $15 weekends/holidays. Beach
+                  chairs $11/day, umbrellas $12/day. Your Sea Reach rental includes everything for the entire week!
+                </em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Guest Reviews -->
+      <section class="testimonials">
+        <div class="container">
+          <h2>What Our Guests Say</h2>
+          <div class="reviews-header">
+            <div class="rating-display">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+              <div class="rating-text">
+                <span class="rating-number">5.0</span>
+                <span class="review-count">Five-Star Reviews on VRBO & Airbnb</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>
+                  "Perfect location! We walked to the beach and boardwalk every day. The house was spotless and had
+                  everything we needed. The kids loved the ping pong table and fire pit!"
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <strong>Sarah M.</strong>
+                <span>Family of 6 • August 2024</span>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>
+                  "Amazing value with the beach badges included! Saved us hundreds of dollars. The house is beautiful
+                  and the location can't be beat. We'll definitely be back!"
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <strong>Mike & Jennifer</strong>
+                <span>Couple • July 2024</span>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>
+                  "Best beach house rental we've ever had! Clean, comfortable, and so close to everything. The outdoor
+                  shower and fire pit were perfect after long beach days."
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <strong>The Johnson Family</strong>
+                <span>Family of 8 • June 2024</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="reviews-cta">
+            <a
+              href="https://www.vrbo.com/2823698"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View All Five-Star Reviews
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Local Attractions -->
+      <section class="local-attractions" id="attractions">
+        <div class="container">
+          <h2>📍 Local Attractions</h2>
+          <p class="section-subtitle">Everything you need within walking distance</p>
+          <div class="attractions-grid">
+            <div class="attraction-card">
+              <img
+                src="/placeholder.svg?height=250&width=400&query=beautiful sandy beach with umbrellas and chairs"
+                alt="Beach Activities"
+                width="400"
+                height="250"
+                class="gallery-image"
+                loading="lazy"
+              />
+              <div class="attraction-info">
+                <h3>🏖️ Beach Activities</h3>
+                <p>
+                  <strong>2-4 min walk</strong>
+                </p>
+                <ul>
+                  <li>Swimming & Sunbathing</li>
+                  <li>Beach Volleyball</li>
+                  <li>Surfing & Water Sports</li>
+                  <li>8 Beach Badges Included!</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="attraction-card">
+              <img
+                src="/placeholder.svg?height=250&width=400&query=boardwalk amusement rides and games at sunset"
+                alt="Boardwalk Entertainment"
+                width="400"
+                height="250"
+                class="gallery-image"
+                loading="lazy"
+              />
+              <div class="attraction-info">
+                <h3>🎢 Boardwalk Fun</h3>
+                <p>
+                  <strong>5-8 min walk</strong>
+                </p>
+                <ul>
+                  <li>Amusement Rides</li>
+                  <li>Arcade Games</li>
+                  <li>Mini Golf</li>
+                  <li>Boardwalk Food</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="attraction-card">
+              <img
+                src="/placeholder.svg?height=250&width=400&query=cozy restaurant with outdoor seating and craft beer"
+                alt="Local Dining"
+                width="400"
+                height="250"
+                class="gallery-image"
+                loading="lazy"
+              />
+              <div class="attraction-info">
+                <h3>🍺 Local Dining</h3>
+                <p>
+                  <strong>15 min walk</strong>
+                </p>
+                <ul>
+                  <li>Last Wave Brewing Co</li>
+                  <li>Rosie's Pizza</li>
+                  <li>Bam Bam Burgers</li>
+                  <li>B2 Bistro</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="attraction-card">
+              <img
+                src="/placeholder.svg?height=250&width=400&query=charming downtown shopping street with boutiques"
+                alt="Shopping & Services"
+                width="400"
+                height="250"
+                class="gallery-image"
+                loading="lazy"
+              />
+              <div class="attraction-info">
+                <h3>🛍️ Shopping & More</h3>
+                <p>
+                  <strong>15 min walk</strong>
+                </p>
+                <ul>
+                  <li>Stop & Shop Grocery</li>
+                  <li>Beach Bagel & Coffee</li>
+                  <li>Boutique Shopping</li>
+                  <li>Antique Stores</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Grid -->
+      <section class="features" id="features">
+        <div class="container">
+          <h2>Property Features</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h3>🏠 Living Space</h3>
+              <ul>
+                <li>Open Floor Plan</li>
+                <li>Central AC</li>
+                <li>Hardwood Floors</li>
+                <li>Gas Fireplace</li>
+                <li>Enclosed Wraparound Porch</li>
+              </ul>
+            </div>
+
+            <div class="feature-card">
+              <h3>🍳 Kitchen & Dining</h3>
+              <ul>
+                <li>Fully Equipped Modern Kitchen</li>
+                <li>Dishwasher & Microwave</li>
+                <li>Coffee Pot, Blender & Toaster</li>
+                <li>Weber Gas BBQ Grill</li>
+                <li>Private Outdoor Dining Space</li>
+              </ul>
+            </div>
+
+            <div class="feature-card">
+              <h3>🏖️ Beach & Outdoor</h3>
+              <ul>
+                <li>8 Beach Badges Included</li>
+                <li>Private Outdoor Shower</li>
+                <li>Beach Chairs & Towels</li>
+                <li>Outdoor Gas Fire Pit</li>
+                <li>Beach Games Available</li>
+              </ul>
+            </div>
+
+            <div class="feature-card">
+              <h3>🎮 Entertainment</h3>
+              <ul>
+                <li>Garage Lounge with TV</li>
+                <li>Ping Pong Table</li>
+                <li>Xfinity TV Service</li>
+                <li>WiFi (Indoor & Outdoor)</li>
+                <li>2 Office Spaces with Desks</li>
+              </ul>
+            </div>
+
+            <div class="feature-card">
+              <h3>🚗 Parking & Storage</h3>
+              <ul>
+                <li>6 Car Driveway</li>
+                <li>Unfinished Garage Space</li>
+                <li>Extra Storage Available</li>
+              </ul>
+            </div>
+
+            <div class="feature-card">
+              <h3>🛏️ Comfort</h3>
+              <ul>
+                <li>Pillows & Quilts Provided</li>
+                <li>Bed Sheets Included</li>
+                <li>Comfortable Seating Areas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rental Info -->
+      <section class="rental-info">
+        <div class="container">
+          <h2>Rental Information</h2>
+          <div class="rental-details">
+            <div class="rental-card">
+              <h3>📅 Availability</h3>
+              <p>
+                Weekly Rentals (7 nights)
+                <br />
+                Saturday to Saturday
+                <br />
+                June - September
+              </p>
+            </div>
+
+            <div class="rental-card">
+              <h3>🏖️ Includes</h3>
+              <p>
+                8 Adult Beach Badges
+                <br />
+                Beach Chairs & Towels
+                <br />
+                All Linens & Amenities
+              </p>
+            </div>
+
+            <div class="rental-card">
+              <h3>📋 House Rules</h3>
+              <p>
+                No Smoking
+                <br />
+                No Pets
+                <br />
+                No Prom Groups
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Direct Booking Savings -->
+      <section class="direct-booking">
+        <div class="container">
+          <h2>Book Direct & Save</h2>
+          <p class="section-subtitle">Skip the platform fees and get the best rate by booking directly with us</p>
+
+          <div class="booking-comparison">
+            <div class="booking-card platform-booking">
+              <h3>🏢 Platform Booking</h3>
+              <div class="price-display">
+                <span class="price-amount">$7,800</span>
+                <span class="price-period">per week</span>
+              </div>
+              <div class="booking-details">
+                <div class="detail-line">
+                  <span>Base Rate:</span>
+                  <span>$7,800</span>
+                </div>
+                <div class="detail-line">
+                  <span>Platform Fees:</span>
+                  <span>Additional</span>
+                </div>
+                <div class="detail-line">
+                  <span>Service Charges:</span>
+                  <span>Additional</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="vs-divider">
+              <span class="vs-text">VS</span>
+              <div class="savings-badge">Save 17%!</div>
+            </div>
+
+            <div class="booking-card direct-booking-card">
+              <h3>🏠 Book Direct with Owner</h3>
+              <div class="price-display featured">
+                <span class="price-amount">$6,500</span>
+                <span class="price-period">per week</span>
+              </div>
+              <div class="booking-details">
+                <div class="detail-line">
+                  <span>Weekly Rate:</span>
+                  <span>$6,500</span>
+                </div>
+                <div class="detail-line">
+                  <span>Security Deposit:</span>
+                  <span>$1,000</span>
+                </div>
+                <div class="detail-line highlight">
+                  <span>Platform Fees:</span>
+                  <span>$0</span>
+                </div>
+                <div class="detail-line highlight">
+                  <span>Service Charges:</span>
+                  <span>$0</span>
+                </div>
+              </div>
+              <div class="savings-highlight">You Save $1,300+ (17% Discount!)</div>
+            </div>
+          </div>
+
+          <div class="direct-booking-benefits">
+            <h3>Why Book Direct?</h3>
+            <div class="benefits-grid">
+              <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h4>Best Price Guaranteed</h4>
+                <p>17% discount off regular rates - no platform fees or hidden charges</p>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon">📞</div>
+                <h4>Direct Communication</h4>
+                <p>Speak directly with the owner for personalized service and local tips</p>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h4>Faster Response</h4>
+                <p>Quick answers to questions and immediate booking confirmation</p>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon">🎁</div>
+                <h4>Special Perks</h4>
+                <p>Exclusive amenities and local recommendations from your hosts</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-cta">
+            <a href="mailto:info@searench.com" class="btn btn-primary btn-large">
+              Book Direct & Save $1,300+
+            </a>
+            <p class="booking-note">
+              <em>*Security deposit fully refundable. Weekly rentals Saturday to Saturday, June-September.</em>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="contact" id="contact">
+        <div class="container">
+          <h2>Ready to Book Your Stay?</h2>
+          <p class="contact-text">
+            It's time to unpack, unplug and unwind. Welcome to Sea Reach, your beach home-away-from-home.
+          </p>
+          <div class="contact-buttons">
+            <a
+              href="https://www.vrbo.com/2823698"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on VRBO
+            </a>
+            <a href="mailto:info@searench.com" class="btn btn-secondary">
+              Contact Owner
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <img
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sea-reach-logo-light-cropped-zujlBNUhCgWBAkFmdlGWFhjygiQxvT.png"
+            alt="Sea Reach Logo"
+            width="100"
+            height="100"
+            class="footer-logo"
+          />
+          <p>&copy; 2024 Sea Reach. Point Pleasant Beach, NJ. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      padding-top: 80px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: #2e8b8b;
+    }
+
+    .nav-link:after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2e8b8b;
+      transition: width 0.3s ease;
+    }
+
+    .nav-mobile {
+      display: none;
+    }
+
+    .nav-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #2c3e50;
+      cursor: pointer;
+    }
+
+    /* Beachy Hero Section */
+    .hero-beach {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .hero-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 154, 139, 0.8) 0%,
+        rgba(254, 207, 239, 0.7) 50%,
+        rgba(135, 206, 235, 0.6) 100%
+      );
+      z-index: 2;
+    }
+
+    .hero-beach .container {
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-beach .hero-content {
+      text-align: center;
+      color: white;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .logo-hero {
+      width: 180px;
+      height: auto;
+      margin-bottom: 30px;
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      line-height: 1.1;
+    }
+
+    .hero-beach .hero-subtitle {
+      font-size: 1.4rem;
+      margin-bottom: 40px;
+      font-weight: 600;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-beach .hero-highlights {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .highlight-beach {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      min-width: 140px;
+    }
+
+    .highlight-beach .highlight-number {
+      display: block;
+      font-size: 3rem;
+      font-weight: 800;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .highlight-beach .highlight-icon {
+      display: block;
+      font-size: 3rem;
+      font-weight: 800;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .highlight-beach .highlight-text {
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-beach {
+      display: inline-block;
+      padding: 18px 35px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #2c3e50;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-beach:hover {
+      background: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-beach-outline {
+      display: inline-block;
+      padding: 18px 35px;
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border: 2px solid white;
+    }
+
+    .btn-beach-outline:hover {
+      background: white;
+      color: #2c3e50;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Hero Gallery - Completely Fixed */
+    .hero-gallery-fixed {
+      width: 100%;
+      height: 600px;
+      background: #ffffff;
+      display: block;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .gallery-container {
+      width: 100%;
+      height: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+      position: relative;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    .gallery-main {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+    }
+
+    .gallery-side {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 0;
+      height: 100%;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 30px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-main:hover .gallery-overlay,
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-overlay h3 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .gallery-overlay h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .gallery-overlay p {
+      margin: 5px 0 0 0;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Section Styling */
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 50px;
+    }
+
+    /* About Section */
+    .about {
+      padding: 80px 0;
+      background: #f8f9fa;
+    }
+
+    .about h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: #2c3e50;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .lead {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2e8b8b;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .about p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    /* Outdoor Gallery */
+    .outdoor-gallery {
+      padding: 80px 0;
+      background: #f8f9fa;
+    }
+
+    .outdoor-gallery h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .outdoor-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      height: 600px;
+    }
+
+    .outdoor-large {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .outdoor-small-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .outdoor-small {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-image:hover {
+      transform: scale(1.05);
+    }
+
+    .photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .outdoor-large:hover .photo-overlay,
+    .outdoor-small:hover .photo-overlay {
+      transform: translateY(0);
+    }
+
+    .photo-overlay h3 {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .photo-overlay h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .photo-overlay p {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    /* Interior Gallery */
+    .interior-gallery {
+      padding: 80px 0;
+      background: #fff;
+    }
+
+    .interior-gallery h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .interior-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 40px;
+    }
+
+    .interior-item {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .interior-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .interior-info {
+      padding: 30px;
+    }
+
+    .interior-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .interior-info p {
+      color: #666;
+      font-size: 1.1rem;
+    }
+
+    /* Bedrooms Gallery */
+    .bedrooms-gallery {
+      padding: 80px 0;
+      background: #f8f9fa;
+    }
+
+    .bedrooms-gallery h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .bedrooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 40px;
+    }
+
+    .bedroom-item {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .bedroom-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .bedroom-info {
+      padding: 30px;
+    }
+
+    .bedroom-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .bedroom-info p {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    .bed-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+
+    .bed-type {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .sleeps {
+      color: #2e8b8b;
+      font-weight: 600;
+    }
+
+    /* Beach Access */
+    .beach-access {
+      padding: 80px 0;
+      background: #fff;
+    }
+
+    .beach-access h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .beach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .beach-info {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .distance-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .distance-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2e8b8b;
+      min-width: 80px;
+    }
+
+    .distance-text strong {
+      display: block;
+      font-size: 1.2rem;
+      color: #2c3e50;
+    }
+
+    .distance-text span {
+      color: #666;
+      font-size: 1rem;
+    }
+
+    .beach-photos {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      height: 400px;
+    }
+
+    /* Maps and Dining Section */
+    .maps-dining {
+      padding: 80px 0;
+      background: #f8f9fa;
+    }
+
+    .maps-dining h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    /* Location Grid */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Walking Distances */
+    .walking-distances h3 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .distance-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .distance-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .distance-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .distance-item .time {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2e8b8b;
+      min-width: 60px;
+    }
+
+    .distance-item .destination {
+      font-size: 1rem;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    /* Family Benefits */
+    .family-benefits h3 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .benefit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .benefit-icon {
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a8b, #fecfef);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .benefit-text {
+      font-size: 1rem;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    /* Enhanced Savings Section Styling */
+    .savings-section {
+      grid-column: 1 / -1;
+      margin-top: 40px;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(46, 139, 139, 0.05), rgba(32, 178, 170, 0.05));
+      border-radius: 20px;
+      border: 1px solid rgba(46, 139, 139, 0.2);
+    }
+
+    .savings-section h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .dining-section-subtitle {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 30px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .savings-breakdown {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 30px;
+      align-items: center;
+      margin: 40px 0;
+    }
+
+    .savings-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .savings-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .price-breakdown {
+      text-align: left;
+    }
+
+    .price-line {
+      padding: 8px 0;
+      font-size: 1rem;
+      color: #666;
+      border-bottom: 1px solid #eee;
+    }
+
+    .price-line:last-child {
+      border-bottom: none;
+    }
+
+    .price-line strong {
+      color: #2c3e50;
+      font-weight: 700;
+    }
+
+    .total-line {
+      border-top: 2px solid #2e8b8b;
+      border-bottom: 2px solid #2e8b8b;
+      font-weight: 600;
+      color: #2c3e50;
+      margin: 10px 0;
+      padding: 12px 0;
+    }
+
+    .weekend-note {
+      font-size: 0.9rem;
+      color: #e74c3c;
+      font-style: italic;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+    }
+
+    .savings-vs {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #2e8b8b;
+      text-align: center;
+      background: linear-gradient(135deg, #2e8b8b, #20b2aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .savings-card.included {
+      background: linear-gradient(135deg, rgba(46, 139, 139, 0.1), rgba(32, 178, 170, 0.1));
+      border: 2px solid #2e8b8b;
+    }
+
+    .savings-highlight {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #27ae60;
+      text-align: center;
+      background: linear-gradient(135deg, #27ae60, #2ecc71);
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .savings-note {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(46, 139, 139, 0.05);
+      border-radius: 10px;
+      border-left: 4px solid #2e8b8b;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 80px 0;
+      background: #fff;
+    }
+
+    .testimonials h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .rating-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stars {
+      font-size: 2rem;
+      color: #ffd700;
+    }
+
+    .rating-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .rating-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #2c3e50;
+    }
+
+    .review-count {
+      font-size: 1.1rem;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .testimonial-content {
+      margin-bottom: 20px;
+    }
+
+    .testimonial-content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #2c3e50;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .testimonial-author strong {
+      font-size: 1.1rem;
+      color: #2c3e50;
+    }
+
+    .testimonial-author span {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .reviews-cta {
+      text-align: center;
+    }
+
+    /* Local Attractions */
+    .local-attractions {
+      padding: 80px 0;
+      background: #f8f9fa;
+    }
+
+    .local-attractions h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .attractions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .attraction-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .attraction-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .attraction-info {
+      padding: 30px;
+    }
+
+    .attraction-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .attraction-info p {
+      color: #2e8b8b;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .attraction-info ul {
+      list-style: none;
+    }
+
+    .attraction-info li {
+      padding: 5px 0;
+      color: #666;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .attraction-info li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #2e8b8b;
+      font-weight: bold;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 80px 0;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: #2c3e50;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .feature-card ul {
+      list-style: none;
+    }
+
+    .feature-card li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .feature-card li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #27ae60;
+      font-weight: bold;
+    }
+
+    .feature-card li:last-child {
+      border-bottom: none;
+    }
+
+    /* Rental Info Section */
+    .rental-info {
+      padding: 80px 0;
+      background: #f8f9fa;
+    }
+
+    .rental-info h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: #2c3e50;
+    }
+
+    .rental-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .rental-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .rental-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .rental-card p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* Direct Booking Section */
+    .direct-booking {
+      padding: 80px 0;
+      background: linear-gradient(135deg, rgba(46, 139, 139, 0.05), rgba(32, 178, 170, 0.1));
+    }
+
+    .direct-booking h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .booking-comparison {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 40px;
+      align-items: center;
+      margin: 50px 0;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .booking-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .booking-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .booking-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 25px;
+      color: #2c3e50;
+    }
+
+    .price-display {
+      margin-bottom: 30px;
+    }
+
+    .price-amount {
+      display: block;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #2c3e50;
+      line-height: 1;
+    }
+
+    .price-period {
+      font-size: 1.1rem;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .price-display.featured .price-amount {
+      color: #2e8b8b;
+    }
+
+    .booking-details {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .detail-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 1rem;
+    }
+
+    .detail-line:last-child {
+      border-bottom: none;
+    }
+
+    .detail-line.highlight {
+      color: #27ae60;
+      font-weight: 600;
+    }
+
+    .platform-booking {
+      border: 2px solid #e0e0e0;
+    }
+
+    .direct-booking-card {
+      border: 3px solid #2e8b8b;
+      background: linear-gradient(135deg, rgba(46, 139, 139, 0.05), rgba(32, 178, 170, 0.05));
+      position: relative;
+    }
+
+    .direct-booking-card::before {
+      content: "BEST VALUE";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2e8b8b;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .vs-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .vs-text {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #2e8b8b;
+      background: linear-gradient(135deg, #2e8b8b, #20b2aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .savings-badge {
+      background: linear-gradient(135deg, #27ae60, #2ecc71);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .direct-booking-benefits {
+      margin: 60px 0;
+    }
+
+    .direct-booking-benefits h3 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #2c3e50;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit-card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .benefit-card .benefit-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .benefit-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    .benefit-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .booking-cta {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .btn-large {
+      padding: 20px 40px;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    .booking-note {
+      color: #666;
+      font-size: 0.9rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #ff9a8b 0%, #fecfef 100%);
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .contact-text {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #2c3e50;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #34495e;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #2c3e50;
+      border: 2px solid #2c3e50;
+    }
+
+    .btn-secondary:hover {
+      background: #2c3e50;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: #2c3e50;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+      }
+
+      .gallery-side {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        height: 300px;
+      }
+
+      .hero-gallery-fixed {
+        height: auto;
+      }
+
+      .location-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .savings-breakdown {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .savings-vs {
+        font-size: 1.5rem;
+        transform: rotate(90deg);
+      }
+
+      .outdoor-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .beach-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-beach {
+        height: 80vh;
+        min-height: 500px;
+      }
+
+      .booking-comparison {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .vs-divider {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .vs-text {
+        transform: rotate(90deg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-side {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 600px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-mobile {
+        display: block;
+      }
+
+      .nav-brand {
+        font-size: 1.2rem;
+      }
+
+      .nav-logo-img {
+        width: 40px;
+        height: 40px;
+      }
+
+      body {
+        padding-top: 70px;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-beach .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .hero-beach .hero-highlights {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .highlight-beach {
+        width: 80%;
+        margin-bottom: 10px;
+      }
+
+      .highlight-beach .highlight-number,
+      .highlight-beach .highlight-icon {
+        font-size: 2.5rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-beach,
+      .btn-beach-outline {
+        width: 250px;
+      }
+
+      .features-grid,
+      .interior-grid,
+      .bedrooms-grid,
+      .attractions-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 250px;
+      }
+
+      .distance-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .benefit-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-card {
+        padding: 30px 20px;
+      }
+
+      .price-amount {
+        font-size: 2.5rem;
+      }
+
+      .direct-booking {
+        padding: 60px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 15px;
+      }
+
+      .about,
+      .features,
+      .interior-gallery,
+      .outdoor-gallery,
+      .bedrooms-gallery,
+      .beach-access,
+      .local-attractions,
+      .rental-info,
+      .contact,
+      .testimonials,
+      .direct-booking {
+        padding: 60px 0;
+      }
+
+      .distance-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .distance-number {
+        min-width: auto;
+      }
+
+      .hero-beach {
+        height: 70vh;
+        min-height: 450px;
+      }
+
+      .logo-hero {
+        width: 150px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-beach .hero-highlights {
+        gap: 15px;
+      }
+
+      .highlight-beach {
+        padding: 15px;
+        width: 90%;
+      }
+    }
+
+	/* Property Gallery - Clean Layout */
+	.property-gallery {
+    padding: 80px 0;
+    background: #f8f9fa;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .gallery-header h2 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 800;
+  }
+
+  .gallery-subtitle {
+    font-size: 1.3rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  .gallery-grid-clean {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 40px;
+  }
+
+  .gallery-item-clean {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item-clean:hover {
+    transform: translateY(-10px);
+  }
+
+  .gallery-image-clean {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .gallery-info-clean {
+    padding: 30px;
+  }
+
+  .gallery-info-clean h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-weight: 700;
+  }
+
+  .gallery-info-clean p {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  </style>
+</html>
