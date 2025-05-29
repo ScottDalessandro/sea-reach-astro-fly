@@ -25,6 +25,10 @@ import bedroomBunk from '../../public/images/bedroom-bunk.jpeg';
 import bedroom3 from '../../public/images/bedroom-3.jpeg';
 import outdoorDining from '../../public/images/outdoor-dining.jpg';
 import backyardSlipNSlide from '../../public/images/backyard-slip-n-slide.webp';
+import driveway from '../../public/images/driveway.webp';
+import beachFun from '../../public/images/beckett-beach-sand.webp';
+import boardwalkFun from '../../public/images/jenkinsons-big-chair-kids.webp';
+import lastWave from '../../public/images/lastwave-scott-casey.webp';
 
 const seoData = {
   title: "Sea Reach - Point Pleasant Beach Rental | 4BR Beach House",
@@ -187,8 +191,7 @@ const seoData = {
             />
             <h1 class="hero-title">Your Beach Home Away From Home</h1>
             <p class="hero-subtitle">
-              🏖️106 Atlantic Ave • 4-Min Walk to Beach & Jenkinson's Boardwalk • 8 Beach Badges + Beach Gear Included =
-              $900+ Savings! 🏖️
+              🏖️106 Atlantic Ave • 4-Min Walk to Beach & Jenkinson's Boardwalk
             </p>
             <div class="hero-highlights">
               <div class="highlight-beach">
@@ -386,8 +389,8 @@ const seoData = {
                 </div>
               </div>
               <div class="outdoor-small">
-                <img
-                  src="/placeholder.svg?height=240&width=380&query=large driveway with 6 car parking spaces"
+                <Image
+                  src={driveway || "/placeholder.svg"}
                   alt="Parking Area"
                   width="380"
                   height="240"
@@ -411,7 +414,7 @@ const seoData = {
           <div class="interior-grid">
             <div class="interior-item">
               <Image
-                src={livingRoomWide || "/placeholder.svg"}
+                src={livingRoomOppo	 || "/placeholder.svg"}
                 alt="Open Concept Living Room"
                 width={600}
                 height={400}
@@ -496,7 +499,7 @@ const seoData = {
               />
               <div class="bedroom-info">
                 <h3>Master Bedroom</h3>
-                <p>King bed with vaulted ceiling and compass decor</p>
+                <p>Queen bed with vaulted ceiling and compass decor</p>
                 <div class="bed-details">
                   <span class="bed-type">👑 King Bed</span>
                   <span class="sleeps">Sleeps 2</span>
@@ -505,7 +508,7 @@ const seoData = {
             </div>
             <div class="bedroom-item">
               <Image
-                src={masterBedroom2 || "/placeholder.svg"}
+                src={bedroomSurf || "/placeholder.svg"}
                 alt="Queen Bedroom"
                 width="600"
                 height="400"
@@ -523,8 +526,8 @@ const seoData = {
             </div>
             <div class="bedroom-item">
               <Image
-                src={masterBedroom2 || "/placeholder.svg"}
-                alt="Second Queen Bedroom"
+                src={bedroom3 || "/placeholder.svg"}
+                alt="Second Full Bedroom"
                 width="600"
                 height="400"
                 class="gallery-image"
@@ -541,7 +544,7 @@ const seoData = {
             </div>
             <div class="bedroom-item">
               <Image
-                src={bedroom3 || "/placeholder.svg"}
+                src={bedroomBunk || "/placeholder.svg"}
                 alt="Bunk Room"
                 width="600"
                 height="400"
@@ -804,8 +807,8 @@ const seoData = {
           <p class="section-subtitle">Everything you need within walking distance</p>
           <div class="attractions-grid">
             <div class="attraction-card">
-              <img
-                src="/placeholder.svg?height=250&width=400&query=beautiful sandy beach with umbrellas and chairs"
+              <Image
+                src={beachFun || "/placeholder.svg"}
                 alt="Beach Activities"
                 width="400"
                 height="250"
@@ -827,8 +830,8 @@ const seoData = {
             </div>
 
             <div class="attraction-card">
-              <img
-                src="/placeholder.svg?height=250&width=400&query=boardwalk amusement rides and games at sunset"
+              <Image
+                src={boardwalkFun || "/placeholder.svg"}
                 alt="Boardwalk Entertainment"
                 width="400"
                 height="250"
@@ -850,8 +853,8 @@ const seoData = {
             </div>
 
             <div class="attraction-card">
-              <img
-                src="/placeholder.svg?height=250&width=400&query=cozy restaurant with outdoor seating and craft beer"
+              <Image
+                src={lastWave || "/placeholder.svg"}
                 alt="Local Dining"
                 width="400"
                 height="250"

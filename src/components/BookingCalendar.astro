@@ -1,5 +1,6 @@
 ---
 // Booking Calendar Component for Astro
+import BookingForm from './BookingForm.astro';
 
 const { isModal = false } = Astro.props;
 ---
@@ -234,8 +235,21 @@ const { isModal = false } = Astro.props;
 </div>
 
 <script>
+  // Declare window interface extensions
+  declare global {
+    interface Window {
+      showBookingModal: () => void;
+      hideBookingModal: () => void;
+    }
+  }
+
   // Booking Calendar JavaScript
   class BookingCalendar {
+    private guests: { adults: number; children: number };
+    private selectedWeek: string | null;
+    private selectedPrice: number;
+    private maxGuests: number;
+    
     constructor() {
       this.guests = { adults: 2, children: 0 };
       this.selectedWeek = null;
@@ -248,155 +262,187 @@ const { isModal = false } = Astro.props;
     init() {
       this.setupGuestControls();
       this.setupWeekSelection();
-      this.setupBookingButton();
-      this.updateGuestDisplay();
+      this.setupBookNowButton();
     }
 
     setupGuestControls() {
-      const guestButtons = document.querySelectorAll('.guest-btn');
+      const guestButtons = document.querySelectorAll<HTMLButtonElement>('.guest-btn');
+      const totalGuestsSpan = document.getElementById('total-guests');
+
       guestButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-          const type = e.target.dataset.type;
-          const action = e.target.dataset.action;
-          this.handleGuestChange(type, action === 'increase');
+        button.addEventListener('click', () => {
+          const type = button.dataset.type as keyof typeof this.guests;
+          const action = button.dataset.action;
+          const countSpan = document.querySelector<HTMLElement>(`.guest-count[data-type="${type}"]`);
+          if (!countSpan) return;
+          
+          const currentCount = parseInt(countSpan.textContent || '0');
+          
+          if (action === 'increase' && this.getTotalGuests() < this.maxGuests) {
+            countSpan.textContent = (currentCount + 1).toString();
+            this.guests[type]++;
+          } else if (action === 'decrease' && currentCount > 0) {
+            countSpan.textContent = (currentCount - 1).toString();
+            this.guests[type]--;
+          }
+          
+          this.updateGuestButtons();
+          if (totalGuestsSpan) {
+            totalGuestsSpan.textContent = this.getTotalGuests().toString();
+          }
         });
       });
     }
 
     setupWeekSelection() {
-      const weekOptions = document.querySelectorAll('.week-option');
+      const weekOptions = document.querySelectorAll<HTMLElement>('.week-option');
+      const bookNowBtn = document.getElementById('book-now-btn');
+      const bookingSummary = document.getElementById('booking-summary');
+      
       weekOptions.forEach(option => {
-        option.addEventListener('click', (e) => {
-          const available = e.currentTarget.dataset.available === 'true';
-          if (!available) return;
-
-          // Remove previous selection
-          document.querySelectorAll('.week-option.selected').forEach(el => {
-            el.classList.remove('selected');
-          });
-
-          // Add selection to clicked week
-          e.currentTarget.classList.add('selected');
+        option.addEventListener('click', () => {
+          if (option.dataset.available === 'false') return;
           
-          this.selectedWeek = e.currentTarget.dataset.week;
-          this.selectedPrice = parseInt(e.currentTarget.dataset.price);
+          // Remove selected class from all options
+          weekOptions.forEach(opt => opt.classList.remove('selected'));
           
+          // Add selected class to clicked option
+          option.classList.add('selected');
+          
+          // Update selected week and price
+          this.selectedWeek = option.dataset.week || null;
+          this.selectedPrice = parseInt(option.dataset.price || '0');
+          
+          // Update booking summary
           this.updateBookingSummary();
-          this.updateBookingButton();
+          
+          // Show booking summary and enable book now button
+          if (bookingSummary) {
+            bookingSummary.style.display = 'block';
+          }
+          if (bookNowBtn) {
+            (bookNowBtn as HTMLButtonElement).disabled = false;
+            bookNowBtn.textContent = 'Continue to Booking Form';
+          }
         });
       });
     }
 
-    setupBookingButton() {
-      const bookButton = document.getElementById('book-now-btn');
-      bookButton.addEventListener('click', () => {
-        this.handleBooking();
+    setupBookNowButton() {
+      const bookNowBtn = document.getElementById('book-now-btn');
+      if (bookNowBtn) {
+        bookNowBtn.addEventListener('click', () => {
+          if (!this.selectedWeek) return;
+          
+          // Create and show the booking form
+          const bookingForm = document.createElement('div');
+          bookingForm.id = 'booking-form-container';
+          
+          // Create a new BookingForm component
+          const form = document.createElement('form');
+          form.innerHTML = `
+            <div class="booking-form-container">
+              <form id="booking-form" class="booking-form">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" name="name" required placeholder="John Smith">
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required placeholder="john@example.com">
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" required placeholder="(555) 555-5555">
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message (Optional)</label>
+                  <textarea id="message" name="message" rows="4" placeholder="Any special requests or questions?"></textarea>
+                </div>
+
+                <div class="booking-details">
+                  <h4>Booking Details</h4>
+                  <div class="detail-row">
+                    <span>Selected Week:</span>
+                    <span>${this.selectedWeek}</span>
+                  </div>
+                  <div class="detail-row">
+                    <span>Number of Guests:</span>
+                    <span>${this.getTotalGuests()}</span>
+                  </div>
+                  <div class="detail-row">
+                    <span>Rate:</span>
+                    <span>$${this.selectedPrice}</span>
+                  </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Booking Request</button>
+              </form>
+            </div>
+          `;
+          
+          // Add form submission handler
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target as HTMLFormElement);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Create email link
+            const mailtoLink = `mailto:info@searench.com?subject=Booking Request for ${this.selectedWeek}&body=Name: ${data.name}%0D%0AEmail: ${data.email}%0D%0APhone: ${data.phone}%0D%0AMessage: ${data.message}%0D%0A%0D%0ABooking Details:%0D%0AWeek: ${this.selectedWeek}%0D%0AGuests: ${this.getTotalGuests()}%0D%0ARate: $${this.selectedPrice}`;
+            window.location.href = mailtoLink;
+          });
+          
+          // Replace the calendar with the form
+          const calendar = document.getElementById('booking-calendar');
+          if (calendar) {
+            calendar.innerHTML = '';
+            calendar.appendChild(form);
+          }
+        });
+      }
+    }
+
+    updateGuestButtons() {
+      const totalGuests = this.getTotalGuests();
+      const decreaseButtons = document.querySelectorAll<HTMLButtonElement>('.guest-btn[data-action="decrease"]');
+      const increaseButtons = document.querySelectorAll<HTMLButtonElement>('.guest-btn[data-action="increase"]');
+      
+      decreaseButtons.forEach(button => {
+        const type = button.dataset.type as keyof typeof this.guests;
+        const count = this.guests[type];
+        button.disabled = count <= 0;
+      });
+      
+      increaseButtons.forEach(button => {
+        button.disabled = totalGuests >= this.maxGuests;
       });
     }
 
-    handleGuestChange(type, increment) {
-      const newValue = increment ? this.guests[type] + 1 : Math.max(0, this.guests[type] - 1);
-      const newTotal = type === 'adults' ? newValue + this.guests.children : this.guests.adults + newValue;
-
-      if (newTotal <= this.maxGuests && (type === 'adults' ? newValue >= 1 : true)) {
-        this.guests[type] = newValue;
-        this.updateGuestDisplay();
-        this.updateBookingSummary();
-      }
-    }
-
-    updateGuestDisplay() {
-      // Update guest counts
-      document.querySelector(`[data-type="adults"].guest-count`).textContent = this.guests.adults;
-      document.querySelector(`[data-type="children"].guest-count`).textContent = this.guests.children;
-      
-      // Update total
-      const total = this.guests.adults + this.guests.children;
-      document.getElementById('total-guests').textContent = total;
-
-      // Update button states
-      const totalGuests = this.guests.adults + this.guests.children;
-      
-      // Adults buttons
-      const adultsDecrease = document.querySelector('[data-type="adults"][data-action="decrease"]');
-      const adultsIncrease = document.querySelector('[data-type="adults"][data-action="increase"]');
-      adultsDecrease.disabled = this.guests.adults <= 1;
-      adultsIncrease.disabled = totalGuests >= this.maxGuests;
-
-      // Children buttons
-      const childrenDecrease = document.querySelector('[data-type="children"][data-action="decrease"]');
-      const childrenIncrease = document.querySelector('[data-type="children"][data-action="increase"]');
-      childrenDecrease.disabled = this.guests.children <= 0;
-      childrenIncrease.disabled = totalGuests >= this.maxGuests;
-    }
-
     updateBookingSummary() {
-      const summaryDiv = document.getElementById('booking-summary');
+      const summaryWeek = document.getElementById('summary-week');
+      const summaryGuests = document.getElementById('summary-guests');
+      const summaryPlatformRate = document.getElementById('summary-platform-rate');
+      const summaryDirectRate = document.getElementById('summary-direct-rate');
+      const summarySavings = document.getElementById('summary-savings');
       
-      if (!this.selectedWeek) {
-        summaryDiv.style.display = 'none';
-        return;
-      }
-
-      summaryDiv.style.display = 'block';
+      if (summaryWeek) summaryWeek.textContent = this.selectedWeek || '';
+      if (summaryGuests) summaryGuests.textContent = this.getTotalGuests().toString();
       
-      const directRate = Math.round(this.selectedPrice * 0.83);
-      const savings = Math.round(this.selectedPrice * 0.17);
-      
-      document.getElementById('summary-week').textContent = this.selectedWeek;
-      document.getElementById('summary-guests').textContent = 
-        `${this.guests.adults} adults${this.guests.children > 0 ? `, ${this.guests.children} children` : ''}`;
-      document.getElementById('summary-platform-rate').textContent = `$${this.selectedPrice.toLocaleString()}`;
-      document.getElementById('summary-direct-rate').textContent = `$${directRate.toLocaleString()}`;
-      document.getElementById('summary-savings').textContent = `$${savings.toLocaleString()} (17%)`;
+      const platformRate = Math.round(this.selectedPrice * 1.17); // 17% higher
+      if (summaryPlatformRate) summaryPlatformRate.textContent = `$${platformRate}`;
+      if (summaryDirectRate) summaryDirectRate.textContent = `$${this.selectedPrice}`;
+      if (summarySavings) summarySavings.textContent = `$${platformRate - this.selectedPrice}`;
     }
 
-    updateBookingButton() {
-      const button = document.getElementById('book-now-btn');
-      
-      if (this.selectedWeek) {
-        button.disabled = false;
-        button.textContent = '📧 Send Booking Request';
-      } else {
-        button.disabled = true;
-        button.textContent = 'Select a Week to Book';
-      }
-    }
-
-    handleBooking() {
-      if (!this.selectedWeek) {
-        alert('Please select a week first!');
-        return;
-      }
-
-      const directRate = Math.round(this.selectedPrice * 0.83);
-      const savings = Math.round(this.selectedPrice * 0.17);
-      
-      const bookingDetails = {
-        week: this.selectedWeek,
-        guests: `${this.guests.adults} adults${this.guests.children > 0 ? `, ${this.guests.children} children` : ''}`,
-        total: directRate,
-        savings: savings
-      };
-
-      const emailSubject = `Sea Reach Booking Inquiry - ${bookingDetails.week}`;
-      const emailBody = `Hi! I'd like to book Sea Reach for:
-
-Week: ${bookingDetails.week}
-Guests: ${bookingDetails.guests}
-Total: $${bookingDetails.total.toLocaleString()}
-
-I understand I save $${bookingDetails.savings.toLocaleString()} by booking direct!
-
-Please let me know the next steps.
-
-Thank you!`;
-
-      window.location.href = `mailto:info@searench.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    getTotalGuests() {
+      return this.guests.adults + this.guests.children;
     }
   }
 
-  // Initialize booking calendar when DOM is loaded
+  // Initialize the booking calendar
   document.addEventListener('DOMContentLoaded', () => {
     new BookingCalendar();
   });
