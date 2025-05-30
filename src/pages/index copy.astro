@@ -32,9 +32,9 @@ import lastWave from '../../public/images/lastwave-scott-casey.webp';
 
 const seoData = {
   title: "Sea Reach - Point Pleasant Beach Rental | 4BR Beach House",
-  description: "Beautiful 4BR beach house just 4 minutes from Point Pleasant Beach. Includes 8 beach badges, modern amenities, and prime location near boardwalk.",
-  canonical: "https://sea-reach.com",
-  ogImage: "https://sea-reach.com/images/outdoor-seats-fire-pit.png"
+  description: "Beautiful 4BR beach house just 4 minutes from Point Pleasant Beach. Includes 8 beach badges, modern amenities, and prime location near boardwalk. Book direct and save 17%!",
+  canonical: "https://searench.com",
+  ogImage: "https://searench.com/images/house-exterior.png"
 };
 ---
 
@@ -97,43 +97,63 @@ const seoData = {
         ]
       }
     </script>
-	    <script>
-			// This script will run on the client side
-			document.addEventListener('DOMContentLoaded', () => {
-			  // Modal functionality
-			  const showModalButtons = document.querySelectorAll('[data-show-modal]');
-			  const hideModalButtons = document.querySelectorAll('[data-hide-modal]');
-			  const modal = document.getElementById('booking-modal');
-			  
-			  showModalButtons.forEach(button => {
-				button.addEventListener('click', () => {
-				  if (modal) {
-					modal.style.display = 'flex';
-					document.body.style.overflow = 'hidden';
-				  }
-				});
-			  });
-			  
-			  hideModalButtons.forEach(button => {
-				button.addEventListener('click', () => {
-				  if (modal) {
-					modal.style.display = 'none';
-					document.body.style.overflow = 'auto';
-				  }
-				});
-			  });
-			  
-			  // Close modal when clicking outside content
-			  if (modal) {
-				modal.addEventListener('click', (e) => {
-				  if (e.target === modal) {
-					modal.style.display = 'none';
-					document.body.style.overflow = 'auto';
-				  }
-				});
-			  }
-			});
-		  </script>
+    <script>
+      // Mobile navigation functionality
+      document.addEventListener('DOMContentLoaded', () => {
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (navToggle && navLinks) {
+          navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-links-mobile');
+            navToggle.classList.toggle('nav-toggle-active');
+          });
+
+          // Close mobile menu when clicking on a link
+          const navLinkItems = document.querySelectorAll('.nav-link');
+          navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+              navLinks.classList.remove('nav-links-mobile');
+              navToggle.classList.remove('nav-toggle-active');
+            });
+          });
+        }
+
+        // Modal functionality
+        const showModalButtons = document.querySelectorAll('[data-show-modal]');
+        const hideModalButtons = document.querySelectorAll('[data-hide-modal]');
+        const modal = document.getElementById('booking-modal');
+        
+        showModalButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            if (modal) {
+              modal.style.display = 'flex';
+              document.body.style.overflow = 'hidden';
+            }
+          });
+        });
+        
+        hideModalButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            if (modal) {
+              modal.style.display = 'none';
+              document.body.style.overflow = 'auto';
+            }
+          });
+        });
+        
+        // Close modal when clicking outside content
+        if (modal) {
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+              modal.style.display = 'none';
+              document.body.style.overflow = 'auto';
+            }
+          });
+        }
+      });
+    </script>
   </head>
   <body>
     <div class="min-h-screen">
@@ -152,28 +172,18 @@ const seoData = {
               />
               <span class="nav-brand">Sea Reach</span>
             </div>
-            <div class="nav-links" id="nav-links">
+            <div class="nav-links">
               <a href="#gallery" class="nav-link">Photos</a>
+              <a href="#booking" class="nav-link">📅 Book Now</a>
               <a href="#outdoor" class="nav-link">🌊 Outside</a>
               <a href="#interior" class="nav-link">🏠 Interior</a>
               <a href="#bedrooms" class="nav-link">🛏️ Bedrooms</a>
               <a href="#attractions" class="nav-link">📍 Local Attractions</a>
-              <a href="#contact" class="nav-link">Book Now</a>
             </div>
             <div class="nav-mobile">
-              <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">☰</button>
+              <button class="nav-toggle">☰</button>
             </div>
           </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobile-menu">
-          <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">×</button>
-          <a href="#gallery" class="mobile-nav-link">Photos</a>
-          <a href="#outdoor" class="mobile-nav-link">🌊 Outside</a>
-          <a href="#interior" class="mobile-nav-link">🏠 Interior</a>
-          <a href="#bedrooms" class="mobile-nav-link">🛏️ Bedrooms</a>
-          <a href="#attractions" class="mobile-nav-link">📍 Local Attractions</a>
-          <a href="#contact" class="mobile-nav-link">Book Now</a>
         </div>
       </nav>
 
@@ -198,11 +208,11 @@ const seoData = {
               width="180"
               height="180"
               class="logo-hero"
-              style="max-width: 180px; width: 100%; height: auto; display: block; margin: 48px auto 0 auto; object-fit: contain;"
             />
             <h1 class="hero-title">Your Beach Home Away From Home</h1>
             <p class="hero-subtitle">
-              🏖️106 Atlantic Ave • 4-Min Walk to Beach & Jenkinson's Boardwalk
+              🏖️106 Atlantic Ave • 4-Min Walk to Beach & Jenkinson's Boardwalk • 8 Beach Badges + Beach Gear Included =
+              $900+ Savings! 🏖️
             </p>
             <div class="hero-highlights">
               <div class="highlight-beach">
@@ -223,104 +233,80 @@ const seoData = {
               </div>
             </div>
             <div class="hero-cta">
-              <a href="#gallery" class="btn-beach">
-                Explore the House
+              <a href="#booking" class="btn-beach">
+                Check Availability
               </a>
-              <a
-                href="https://www.vrbo.com/2823698"
-                class="btn-beach-outline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book Now on VRBO
-              </a>
+              <button data-show-modal class="btn-beach-outline">
+                Quick Book
+              </button>
             </div>
           </div>
         </div>
       </section>
-<!-- Property Gallery - Clean Layout -->
-<section class="property-gallery" id="gallery">
-	<div class="container">
-	  <div class="gallery-header">
-		<h2>Welcome to Sea Reach</h2>
-		<p class="gallery-subtitle">Your perfect beach getaway awaits</p>
-	  </div>
-	  
-	  <div class="gallery-grid-clean">
-		<div class="gallery-item-clean">
-		  <Image
-			src={livingRoomWide || "/placeholder.svg"}
-			alt="Sea Reach - Beautiful Open Living Space"
-			class="gallery-image-clean"
-			format="webp"
-			quality={90}
-			loading="lazy"
-		  />
-		  <div class="gallery-info-clean">
-			<h3>🛋️ Open Concept Living</h3>
-			<p>Spacious, modern design with hardwood floors perfect for family gatherings</p>
-		  </div>
-		</div>
-		<div class="gallery-item-clean">
-		  <Image
-			src={outdoorSeatsFirePit || "/placeholder.svg"}
-			alt="Evening Fire Pit"
-			class="gallery-image-clean"
-			format="webp"
-			
-			quality={90}
-			loading="lazy"
-		  />
-		  <div class="gallery-info-clean">
-			<h3>🔥 Fire Pit Nights</h3>
-			<p>Perfect for evening relaxation and making memories</p>
-		  </div>
-		</div>
-		
-		<div class="gallery-item-clean">
-		  <Image
-			src={kitchen || "/placeholder.svg"}
-			alt="Gourmet Kitchen"
-			class="gallery-image-clean"
-			format="webp"
-			quality={90}
-			
-			loading="lazy"
-		  />
-		  <div class="gallery-info-clean">
-			<h3>🍳 Gourmet Kitchen</h3>
-			<p>Fully equipped with granite countertops and stainless steel appliances</p>
-		  </div>
-		</div>
-		
-		
-		<div class="gallery-item-clean">
-		  <Image
-			src={outdoorShower || "/placeholder.svg"}
-			alt="Private Outdoor Shower"
-			class="gallery-image-clean"
-			loading="lazy"
-		  />
-		  <div class="gallery-info-clean">
-			<h3>🚿 Private Outdoor Shower</h3>
-			<p>Rinse off the sand and salt after perfect beach days</p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-  </section>
 
-        <!-- Booking Calendar Section -->
-		<section class="booking-section" id="booking">
-			<div class="container">
-			  <div class="booking-header">
-				<h2>Check Availability & Book Your Stay</h2>
-				<p class="booking-subtitle">Weekly rentals Saturday to Saturday • June through September</p>
-			  </div>
-			  <BookingCalendar />
-			</div>
-		  </section>
+      <!-- Hero Gallery - Real Property Photos -->
+      <section class="hero-gallery-fixed" id="gallery">
+        <div class="gallery-container">
+          <div class="gallery-grid">
+            <div class="gallery-main">
+              <Image
+                src={livingRoomWide || "/placeholder.svg"}
+                alt="Sea Reach - Beautiful Open Living Space"
+                width={800}
+                height={600}
+                class="gallery-img"
+                format="webp"
+                quality={75}
+              />
+              <div class="gallery-overlay">
+                <h3>Open Concept Living</h3>
+                <p>Hardwood floors and modern coastal design</p>
+              </div>
+            </div>
+            <div class="gallery-side">
+              <div class="gallery-item">
+                <Image
+                  src={kitchen || "/placeholder.svg"}
+                  alt="Fully Equipped Modern Kitchen"
+                  width={390}
+                  height={290}
+                  class="gallery-img"
+                  format="webp"
+                  quality={75}
+                />
+                <div class="gallery-overlay">
+                  <h4>Gourmet Kitchen</h4>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <Image
+                  src={outdoorSeatsFirePit || "/placeholder.svg"}
+                  alt="Cozy Fire Pit Area"
+                  width={390}
+                  height={290}
+                  class="gallery-img"
+                  format="webp"
+                  quality={75}
+                />
+                <div class="gallery-overlay">
+                  <h4>Evening Fire Pit</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <!-- Booking Calendar Section -->
+      <section class="booking-section" id="booking">
+        <div class="container">
+          <div class="booking-header">
+            <h2>Check Availability & Book Your Stay</h2>
+            <p class="booking-subtitle">Weekly rentals Saturday to Saturday • June through September</p>
+          </div>
+          <BookingCalendar />
+        </div>
+      </section>
 
       <!-- About Section -->
       <section class="about">
@@ -345,26 +331,26 @@ const seoData = {
       <section class="outdoor-gallery" id="outdoor">
         <div class="container">
           <h2>🌊 Outside Spaces</h2>
-          <p class="section-subtitle">something here</p>
+          <p class="section-subtitle">Private outdoor spaces perfect for beach life</p>
           <div class="outdoor-grid">
             <div class="outdoor-large">
-              <Image
-                src={garageGameroom || "/placeholder.svg"}
-                alt="Detached Garage with TV and Game Room"
+              <img
+                src="/placeholder.svg?height=500&width=800"
+                alt="Wraparound Porch"
                 width="800"
                 height="500"
                 class="gallery-image"
                 loading="lazy"
               />
-              <!-- <div class="photo-overlay">
-                <h3>Detached Garage with TV and Game Room</h3>
-                <p>Great for indoor/outdoor hangouts, sandy feet and all.</p>
-              </div> -->
+              <div class="photo-overlay">
+                <h3>Enclosed Wraparound Porch</h3>
+                <p>Perfect for morning coffee and evening relaxation</p>
+              </div>
             </div>
             <div class="outdoor-small-grid">
               <div class="outdoor-small">
-                <Image
-                  src={outdoorDining || "/placeholder.svg"}
+                <img
+                  src="/placeholder.svg?height=240&width=380"
                   alt="Outdoor Dining"
                   width="380"
                   height="240"
@@ -376,21 +362,8 @@ const seoData = {
                 </div>
               </div>
               <div class="outdoor-small">
-                <Image
-                  src={backyardSlipNSlide || "/placeholder.svg"}
-                  alt="Backyard Fun"
-                  width="380"
-                  height="240"
-                  class="gallery-image"
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h4>Backyard fun!</h4>
-                </div>
-              </div>
-              <div class="outdoor-small">
-                <Image
-                  src={outdoorShower || "/placeholder.svg"}
+                <img
+                  src="/placeholder.svg?height=240&width=380"
                   alt="Outdoor Shower"
                   width="380"
                   height="240"
@@ -402,8 +375,21 @@ const seoData = {
                 </div>
               </div>
               <div class="outdoor-small">
-                <Image
-                  src={driveway || "/placeholder.svg"}
+                <img
+                  src="/placeholder.svg?height=240&width=380"
+                  alt="Fire Pit Area"
+                  width="380"
+                  height="240"
+                  class="gallery-image"
+                  loading="lazy"
+                />
+                <div class="photo-overlay">
+                  <h4>Gas Fire Pit</h4>
+                </div>
+              </div>
+              <div class="outdoor-small">
+                <img
+                  src="/placeholder.svg?height=240&width=380"
                   alt="Parking Area"
                   width="380"
                   height="240"
@@ -420,170 +406,210 @@ const seoData = {
       </section>
 
       <!-- Interior Spaces Section -->
-      <section class="interior-gallery" id="interior">
-        <div class="container">
-          <h2>🏠 Interior Spaces</h2>
-          <p class="section-subtitle">Comfortable, modern spaces designed for relaxation</p>
-          <div class="interior-grid">
-            <div class="interior-item">
-              <div class="image-container">
-                <Image
-                  src={livingRoomOppo || "/placeholder.svg"}
-                  alt="Open Concept Living Room"
-                  width={600}
-                  height={400}
-                  class="gallery-image"
-                  format="webp"
-                  quality={75}
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h3>Open Concept Living</h3>
-                  <p>Spacious living area with hardwood floors and modern coastal design</p>
-                </div>
-              </div>
-            </div>
-            <div class="interior-item">
-              <div class="image-container">
-                <Image
-                  src={kitchen || "/placeholder.svg"}
-                  alt="Fully Equipped Modern Kitchen"
-                  width={600}
-                  height={400}
-                  class="gallery-image"
-                  format="webp"
-                  quality={75}
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h3>Gourmet Kitchen</h3>
-                  <p>Fully equipped with modern appliances and everything you need</p>
-                </div>
-              </div>
-            </div>
-            <div class="interior-item">
-              <div class="image-container">
-                <Image
-                  src={diningRoom || "/placeholder.svg"}
-                  alt="Elegant Dining Room"
-                  width={600}
-                  height={400}
-                  class="gallery-image"
-                  format="webp"
-                  quality={75}
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h3>Dining Room</h3>
-                  <p>Perfect for family meals with coastal artwork</p>
-                </div>
-              </div>
-            </div>
-            <div class="interior-item">
-              <div class="image-container">
-                <Image
-                  src={frontCouch || "/placeholder.svg"}
-                  alt="Front Couch"
-                  width={600}
-                  height={400}
-                  class="gallery-image"
-                  format="webp"
-                  quality={75}
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h3>Front Room</h3>
-                  <p>Get away from the kids in this cozy spot or hang out with them on the couch. Great second living room.</p>
-                </div>
-              </div>
-            </div>
+<section class="interior-gallery" id="interior">
+  <div class="container">
+    <h2>🏠 Interior Spaces</h2>
+    <p class="section-subtitle">Comfortable, modern spaces designed for relaxation</p>
+    <div class="interior-grid">
+      <div class="interior-item">
+        <div class="image-container">
+          <Image
+            src={livingRoomOppo || "/placeholder.svg"}
+            alt="Open Concept Living Room"
+            width={600}
+            height={400}
+            class="gallery-image"
+            format="webp"
+            quality={75}
+            loading="lazy"
+          />
+          <div class="photo-overlay">
+            <h3>Open Concept Living</h3>
+            <p>Spacious living area with hardwood floors and modern coastal design</p>
           </div>
         </div>
-      </section>
+        <div class="interior-info">
+          <h3>Open Concept Living</h3>
+          <p>Spacious living area with hardwood floors and modern coastal design</p>
+        </div>
+      </div>
+      <div class="interior-item">
+        <div class="image-container">
+          <Image
+            src={kitchen || "/placeholder.svg"}
+            alt="Fully Equipped Modern Kitchen"
+            width={600}
+            height={400}
+            class="gallery-image"
+            format="webp"
+            quality={75}
+            loading="lazy"
+          />
+          <div class="photo-overlay">
+            <h3>Gourmet Kitchen</h3>
+            <p>Fully equipped with modern appliances and everything you need</p>
+          </div>
+        </div>
+        <div class="interior-info">
+          <h3>Gourmet Kitchen</h3>
+          <p>Fully equipped with modern appliances and everything you need</p>
+        </div>
+      </div>
+      <div class="interior-item">
+        <div class="image-container">
+          <Image
+            src={diningRoom || "/placeholder.svg"}
+            alt="Elegant Dining Room"
+            width={600}
+            height={400}
+            class="gallery-image"
+            format="webp"
+            quality={75}
+            loading="lazy"
+          />
+          <div class="photo-overlay">
+            <h3>Dining Room</h3>
+            <p>Perfect for family meals with coastal artwork</p>
+          </div>
+        </div>
+        <div class="interior-info">
+          <h3>Dining Room</h3>
+          <p>Perfect for family meals with coastal artwork</p>
+        </div>
+      </div>
+      <div class="interior-item">
+        <div class="image-container">
+          <Image
+            src={garageGameroom || "/placeholder.svg"}
+            alt="Garage Game Room with Ping Pong"
+            width={600}
+            height={400}
+            class="gallery-image"
+            format="webp"
+            quality={75}
+            loading="lazy"
+          />
+          <div class="photo-overlay">
+            <h3>Garage Game Room</h3>
+            <p>Ping pong table, TV, and beach-themed decor</p>
+          </div>
+        </div>
+        <div class="interior-info">
+          <h3>Garage Game Room</h3>
+          <p>Ping pong table, TV, and beach-themed decor</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <!-- Bedrooms Section -->
-      <section class="bedrooms-gallery" id="bedrooms">
-        <div class="container">
-          <h2>🛏️ Bedrooms</h2>
-          <p class="section-subtitle">Comfortable sleeping arrangements for up to 8 guests</p>
-          <div class="bedrooms-grid">
-            <div class="bedroom-item">
-              <Image
-                src={masterBedroom1 || "/placeholder.svg"}
-                alt="Master Bedroom with Vaulted Ceiling"
-                width={600}
-                height={400}
-                class="gallery-image"
-                format="webp"
-                quality={75}
-                loading="lazy"
-              />
-              <div class="bedroom-info-clean">
-                <h3>Master Bedroom</h3>
-                <p>Queen bed with vaulted ceiling and compass decor</p>
-                <div class="bed-details">
-                  <span class="bed-type">👑 King Bed</span>
-                  <span class="sleeps">Sleeps 2</span>
-                </div>
-              </div>
-            </div>
-            <div class="bedroom-item">
-              <Image
-                src={bedroomSurf || "/placeholder.svg"}
-                alt="Queen Bedroom"
-                width="600"
-                height="400"
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="bedroom-info-clean">
-                <h3>Queen Bedroom</h3>
-                <p>Comfortable queen bed with coastal-themed decor</p>
-                <div class="bed-details">
-                  <span class="bed-type">👸 Queen Bed</span>
-                  <span class="sleeps">Sleeps 2</span>
-                </div>
-              </div>
-            </div>
-            <div class="bedroom-item">
-              <Image
-                src={bedroom3 || "/placeholder.svg"}
-                alt="Second Full Bedroom"
-                width="600"
-                height="400"
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="bedroom-info-clean">
-                <h3>Third Bedroom</h3>
-                <p>Another comfortable full bed with beach-themed touches</p>
-                <div class="bed-details">
-                  <span class="bed-type">👸 Full Bed</span>
-                  <span class="sleeps">Sleeps 2</span>
-                </div>
-              </div>
-            </div>
-            <div class="bedroom-item">
-              <Image
-                src={bedroomBunk || "/placeholder.svg"}
-                alt="Bunk Room"
-                width="600"
-                height="400"
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="bedroom-info-clean">
-                <h3>Bunk Room</h3>
-                <p>Perfect for kids with twin bunk beds</p>
-                <div class="bed-details">
-                  <span class="bed-type">🛏️ Twin Bunks</span>
-                  <span class="sleeps">Sleeps 2</span>
-                </div>
-              </div>
-            </div>
+<section class="bedrooms-gallery" id="bedrooms">
+  <div class="container">
+    <h2>🛏️ Bedrooms</h2>
+    <p class="section-subtitle">Comfortable sleeping arrangements for up to 8 guests</p>
+    <div class="bedrooms-grid">
+      <div class="bedroom-item">
+        <div class="image-container">
+          <Image
+            src={masterBedroom1 || "/placeholder.svg"}
+            alt="Master Bedroom with Vaulted Ceiling"
+            width={600}
+            height={400}
+            class="gallery-image"
+            format="webp"
+            quality={75}
+            loading="lazy"
+          />
+          <div class="photo-overlay">
+            <h3>Master Bedroom</h3>
+            <p>King bed with vaulted ceiling and compass decor</p>
           </div>
         </div>
-      </section>
+        <div class="bedroom-info">
+          <h3>Master Bedroom</h3>
+          <p>King bed with vaulted ceiling and compass decor</p>
+          <div class="bed-details">
+            <span class="bed-type">👑 King Bed</span>
+            <span class="sleeps">Sleeps 2</span>
+          </div>
+        </div>
+      </div>
+      <div class="bedroom-item">
+        <div class="image-container">
+          <Image
+            src={bedroomSurf || "/placeholder.svg"}
+            alt="Queen Bedroom"
+            width="600"
+            height="400"
+            class="gallery-image"
+            loading="lazy"
+          />
+          <div class="photo-overlay">
+            <h3>Queen Bedroom</h3>
+            <p>Comfortable queen bed with coastal-themed decor</p>
+          </div>
+        </div>
+        <div class="bedroom-info">
+          <h3>Queen Bedroom</h3>
+          <p>Comfortable queen bed with coastal-themed decor</p>
+          <div class="bed-details">
+            <span class="bed-type">👸 Queen Bed</span>
+            <span class="sleeps">Sleeps 2</span>
+          </div>
+        </div>
+      </div>
+      <div class="bedroom-item">
+        <div class="image-container">
+          <Image
+            src={bedroomBunk || "/placeholder.svg"}
+            alt="Second Queen Bedroom"
+            width="600"
+            height="400"
+            class="gallery-image"
+            loading="lazy"
+          />
+          <div class="photo-overlay">
+            <h3>Second Queen Bedroom</h3>
+            <p>Another comfortable queen bed with beach-themed touches</p>
+          </div>
+        </div>
+        <div class="bedroom-info">
+          <h3>Second Queen Bedroom</h3>
+          <p>Another comfortable queen bed with beach-themed touches</p>
+          <div class="bed-details">
+            <span class="bed-type">👸 Queen Bed</span>
+            <span class="sleeps">Sleeps 2</span>
+          </div>
+        </div>
+      </div>
+      <div class="bedroom-item">
+        <div class="image-container">
+          <Image
+            src={bedroom3 || "/placeholder.svg"}
+            alt="Bunk Room"
+            width="600"
+            height="400"
+            class="gallery-image"
+            loading="lazy"
+          />
+          <div class="photo-overlay">
+            <h3>Bunk Room</h3>
+            <p>Perfect for kids with twin bunk beds</p>
+          </div>
+        </div>
+        <div class="bedroom-info">
+          <h3>Bunk Room</h3>
+          <p>Perfect for kids with twin bunk beds</p>
+          <div class="bed-details">
+            <span class="bed-type">🛏️ Twin Bunks</span>
+            <span class="sleeps">Sleeps 2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <!-- Location & Beach Access -->
       <section class="beach-access">
@@ -616,7 +642,7 @@ const seoData = {
             </div>
             <div class="beach-photos">
               <img
-                src="/placeholder.svg?height=400&width=600&query=Point Pleasant Beach boardwalk with rides and attractions"
+                src="/placeholder.svg?height=400&width=600"
                 alt="Point Pleasant Beach Boardwalk"
                 width="600"
                 height="400"
@@ -828,8 +854,8 @@ const seoData = {
           <p class="section-subtitle">Everything you need within walking distance</p>
           <div class="attractions-grid">
             <div class="attraction-card">
-              <Image
-                src={beachFun || "/placeholder.svg"}
+              <img
+                src="/placeholder.svg?height=250&width=400"
                 alt="Beach Activities"
                 width="400"
                 height="250"
@@ -851,8 +877,8 @@ const seoData = {
             </div>
 
             <div class="attraction-card">
-              <Image
-                src={boardwalkFun || "/placeholder.svg"}
+              <img
+                src="/placeholder.svg?height=250&width=400"
                 alt="Boardwalk Entertainment"
                 width="400"
                 height="250"
@@ -874,8 +900,8 @@ const seoData = {
             </div>
 
             <div class="attraction-card">
-              <Image
-                src={lastWave || "/placeholder.svg"}
+              <img
+                src="/placeholder.svg?height=250&width=400"
                 alt="Local Dining"
                 width="400"
                 height="250"
@@ -898,7 +924,7 @@ const seoData = {
 
             <div class="attraction-card">
               <img
-                src="/placeholder.svg?height=250&width=400&query=charming downtown shopping street with boutiques"
+                src="/placeholder.svg?height=250&width=400"
                 alt="Shopping & Services"
                 width="400"
                 height="250"
@@ -1121,14 +1147,12 @@ const seoData = {
             </div>
           </div>
 
-          <div class="booking-cta">
-            <a href="mailto:info@searench.com" class="btn btn-primary btn-large">
-              Book Direct & Save $1,300+
-            </a>
-            <p class="booking-note">
-              <em>*Security deposit fully refundable. Weekly rentals Saturday to Saturday, June-September.</em>
-            </p>
-          </div>
+          <button data-show-modal class="btn btn-primary btn-large">
+            Book Direct & Save $1,300+
+          </button>
+          <p class="booking-note">
+            <em>*Security deposit fully refundable. Weekly rentals Saturday to Saturday, June-September.</em>
+          </p>
         </div>
       </section>
 
@@ -1169,45 +1193,14 @@ const seoData = {
         </div>
       </footer>
 
-	        <!-- Booking Modal -->
-			<div id="booking-modal" class="modal-overlay" style="display: none;" onclick="hideBookingModal()">
-				<div class="modal-content" onclick="event.stopPropagation()">
-				  <button class="modal-close" onclick="hideBookingModal()">×</button>
-				  <BookingCalendar isModal={true} />
-				</div>
-			  </div>
+      <!-- Booking Modal -->
+      <div id="booking-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content" onclick="event.stopPropagation()">
+          <button class="modal-close" data-hide-modal>×</button>
+          <BookingCalendar isModal={true} />
+        </div>
+      </div>
     </div>
-    <!-- Add this script just before </body> -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        // Hamburger menu logic
-        const navToggle = document.getElementById('nav-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuClose = document.getElementById('mobile-menu-close');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-        function openMenu() {
-          if (mobileMenu) {
-            mobileMenu.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-          }
-        }
-        function closeMenu() {
-          if (mobileMenu) {
-            mobileMenu.style.display = 'none';
-            document.body.style.overflow = 'auto';
-          }
-        }
-        if (navToggle) {
-          navToggle.addEventListener('click', openMenu);
-        }
-        if (mobileMenuClose) {
-          mobileMenuClose.addEventListener('click', closeMenu);
-        }
-        mobileNavLinks.forEach(link => {
-          link.addEventListener('click', closeMenu);
-        });
-      });
-    </script>
   </body>
   <style>
     /* General Styles */
@@ -1236,6 +1229,7 @@ const seoData = {
       top: 0;
       left: 0;
       right: 0;
+      height: auto;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -1365,11 +1359,8 @@ const seoData = {
     .logo-hero {
       width: 180px;
       height: auto;
-      margin: 48px auto 0 auto;
+      margin-bottom: 30px;
       filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
-      max-width: 180px;
-      display: block;
-      object-fit: contain;
     }
 
     .hero-title {
@@ -2715,125 +2706,119 @@ const seoData = {
       }
     }
 
+    /* Enhanced Mobile Navigation */
     @media (max-width: 768px) {
-      .gallery-side {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-        height: 600px;
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+        height: auto;
       }
 
-      .nav-links {
-        display: none;
+      .nav-links-mobile {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-link {
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+        font-size: 1.1rem;
+        width: 100%;
+      }
+
+      .nav-link:last-child {
+        border-bottom: none;
+      }
+
+      .nav-toggle {
+        display: block;
+        font-size: 1.8rem;
+        transition: transform 0.3s ease;
+        padding: 5px;
+      }
+
+      .nav-toggle-active {
+        transform: rotate(90deg);
       }
 
       .nav-mobile {
         display: block;
       }
 
-      .nav-brand {
-        font-size: 1.2rem;
-      }
-
-      .nav-logo-img {
-        width: 40px;
-        height: 40px;
-      }
-
-      body {
-        padding-top: 70px;
+      /* Improved Hero Section for Mobile */
+      .hero-beach {
+        height: 100vh;
+        min-height: 600px;
       }
 
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 15px;
       }
 
       .hero-beach .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        margin-bottom: 30px;
+        padding: 0 10px;
       }
 
       .hero-beach .hero-highlights {
-        gap: 20px;
-        flex-direction: column;
-        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        padding: 0 20px;
       }
 
       .highlight-beach {
-        width: 80%;
-        margin-bottom: 10px;
+        width: 100%;
+        max-width: 280px;
+        padding: 15px;
+        margin: 0 auto;
       }
 
       .highlight-beach .highlight-number,
       .highlight-beach .highlight-icon {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+      }
+
+      .highlight-beach .highlight-text {
+        font-size: 0.9rem;
       }
 
       .hero-cta {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
+        padding: 0 20px;
       }
 
       .btn-beach,
       .btn-beach-outline {
-        width: 250px;
-      }
-
-      .features-grid,
-      .interior-grid,
-      .bedrooms-grid,
-      .attractions-grid,
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn {
-        width: 250px;
-      }
-
-      .distance-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-      }
-
-      .benefit-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-      }
-
-      .benefits-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .booking-card {
-        padding: 30px 20px;
-      }
-
-      .price-amount {
-        font-size: 2.5rem;
-      }
-
-      .direct-booking {
-        padding: 60px 0;
+        width: 100%;
+        max-width: 280px;
+        padding: 15px 25px;
+        font-size: 1rem;
       }
 
       .logo-hero {
-        width: 120px;
-        max-width: 120px;
-        margin: 24px auto 0 auto;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 15px;
+        width: 140px;
+        margin-bottom: 20px;
       }
 
+      /* Better spacing for mobile sections */
       .about,
       .features,
       .interior-gallery,
@@ -2844,109 +2829,147 @@ const seoData = {
       .rental-info,
       .contact,
       .testimonials,
-      .direct-booking {
-        padding: 60px 0;
+      .direct-booking,
+      .booking-section {
+        padding: 50px 0;
       }
 
-      .distance-card {
-        flex-direction: column;
-        text-align: center;
+      /* Improved container padding */
+      .container {
+        padding: 0 20px;
       }
 
-      .distance-number {
-        min-width: auto;
+      /* Better mobile gallery layout */
+      .gallery-side {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 500px;
       }
 
-      .hero-beach {
-        height: 70vh;
-        min-height: 450px;
-      }
-
-      .logo-hero {
-        width: 150px;
-      }
-
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .hero-beach .hero-highlights {
+      /* Improved outdoor grid for mobile */
+      .outdoor-grid {
+        grid-template-columns: 1fr;
+        height: auto;
         gap: 15px;
       }
 
-      .highlight-beach {
-        padding: 15px;
-        width: 90%;
+      .outdoor-large {
+        height: 300px;
+      }
+
+      .outdoor-small-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+        height: 400px;
+      }
+
+      .outdoor-small {
+        height: 100%;
       }
     }
 
-	/* Property Gallery - Clean Layout */
-	.property-gallery {
-    padding: 80px 0;
-    background: #f8f9fa;
-  }
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 15px;
+      }
 
-  .gallery-header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
+      .hero-title {
+        font-size: 1.8rem;
+      }
 
-  .gallery-header h2 {
-    font-size: 3rem;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    font-weight: 800;
-  }
+      .hero-beach .hero-subtitle {
+        font-size: 0.9rem;
+      }
 
-  .gallery-subtitle {
-    font-size: 1.3rem;
-    color: #666;
-    font-style: italic;
-  }
+      .highlight-beach {
+        padding: 12px;
+        max-width: 250px;
+      }
 
-  .gallery-grid-clean {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 40px;
-  }
+      .highlight-beach .highlight-number,
+      .highlight-beach .highlight-icon {
+        font-size: 2rem;
+      }
 
-  .gallery-item-clean {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
+      .btn-beach,
+      .btn-beach-outline {
+        max-width: 250px;
+        padding: 12px 20px;
+      }
 
-  .gallery-item-clean:hover {
-    transform: translateY(-10px);
-  }
+      .logo-hero {
+        width: 120px;
+      }
 
-  .gallery-image-clean {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-  }
+      /* Stack outdoor grid completely on very small screens */
+      .outdoor-small-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 200px);
+        height: auto;
+      }
 
-  .gallery-info-clean {
-    padding: 30px;
-  }
+      /* Improve navigation for very small screens */
+      .nav-brand {
+        font-size: 1.1rem;
+      }
 
-  .gallery-info-clean h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #2c3e50;
-    font-weight: 700;
-  }
+      .nav-logo-img {
+        width: 35px;
+        height: 35px;
+      }
 
-  .gallery-info-clean p {
-    color: #666;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 0;
-  }
-  /* Booking Section */
-  .booking-section {
+      body {
+        padding-top: 65px;
+      }
+
+      .nav-content {
+        padding: 12px 0;
+      }
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 20px;
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #666;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      color: #2e8b8b;
+    }
+
+    /* Booking Section */
+    .booking-section {
       padding: 80px 0;
       background: linear-gradient(135deg, rgba(46, 139, 139, 0.05), rgba(32, 178, 170, 0.1));
     }
@@ -2968,186 +2991,40 @@ const seoData = {
       font-style: italic;
     }
 
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(255,255,255,0.98);
-      z-index: 2000;
-      padding: 40px 20px 20px 20px;
-      box-sizing: border-box;
-      transition: all 0.3s ease;
-      align-items: flex-start;
-    }
-    .mobile-menu-close {
-      background: none;
-      border: none;
-      font-size: 2.5rem;
-      color: #2c3e50;
-      align-self: flex-end;
-      margin-bottom: 30px;
-      cursor: pointer;
-    }
-    .mobile-nav-link {
-      display: block;
-      width: 100%;
-      padding: 18px 0;
-      font-size: 1.3rem;
-      color: #2c3e50;
-      text-decoration: none;
-      font-weight: 700;
-      border-bottom: 1px solid #eee;
-      transition: color 0.2s;
-    }
-    .mobile-nav-link:last-child {
-      border-bottom: none;
-    }
-    .mobile-nav-link:hover {
-      color: #2e8b8b;
-    }
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none !important;
-      }
-      .nav-mobile {
-        display: block;
-      }
-      .mobile-menu {
-        display: none;
-      }
-    }
-    /* Responsive improvements for hero and highlights */
-    @media (max-width: 768px) {
-      .hero-beach {
-        height: auto;
-        min-height: 400px;
-        padding-bottom: 40px;
-      }
-      .hero-beach .hero-content {
-        padding: 30px 0 0 0;
-      }
-      .hero-title {
-        font-size: 2.1rem;
-      }
-      .hero-beach .hero-highlights {
-        flex-direction: column;
-        gap: 15px;
-        margin-bottom: 30px;
-      }
-      .highlight-beach {
-        min-width: 0;
-        width: 90%;
-        margin: 0 auto;
-        padding: 15px;
-      }
-      .gallery-grid-clean {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
-      .gallery-image-clean {
-        height: 220px;
-      }
-    }
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 1.4rem;
-      }
-      .gallery-header h2 {
-        font-size: 2rem;
-      }
-      .gallery-image-clean {
-        height: 140px;
-      }
-      .gallery-info-clean {
-        padding: 18px;
-      }
-    }
-    /* Property Gallery Overlay */
-    .property-overlay-item {
-      position: relative;
-      overflow: hidden;
-    }
-    .property-photo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
-      color: white;
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-      z-index: 2;
-    }
-    .property-overlay-item:hover .property-photo-overlay {
-      transform: translateY(0);
-    }
-    .property-photo-overlay h3 {
-      font-size: 1.3rem;
-      margin-bottom: 5px;
-      font-weight: 700;
-    }
-    .property-photo-overlay p {
-      margin-top: 10px;
-      font-size: 1rem;
-    }
-    /* Ensure overlay is above image */
-    .property-overlay-item .gallery-image-clean {
-      display: block;
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-    }
-    @media (max-width: 768px) {
-      .property-photo-overlay {
-        padding: 12px;
-        font-size: 0.95rem;
-      }
-      .property-overlay-item .gallery-image-clean {
-        height: 180px;
-      }
-    }
-    .interior-item .image-container {
-      position: relative;
-      width: 100%;
-      max-width: 600px;
-      height: 400px;
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: 15px 15px 0 0;
-      display: block;
-    }
-    .interior-item .gallery-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .interior-item .photo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      color: white;
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .interior-item:hover .photo-overlay {
-      transform: translateY(0);
-    }
-    @media (max-width: 768px) {
-      .interior-item .image-container {
-        max-width: 100%;
-        height: 220px;
-      }
-    }
+/* Interior and Bedroom Hover Effects */
+.interior-item .image-container,
+.bedroom-item .image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+  height: 400px;
+}
+
+.interior-item .photo-overlay,
+.bedroom-item .photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.interior-item:hover .photo-overlay,
+.bedroom-item:hover .photo-overlay {
+  transform: translateY(0);
+}
+
+/* Ensure the image fills the container */
+.interior-item .image-container img,
+.bedroom-item .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
   </style>
 </html>
