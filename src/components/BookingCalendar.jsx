@@ -96,10 +96,13 @@ export default function BookingCalendar() {
   // Scroll to form when shown
   useEffect(() => {
     if (showForm) {
-      const bookingHeader = document.querySelector('.booking-header');
-      if (bookingHeader) {
-        bookingHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const bookingHeader = document.querySelector('.booking-header h2');
+        if (bookingHeader) {
+          bookingHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     }
   }, [showForm]);
 
