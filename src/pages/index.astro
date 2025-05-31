@@ -1,34 +1,36 @@
 ---
 // Sea Reach - Point Pleasant Beach Rental Property
 import { Image } from 'astro:assets';
-import BookingCalendar from '../components/BookingCalendar.astro';
+import BookingCalendar from '../components/BookingCalendarIsland.astro';
+import '../components/BookingCalendar.css';
 
 // Import local images for optimization
-import houseBackyard from '../../public/images/house-backyard.jpg';
-import kitchen from '../../public/images/kitchen.jpeg';
-import outdoorSeatsFirePit from '../../public/images/outdoor-seats-fire-pit.jpg';
-import masterBedroom1 from '../../public/images/master-bedroom-1.jpg';
-import masterBedroom2 from '../../public/images/Master-BD-2.jpg';
-import diningRoom from '../../public/images/dining-room.jpg';
-import diningRoomFull from '../../public/images/dining-room-full.jpg';
-import livingRoomWide from '../../public/images/living-room-wide.jpg';
-import livingRoomTv from '../../public/images/living-room-tv.jpg';
-import livingRoomOppo from '../../public/images/Living-Room-Oppo copy.jpg';
-import garageGameroom from '../../public/images/garage-gameroom.jpg';
-import outdoorShower from '../../public/images/outdoor-shower.jpg';
-import office1Upstairs from '../../public/images/office-1-upstairs.jpg';
-import frontCouch from '../../public/images/front-couch.jpg';
-import porchDesk from '../../public/images/porch-desk.jpg';
-import fireplaceWithTv from '../../public/images/fireplace-with-TV.jpg';
-import bedroomSurf from '../../public/images/bedroom-surf.jpg';
-import bedroomBunk from '../../public/images/bedroom-bunk.jpeg';
-import bedroom3 from '../../public/images/bedroom-3.jpeg';
-import outdoorDining from '../../public/images/outdoor-dining.jpg';
-import backyardSlipNSlide from '../../public/images/backyard-slip-n-slide.webp';
-import driveway from '../../public/images/driveway.webp';
-import beachFun from '../../public/images/beckett-beach-sand.webp';
-import boardwalkFun from '../../public/images/jenkinsons-big-chair-kids.webp';
-import lastWave from '../../public/images/lastwave-scott-casey.webp';
+import houseBackyard from '../assets/images/house-backyard.jpg';
+import kitchen from '../assets/images/kitchen.jpeg';
+import outdoorSeatsFirePit from '../assets/images/outdoor-seats-fire-pit.jpg';
+import masterBedroom1 from '../assets/images/master-bedroom-1.jpg';
+import masterBedroom2 from '../assets/images/Master-BD-2.jpg';
+import diningRoom from '../assets/images/dining-room.jpg';
+import diningRoomFull from '../assets/images/dining-room-full.jpg';
+import livingRoomWide from '../assets/images/living-room-wide.jpg';
+import livingRoomTv from '../assets/images/living-room-tv.jpg';
+import livingRoomOppo from '../assets/images/Living-Room-Oppo copy.jpg';
+import garageGameroom from '../assets/images/garage-gameroom.jpg';
+import outdoorShower from '../assets/images/outdoor-shower.jpg';
+import office1Upstairs from '../assets/images/office-1-upstairs.jpg';
+import frontCouch from '../assets/images/front-couch.jpg';
+import porchDesk from '../assets/images/porch-desk.jpg';
+import fireplaceWithTv from '../assets/images/fireplace-with-TV.jpg';
+import bedroomSurf from '../assets/images/bedroom-surf.jpg';
+import bedroomBunk from '../assets/images/bedroom-bunk.jpeg';
+import bedroom3 from '../assets/images/bedroom-3.jpeg';
+import outdoorDining from '../assets/images/outdoor-dining.jpg';
+import backyardSlipNSlide from '../assets/images/backyard-slip-n-slide.webp';
+import driveway from '../assets/images/driveway.webp';
+import beachFun from '../assets/images/beckett-beach-sand.webp';
+import boardwalkFun from '../assets/images/jenkinsons-big-chair-kids.webp';
+import lastWave from '../assets/images/lastwave-scott-casey.webp';
+import logo from '../assets/logos/sea-reach-logo-light.png';
 
 const seoData = {
   title: "Sea Reach - Point Pleasant Beach Rental | 4BR Beach House",
@@ -61,9 +63,6 @@ const seoData = {
     <meta property="twitter:description" content={seoData.description} />
     <meta property="twitter:image" content={seoData.ogImage} />
 
-    <!-- Preload critical resources -->
-    <link rel="preload" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sea-reach-logo-light-cropped-zujlBNUhCgWBAkFmdlGWFhjygiQxvT.png" as="image" />
-    
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
       {
@@ -142,8 +141,8 @@ const seoData = {
         <div class="container">
           <div class="nav-content">
             <div class="nav-logo">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sea-reach-logo-light-cropped-zujlBNUhCgWBAkFmdlGWFhjygiQxvT.png"
+              <Image
+                src={logo}
                 alt="Sea Reach Logo"
                 width="60"
                 height="60"
@@ -192,8 +191,8 @@ const seoData = {
         </div>
         <div class="container">
           <div class="hero-content">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sea-reach-logo-light-cropped-zujlBNUhCgWBAkFmdlGWFhjygiQxvT.png"
+            <Image
+              src={logo}
               alt="Sea Reach Logo"
               width="180"
               height="180"
@@ -202,7 +201,7 @@ const seoData = {
             />
             <h1 class="hero-title">Your Beach Home Away From Home</h1>
             <p class="hero-subtitle">
-              🏖️106 Atlantic Ave • 4-Min Walk to Beach & Jenkinson's Boardwalk
+              🏖️ 4-Min Walk to Beach 
             </p>
             <div class="hero-highlights">
               <div class="highlight-beach">
@@ -1158,8 +1157,8 @@ const seoData = {
       <!-- Footer -->
       <footer class="footer">
         <div class="container">
-          <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sea-reach-logo-light-cropped-zujlBNUhCgWBAkFmdlGWFhjygiQxvT.png"
+          <Image
+            src={logo}
             alt="Sea Reach Logo"
             width="100"
             height="100"

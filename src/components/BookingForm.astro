@@ -25,6 +25,11 @@ const { selectedWeek, selectedPrice, guests } = Astro.props;
       <textarea id="message" name="message" rows="4" placeholder="Any special requests or questions?"></textarea>
     </div>
 
+    <!-- Hidden booking details for backend submission -->
+    <input type="hidden" name="selectedWeek" value={selectedWeek} />
+    <input type="hidden" name="selectedPrice" value={selectedPrice} />
+    <input type="hidden" name="guests" value={guests.adults + guests.children} />
+
     <div class="booking-details">
       <h4>Booking Details</h4>
       <div class="detail-row">
@@ -41,24 +46,28 @@ const { selectedWeek, selectedPrice, guests } = Astro.props;
       </div>
     </div>
 
-    <button type="submit" class="submit-btn">Send Booking Request</button>
+    <button type="submit" class="submit-btn" id="submit-btn">Send Booking Request</button>
+    <div id="form-message" class="form-message"></div>
   </form>
 </div>
 
 <style>
   .booking-form-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 2.5rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 80%, #e6f7fa 100%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(46, 139, 139, 0.10), 0 1.5px 8px rgba(32,178,170,0.08);
+    border: 1.5px solid #e0e0e0;
+    position: relative;
+    z-index: 2;
   }
 
   .booking-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   .form-group {
@@ -68,66 +77,120 @@ const { selectedWeek, selectedPrice, guests } = Astro.props;
   }
 
   label {
-    font-weight: 600;
+    font-weight: 700;
     color: #2c3e50;
+    font-size: 1.08rem;
+    margin-bottom: 0.25rem;
   }
 
   input, textarea {
-    padding: 0.75rem;
+    width: 100%;
+    padding: 1rem 1.1rem;
     border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
+    border-radius: 12px;
+    font-size: 1.08rem;
+    background: #f8f9fa;
+    color: #2c3e50;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 1px 4px rgba(46,139,139,0.04);
   }
 
   input:focus, textarea:focus {
     outline: none;
     border-color: #2e8b8b;
+    background: #fff;
+    box-shadow: 0 0 0 2px #b2e4e4;
   }
 
   .booking-details {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1rem 0;
+    background: linear-gradient(135deg, #e6f7fa 80%, #f8f9fa 100%);
+    padding: 1.2rem 1rem;
+    border-radius: 14px;
+    margin: 1.2rem 0 0.5rem 0;
+    border: 1.5px solid #d0eaea;
+    box-shadow: 0 2px 8px rgba(46,139,139,0.06);
   }
 
   .booking-details h4 {
     margin: 0 0 1rem 0;
     color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 700;
   }
 
   .detail-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0.5rem 0;
     border-bottom: 1px solid #e0e0e0;
+    font-size: 1.05rem;
+    color: #2c3e50;
   }
-
   .detail-row:last-child {
     border-bottom: none;
   }
 
   .submit-btn {
-    background: #2e8b8b;
+    width: 100%;
+    background: linear-gradient(135deg, #2e8b8b 60%, #20b2aa 100%);
     color: white;
     border: none;
-    padding: 1rem 2rem;
+    padding: 1.1rem 0;
     border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.15rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s;
+    box-shadow: 0 2px 12px rgba(46,139,139,0.10);
+    letter-spacing: 0.01em;
+  }
+  .submit-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #20b2aa 60%, #2e8b8b 100%);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 6px 24px rgba(46,139,139,0.13);
+  }
+  .submit-btn:disabled {
+    background: #b2e4e4;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.7;
   }
 
-  .submit-btn:hover {
-    background: #246b6b;
-    transform: translateY(-2px);
+  .form-message {
+    margin-top: 1.2rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: 10px;
+    font-size: 1.08rem;
+    text-align: center;
+    display: none;
+    font-weight: 600;
+  }
+  .form-message.success {
+    display: block;
+    background: #d4edda;
+    color: #155724;
+    border: 1.5px solid #c3e6cb;
+  }
+  .form-message.error {
+    display: block;
+    background: #f8d7da;
+    color: #721c24;
+    border: 1.5px solid #f5c6cb;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     .booking-form-container {
-      padding: 1.5rem;
+      padding: 1.2rem 0.5rem;
+      border-radius: 14px;
+    }
+    .booking-details {
+      padding: 0.8rem 0.5rem;
+      border-radius: 8px;
+    }
+    .submit-btn {
+      font-size: 1rem;
+      padding: 0.9rem 0;
     }
   }
 </style>
@@ -135,18 +198,34 @@ const { selectedWeek, selectedPrice, guests } = Astro.props;
 <script>
   document.getElementById('booking-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    const formData = new FormData(e.target as HTMLFormElement);
-    const data = Object.fromEntries(formData.entries());
-    
+    const form = e.target;
+    if (!(form instanceof HTMLFormElement)) return;
+    const submitBtn = document.getElementById('submit-btn');
+    const messageDiv = document.getElementById('form-message');
+    if (!(submitBtn instanceof HTMLButtonElement) || !(messageDiv instanceof HTMLDivElement)) return;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    messageDiv.textContent = '';
+    messageDiv.className = 'form-message';
     try {
-      // You can choose either email or Google Sheets here
-      // For now, we'll use email as it's simpler
-      const mailtoLink = `mailto:info@searench.com?subject=Booking Request for ${data.selectedWeek}&body=Name: ${data.name}%0D%0AEmail: ${data.email}%0D%0APhone: ${data.phone}%0D%0AMessage: ${data.message}`;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      const mailtoLink = `mailto:info@searench.com?subject=Booking Request for ${data.selectedWeek}&body=Name: ${data.name}%0D%0AEmail: ${data.email}%0D%0APhone: ${data.phone}%0D%0AMessage: ${data.message}%0D%0A%0D%0ABooking Details:%0D%0AWeek: ${data.selectedWeek}%0D%0AGuests: ${data.guests}%0D%0ARate: $${data.selectedPrice}`;
       window.location.href = mailtoLink;
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting your request. Please try again or email us directly.');
+      messageDiv.textContent = 'Sorry, there was an error submitting your booking. Please try again or email us directly.';
+      messageDiv.classList.add('error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Booking Request';
     }
   });
+
+  // Scroll the form into view when it appears
+  setTimeout(() => {
+    const formContainer = document.querySelector('.booking-form-container');
+    if (formContainer) {
+      formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 100);
 </script> 
