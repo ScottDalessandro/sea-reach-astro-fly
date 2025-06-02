@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 export const prerender = false;
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST({ request }) {
   try {
@@ -18,8 +18,8 @@ export async function POST({ request }) {
 
     // Initialize the Google Sheets API
     const auth = new google.auth.JWT({
-      email: import.meta.env.GOOGLE_CLIENT_EMAIL,
-      key: import.meta.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+      email: process.env.GOOGLE_CLIENT_EMAIL,
+      key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 
@@ -27,7 +27,7 @@ export async function POST({ request }) {
 
     // Add the form data as a new row
     await sheets.spreadsheets.values.append({
-      spreadsheetId: import.meta.env.GOOGLE_SHEET_ID,
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: "Sheet1!A:I", // Adjust range based on your sheet
       valueInputOption: "USER_ENTERED",
       requestBody: {
@@ -48,7 +48,7 @@ export async function POST({ request }) {
     });
 
     // Send email notifications using Resend
-    const emailList = import.meta.env.NOTIFICATION_EMAILS.split(",");
+    const emailList = process.env.NOTIFICATION_EMAILS.split(",");
 
     for (const recipientEmail of emailList) {
       await resend.emails.send({
@@ -68,7 +68,7 @@ export async function POST({ request }) {
           <hr>
           <p><small>Submitted at: ${new Date().toLocaleString()}</small></p>
           <p>
-            <a href="https://docs.google.com/spreadsheets/d/${import.meta.env.GOOGLE_SHEET_ID}" 
+            <a href="https://docs.google.com/spreadsheets/d/${process.env.GOOGLE_SHEET_ID}" 
                style="display: inline-block; padding: 10px 20px; background-color: #2e8b8b; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px;">
               View in Google Sheets
             </a>
@@ -84,7 +84,7 @@ export async function POST({ request }) {
           
           Submitted at: ${new Date().toLocaleString()}
           
-          View in Google Sheets: https://docs.google.com/spreadsheets/d/${import.meta.env.GOOGLE_SHEET_ID}
+          View in Google Sheets: https://docs.google.com/spreadsheets/d/${process.env.GOOGLE_SHEET_ID}
         `,
       });
     }

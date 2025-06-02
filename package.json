@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^9.2.2",
     "@astrojs/react": "^4.3.0",
     "@fullcalendar/core": "^6.1.17",
     "@fullcalendar/daygrid": "^6.1.17",
@@ -20,7 +21,8 @@
     "googleapis": "^149.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "resend": "^4.5.1"
+    "resend": "^4.5.1",
+    "yet-another-react-lightbox": "^3.23.2"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.2.1",
