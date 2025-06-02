@@ -506,4 +506,46 @@ input:focus, textarea:focus {
     margin-right: 0;
     box-sizing: border-box;
   }
+}
+
+.success-state {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.success-message {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.success-message h3 {
+  color: #2e8b8b;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.success-message p {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.success-message .submit-btn {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .success-state {
+    padding: 2rem 1rem;
+  }
+  
+  .success-message h3 {
+    font-size: 1.5rem;
+  }
+  
+  .success-message p {
+    font-size: 1rem;
+  }
 } 

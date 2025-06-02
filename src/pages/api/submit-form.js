@@ -1,4 +1,9 @@
-import { GoogleSpreadsheet } from "google-spreadsheet";
+import { google } from "googleapis";
+import { Resend } from "resend";
+
+export const prerender = false;
+
+const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export async function POST({ request }) {
   try {
@@ -11,33 +16,78 @@ export async function POST({ request }) {
     const selectedPrice = formData.get("selectedPrice");
     const guests = formData.get("guests");
 
-    // Initialize the sheet
-    const doc = new GoogleSpreadsheet(import.meta.env.GOOGLE_SHEET_ID);
-
-    // Authenticate with service account
-    await doc.useServiceAccountAuth({
-      client_email: import.meta.env.GOOGLE_CLIENT_EMAIL,
-      private_key: import.meta.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+    // Initialize the Google Sheets API
+    const auth = new google.auth.JWT({
+      email: import.meta.env.GOOGLE_CLIENT_EMAIL,
+      key: import.meta.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 
-    // Load the document properties and worksheets
-    await doc.loadInfo();
-
-    // Get the first sheet
-    const sheet = doc.sheetsByIndex[0];
+    const sheets = google.sheets({ version: "v4", auth });
 
     // Add the form data as a new row
-    await sheet.addRow({
-      Timestamp: new Date().toISOString(),
-      Name: name,
-      Email: email,
-      Phone: phone || "",
-      Message: message || "",
-      Week: selectedWeek || "",
-      Guests: guests || "",
-      Rate: selectedPrice || "",
-      Status: "New",
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: import.meta.env.GOOGLE_SHEET_ID,
+      range: "Sheet1!A:I", // Adjust range based on your sheet
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values: [
+          [
+            new Date().toISOString(), // Timestamp
+            name,
+            email,
+            phone || "",
+            message || "",
+            selectedWeek || "",
+            guests || "",
+            selectedPrice || "",
+            "New", // Status
+          ],
+        ],
+      },
     });
+
+    // Send email notifications using Resend
+    const emailList = import.meta.env.NOTIFICATION_EMAILS.split(",");
+
+    for (const recipientEmail of emailList) {
+      await resend.emails.send({
+        from: "forms@sea-reach.com",
+        to: recipientEmail.trim(),
+        subject: "New Property Rental Inquiry",
+        html: `
+          <h2>New Rental Inquiry Received!</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
+          <p><strong>Guests:</strong> ${guests || "Not provided"}</p>
+          <p><strong>Rate:</strong> ${selectedPrice || "Not provided"}</p>
+          <p><strong>Week:</strong> ${selectedWeek || "Not provided"}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message || "No message provided"}</p>
+          <hr>
+          <p><small>Submitted at: ${new Date().toLocaleString()}</small></p>
+          <p>
+            <a href="https://docs.google.com/spreadsheets/d/${import.meta.env.GOOGLE_SHEET_ID}" 
+               style="display: inline-block; padding: 10px 20px; background-color: #2e8b8b; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px;">
+              View in Google Sheets
+            </a>
+          </p>
+        `,
+        text: `
+          New rental inquiry received!
+          
+          Name: ${name}
+          Email: ${email}
+          Phone: ${phone || "Not provided"}
+          Message: ${message || "No message provided"}
+          
+          Submitted at: ${new Date().toLocaleString()}
+          
+          View in Google Sheets: https://docs.google.com/spreadsheets/d/${import.meta.env.GOOGLE_SHEET_ID}
+        `,
+      });
+    }
 
     return new Response(
       JSON.stringify({

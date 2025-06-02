@@ -24,18 +24,79 @@ const maxGuests = 8;
 
 function BookingForm({ selectedWeeks, guests, weekDetails, onBack }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Compose week details for email
-    const weekLines = selectedWeeks.map((w, i) => `Week ${i + 1}: ${w} ($${weekDetails[w]})`).join('%0D%0A');
-    const mailtoLink = `mailto:info@searench.com?subject=Booking Request for ${selectedWeeks.join(", ")}&body=Name: ${form.name}%0D%0AEmail: ${form.email}%0D%0APhone: ${form.phone}%0D%0AMessage: ${form.message}%0D%0A%0D%0ABooking Details:%0D%0A${weekLines}%0D%0AGuests: ${guests.adults + guests.children}`;
-    window.location.href = mailtoLink;
+    const submitBtn = e.target.querySelector('.submit-btn');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'form-message';
+    e.target.appendChild(messageDiv);
+
+    try {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      const formData = new FormData();
+      formData.append('name', form.name);
+      formData.append('email', form.email);
+      formData.append('phone', form.phone);
+      formData.append('message', form.message);
+      formData.append('selectedWeek', selectedWeeks.join(', '));
+      formData.append('selectedPrice', selectedWeeks.reduce((sum, w) => sum + (weekDetails[w] || 0), 0).toString());
+      formData.append('guests', (guests.adults + guests.children).toString());
+
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error(result.message || 'Failed to submit booking request');
+      }
+    } catch (error) {
+      messageDiv.textContent = error.message || 'Sorry, there was an error submitting your booking. Please try again or email us directly.';
+      messageDiv.className = 'form-message error';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Booking Request';
+    }
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="booking-form-container success-state">
+        <div className="success-message">
+          <h3>Thank You!</h3>
+          <p>Your booking request has been submitted successfully. We will contact you shortly to confirm your reservation.</p>
+          <button 
+            className="submit-btn" 
+            onClick={() => {
+              setIsSubmitted(false);
+              setForm({ name: '', email: '', phone: '', message: '' });
+            }}
+          >
+            Submit Another Request
+          </button>
+          <button 
+            className="submit-btn" 
+            style={{marginTop: '1rem', background: '#ccc', color: '#222'}} 
+            onClick={onBack}
+          >
+            Back to Calendar
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="booking-form-container">

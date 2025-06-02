@@ -203,18 +203,34 @@ const { selectedWeek, selectedPrice, guests } = Astro.props;
     const submitBtn = document.getElementById('submit-btn');
     const messageDiv = document.getElementById('form-message');
     if (!(submitBtn instanceof HTMLButtonElement) || !(messageDiv instanceof HTMLDivElement)) return;
+    
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
     messageDiv.textContent = '';
     messageDiv.className = 'form-message';
+
     try {
       const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-      const mailtoLink = `mailto:info@searench.com?subject=Booking Request for ${data.selectedWeek}&body=Name: ${data.name}%0D%0AEmail: ${data.email}%0D%0APhone: ${data.phone}%0D%0AMessage: ${data.message}%0D%0A%0D%0ABooking Details:%0D%0AWeek: ${data.selectedWeek}%0D%0AGuests: ${data.guests}%0D%0ARate: $${data.selectedPrice}`;
-      window.location.href = mailtoLink;
-    } catch (error) {
-      messageDiv.textContent = 'Sorry, there was an error submitting your booking. Please try again or email us directly.';
-      messageDiv.classList.add('error');
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        messageDiv.textContent = 'Booking request submitted successfully! We will contact you shortly.';
+        messageDiv.className = 'form-message success';
+        form.reset();
+      } else {
+        throw new Error(result.message || 'Failed to submit booking request');
+      }
+    } catch (error: unknown) {
+      messageDiv.textContent = error instanceof Error ? error.message : 'Sorry, there was an error submitting your booking. Please try again or email us directly.';
+      messageDiv.className = 'form-message error';
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send Booking Request';
