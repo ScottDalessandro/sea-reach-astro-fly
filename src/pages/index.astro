@@ -2,6 +2,7 @@
 // Sea Reach - Point Pleasant Beach Rental Property
 import { Image } from 'astro:assets';
 import BookingCalendar from '../components/BookingCalendarIsland.astro';
+import BookDirectSave from '../components/BookDirectSave.astro';
 import '../components/BookingCalendar.css';
 
 // Import local images for optimization
@@ -20,7 +21,6 @@ import outdoorShower from '../assets/images/outdoor-shower.jpg';
 import office1Upstairs from '../assets/images/office-1-upstairs.jpg';
 import frontCouch from '../assets/images/front-couch.jpg';
 import porchDesk from '../assets/images/porch-desk.jpg';
-import fireplaceWithTv from '../assets/images/fireplace-with-TV.jpg';
 import bedroomSurf from '../assets/images/bedroom-surf.jpg';
 import bedroomBunk from '../assets/images/bedroom-bunk.jpeg';
 import bedroom3 from '../assets/images/bedroom-3.jpeg';
@@ -31,6 +31,12 @@ import beachFun from '../assets/images/beckett-beach-sand.webp';
 import boardwalkFun from '../assets/images/jenkinsons-big-chair-kids.webp';
 import lastWave from '../assets/images/lastwave-scott-casey.webp';
 import logo from '../assets/logos/sea-reach-logo-light.png';
+import swingsBoardwalk from '../assets/images/swings-jenkinsons-blurry.webp';
+import bamBamBurgers from '../assets/images/bam-bam-burgers.webp';
+import miniGolf from '../assets/images/mini-golf-2.webp';
+import arcade from '../assets/images/arcade.webp';
+import trainBoardwalk from '../assets/images/train-boardwalk-full.webp';
+
 
 const seoData = {
   title: "Sea Reach - Point Pleasant Beach Rental | 4BR Beach House",
@@ -82,9 +88,9 @@ const seoData = {
           "latitude": "40.0909",
           "longitude": "-74.0487"
         },
-        "url": "https://searench.com",
-        "telephone": "info@searench.com",
-        "priceRange": "$6500-$7800",
+        "url": "https://sea-reach.com",
+        "telephone": "info@sea-reach.com",
+        "priceRange": "$7500-$900",
         "amenityFeature": [
           "Beach Access",
           "WiFi",
@@ -309,6 +315,27 @@ const seoData = {
 	</div>
   </section>
 
+  <!-- About Section -->
+  <section class="about">
+	<div class="container">
+	  <h2>About Sea Reach</h2>
+	  <div class="about-content">
+		<p class="lead">This beach home has it all - ease, comfort and LOCATION!</p>
+		<p>
+		  Located at 106 Atlantic Ave, this 4BR + 2BA home boasts a modern kitchen, hardwood floors, enclosed
+		  wraparound front porch and private outdoor living and dining space. Garage lounge features extra living
+		  space and a ping pong table - perfect for indoor/outdoor hangouts, sandy feet and all.
+		</p>
+		<p>
+		  Just steps from Point Pleasant Beach's beautiful beaches and sprawling boardwalk. Rides, games, food,
+		  beach and entertainment are only a short walk away - no need to drive around looking for parking!
+		</p>
+	  </div>
+	</div>
+  </section>
+
+
+
         <!-- Booking Calendar Section -->
 		<section class="booking-section" id="booking">
 			<div class="container">
@@ -320,25 +347,113 @@ const seoData = {
 			</div>
 		  </section>
 
+		  <!-- Guest Reviews -->
+		  <section class="testimonials">
+			<div class="container">
+			  <h2>What Our Guests Say</h2>
+			  <div class="reviews-header">
+				<div class="rating-display">
+				  <div class="stars">⭐⭐⭐⭐⭐</div>
+				  <div class="rating-text">
+					<span class="rating-number">5.0</span>
+					<span class="review-count">Five-Star Reviews on VRBO & Airbnb</span>
+				  </div>
+				</div>
+			  </div>
+	
+			  <div class="testimonials-grid">
+				<div class="testimonial-card">
+				  <div class="testimonial-content">
+					<p>
+					  "Perfect location! We walked to the beach and boardwalk every day. The house was spotless and had
+					  everything we needed. The kids loved the ping pong table and fire pit! Very spacious for our party of 8!"
+					</p>
+				  </div>
+				  <div class="testimonial-author">
+					<strong>Samantha and Ashton Schneider.</strong>
+					<span>2 Families, 8 total • July 2024</span>
+				  </div>
+				</div>
+	
+				<div class="testimonial-card">
+				  <div class="testimonial-content">
+					<p>
+					  "Amazing value with the beach badges included! Saved us hundreds of dollars. The house is beautiful
+					  and the location can't be beat. We'll definitely be back!"
+					</p>
+				  </div>
+				  <div class="testimonial-author">
+					<strong>Dave & Hanna Clary</strong>
+					<span>Couple • July 2024</span>
+				  </div>
+				</div>
+	
+				<div class="testimonial-card">
+				  <div class="testimonial-content">
+					<p>
+					  "Best beach house rental we've ever had! Clean, comfortable, and so close to everything. The outdoor
+					  shower and fire pit, and garage hangout were perfect after long beach days."
+					</p>
+				  </div>
+				  <div class="testimonial-author">
+					<strong>The McDonnell Family</strong>
+					<span>Family of 8 • August 2023</span>
+				  </div>
+				</div>
+			  </div>
+	
+			  <div class="reviews-cta">
+				<a
+				  href="https://www.vrbo.com/2823698"
+				  class="btn btn-primary"
+				  target="_blank"
+				  rel="noopener noreferrer"
+				>
+				  View All Five-Star Reviews
+				</a>
+			  </div>
+			</div>
+		  </section>
 
-      <!-- About Section -->
-      <section class="about">
-        <div class="container">
-          <h2>About Sea Reach</h2>
-          <div class="about-content">
-            <p class="lead">This beach home has it all - ease, comfort and LOCATION!</p>
-            <p>
-              Located at 106 Atlantic Ave, this 4BR + 2BA home boasts a modern kitchen, hardwood floors, enclosed
-              wraparound front porch and private outdoor living and dining space. Garage lounge features extra living
-              space and a ping pong table - perfect for indoor/outdoor hangouts, sandy feet and all.
-            </p>
-            <p>
-              Just steps from Point Pleasant Beach's beautiful beaches and sprawling boardwalk. Rides, games, food,
-              beach and entertainment are only a short walk away - no need to drive around looking for parking!
-            </p>
-          </div>
-        </div>
-      </section>
+		   <!-- Rental Info -->
+		   <section class="rental-info">
+			<div class="container">
+			  <h2>Rental Information</h2>
+			  <div class="rental-details">
+				<div class="rental-card">
+				  <h3>📅 Availability</h3>
+				  <p>
+					Weekly Rentals (7 nights) or longer
+					<br />
+					Saturday to Saturday
+					<br />
+					June - September
+				  </p>
+				</div>
+	
+				<div class="rental-card">
+				  <h3>🏖️ Includes</h3>
+				  <p>
+					8 Adult Beach Badges
+					<br />
+					Beach Chairs & Towels
+					<br />                
+				  </p>
+				</div>
+	
+				<div class="rental-card">
+				  <h3>📋 House Rules</h3>
+				  <p>
+					No Smoking
+					<br />
+					No Pets
+					<br />
+					No Prom Groups
+				  </p>
+				</div>
+			  </div>
+			</div>
+		  </section>
 
       <!-- Outside Spaces Section -->
       <section class="outdoor-gallery" id="outdoor">
@@ -355,10 +470,10 @@ const seoData = {
                 class="gallery-image"
                 loading="lazy"
               />
-              <!-- <div class="photo-overlay">
+              <div class="photo-overlay">
                 <h3>Detached Garage with TV and Game Room</h3>
                 <p>Great for indoor/outdoor hangouts, sandy feet and all.</p>
-              </div> -->
+              </div>
             </div>
             <div class="outdoor-small-grid">
               <div class="outdoor-small">
@@ -614,8 +729,8 @@ const seoData = {
               </div>
             </div>
             <div class="beach-photos">
-              <img
-                src="/placeholder.svg?height=400&width=600&query=Point Pleasant Beach boardwalk with rides and attractions"
+              <Image
+                src={swingsBoardwalk}
                 alt="Point Pleasant Beach Boardwalk"
                 width="600"
                 height="400"
@@ -752,73 +867,7 @@ const seoData = {
         </div>
       </section>
 
-      <!-- Guest Reviews -->
-      <section class="testimonials">
-        <div class="container">
-          <h2>What Our Guests Say</h2>
-          <div class="reviews-header">
-            <div class="rating-display">
-              <div class="stars">⭐⭐⭐⭐⭐</div>
-              <div class="rating-text">
-                <span class="rating-number">5.0</span>
-                <span class="review-count">Five-Star Reviews on VRBO & Airbnb</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonials-grid">
-            <div class="testimonial-card">
-              <div class="testimonial-content">
-                <p>
-                  "Perfect location! We walked to the beach and boardwalk every day. The house was spotless and had
-                  everything we needed. The kids loved the ping pong table and fire pit!"
-                </p>
-              </div>
-              <div class="testimonial-author">
-                <strong>Sarah M.</strong>
-                <span>Family of 6 • August 2024</span>
-              </div>
-            </div>
-
-            <div class="testimonial-card">
-              <div class="testimonial-content">
-                <p>
-                  "Amazing value with the beach badges included! Saved us hundreds of dollars. The house is beautiful
-                  and the location can't be beat. We'll definitely be back!"
-                </p>
-              </div>
-              <div class="testimonial-author">
-                <strong>Mike & Jennifer</strong>
-                <span>Couple • July 2024</span>
-              </div>
-            </div>
-
-            <div class="testimonial-card">
-              <div class="testimonial-content">
-                <p>
-                  "Best beach house rental we've ever had! Clean, comfortable, and so close to everything. The outdoor
-                  shower and fire pit were perfect after long beach days."
-                </p>
-              </div>
-              <div class="testimonial-author">
-                <strong>The Johnson Family</strong>
-                <span>Family of 8 • June 2024</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="reviews-cta">
-            <a
-              href="https://www.vrbo.com/2823698"
-              class="btn btn-primary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View All Five-Star Reviews
-            </a>
-          </div>
-        </div>
-      </section>
+      
 
       <!-- Local Attractions -->
       <section class="local-attractions" id="attractions">
@@ -830,8 +879,8 @@ const seoData = {
               <Image
                 src={beachFun || "/placeholder.svg"}
                 alt="Beach Activities"
-                width="400"
-                height="250"
+                width="800"
+                
                 class="gallery-image"
                 loading="lazy"
               />
@@ -853,8 +902,8 @@ const seoData = {
               <Image
                 src={boardwalkFun || "/placeholder.svg"}
                 alt="Boardwalk Entertainment"
-                width="400"
-                height="250"
+                width="800"
+                
                 class="gallery-image"
                 loading="lazy"
               />
@@ -868,6 +917,7 @@ const seoData = {
                   <li>Arcade Games</li>
                   <li>Mini Golf</li>
                   <li>Boardwalk Food</li>
+				  <li>Fireworks</li>
                 </ul>
               </div>
             </div>
@@ -876,8 +926,8 @@ const seoData = {
               <Image
                 src={lastWave || "/placeholder.svg"}
                 alt="Local Dining"
-                width="400"
-                height="250"
+                width="800"
+                
                 class="gallery-image"
                 loading="lazy"
               />
@@ -887,20 +937,22 @@ const seoData = {
                   <strong>15 min walk</strong>
                 </p>
                 <ul>
+				  <li>The Food Shack</li>
                   <li>Last Wave Brewing Co</li>
                   <li>Rosie's Pizza</li>
                   <li>Bam Bam Burgers</li>
                   <li>B2 Bistro</li>
+				  <li>Spanos</li>
                 </ul>
               </div>
             </div>
 
             <div class="attraction-card">
-              <img
-                src="/placeholder.svg?height=250&width=400&query=charming downtown shopping street with boutiques"
+              <Image
+                src={bamBamBurgers}
                 alt="Shopping & Services"
-                width="400"
-                height="250"
+                width="800"
+                
                 class="gallery-image"
                 loading="lazy"
               />
@@ -910,13 +962,57 @@ const seoData = {
                   <strong>15 min walk</strong>
                 </p>
                 <ul>
-                  <li>Stop & Shop Grocery</li>
                   <li>Beach Bagel & Coffee</li>
                   <li>Boutique Shopping</li>
                   <li>Antique Stores</li>
                 </ul>
               </div>
             </div>
+
+			<div class="attraction-card">
+				<Image
+				  src={miniGolf}
+				  alt="Castaway Cove Mini Golf"
+				  width="800"
+				  
+				  class="gallery-image"
+				  loading="lazy"
+				/>
+				<div class="attraction-info">
+				  <h3>🛍️ Shopping & More</h3>
+				  <p>
+					<strong>15 min walk</strong>
+				  </p>
+				  <ul>
+					<li>Stop & Shop Grocery</li>
+					<li>Beach Bagel & Coffee</li>
+					<li>Boutique Shopping</li>
+					<li>Antique Stores</li>
+				  </ul>
+				</div>
+			  </div>
+			  <div class="attraction-card">
+				<Image
+				  src={trainBoardwalk}
+				  alt="Castaway Cove Mini Golf"
+				  width="800"
+				  
+				  class="gallery-image"
+				  loading="lazy"
+				/>
+				<div class="attraction-info">
+				  <h3>🛍️ Shopping & More</h3>
+				  <p>
+					<strong>15 min walk</strong>
+				  </p>
+				  <ul>
+					<li>Stop & Shop Grocery</li>
+					<li>Beach Bagel & Coffee</li>
+					<li>Boutique Shopping</li>
+					<li>Antique Stores</li>
+				  </ul>
+				</div>
+			  </div>
           </div>
         </div>
       </section>
@@ -931,8 +1027,7 @@ const seoData = {
               <ul>
                 <li>Open Floor Plan</li>
                 <li>Central AC</li>
-                <li>Hardwood Floors</li>
-                <li>Gas Fireplace</li>
+                <li>Hardwood Floors</li>                
                 <li>Enclosed Wraparound Porch</li>
               </ul>
             </div>
@@ -983,7 +1078,7 @@ const seoData = {
               <h3>🛏️ Comfort</h3>
               <ul>
                 <li>Pillows & Quilts Provided</li>
-                <li>Bed Sheets Included</li>
+                <li>Bed Sheets (on request)</li>
                 <li>Comfortable Seating Areas</li>
               </ul>
             </div>
@@ -991,145 +1086,7 @@ const seoData = {
         </div>
       </section>
 
-      <!-- Rental Info -->
-      <section class="rental-info">
-        <div class="container">
-          <h2>Rental Information</h2>
-          <div class="rental-details">
-            <div class="rental-card">
-              <h3>📅 Availability</h3>
-              <p>
-                Weekly Rentals (7 nights)
-                <br />
-                Saturday to Saturday
-                <br />
-                June - September
-              </p>
-            </div>
-
-            <div class="rental-card">
-              <h3>🏖️ Includes</h3>
-              <p>
-                8 Adult Beach Badges
-                <br />
-                Beach Chairs & Towels
-                <br />
-                All Linens & Amenities
-              </p>
-            </div>
-
-            <div class="rental-card">
-              <h3>📋 House Rules</h3>
-              <p>
-                No Smoking
-                <br />
-                No Pets
-                <br />
-                No Prom Groups
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Direct Booking Savings -->
-      <section class="direct-booking">
-        <div class="container">
-          <h2>Book Direct & Save</h2>
-          <p class="section-subtitle">Skip the platform fees and get the best rate by booking directly with us</p>
-
-          <div class="booking-comparison">
-            <div class="booking-card platform-booking">
-              <h3>🏢 Platform Booking</h3>
-              <div class="price-display">
-                <span class="price-amount">$7,800</span>
-                <span class="price-period">per week</span>
-              </div>
-              <div class="booking-details">
-                <div class="detail-line">
-                  <span>Base Rate:</span>
-                  <span>$7,800</span>
-                </div>
-                <div class="detail-line">
-                  <span>Platform Fees:</span>
-                  <span>Additional</span>
-                </div>
-                <div class="detail-line">
-                  <span>Service Charges:</span>
-                  <span>Additional</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="vs-divider">
-              <span class="vs-text">VS</span>
-              <div class="savings-badge">Save 17%!</div>
-            </div>
-
-            <div class="booking-card direct-booking-card">
-              <h3>🏠 Book Direct with Owner</h3>
-              <div class="price-display featured">
-                <span class="price-amount">$6,500</span>
-                <span class="price-period">per week</span>
-              </div>
-              <div class="booking-details">
-                <div class="detail-line">
-                  <span>Weekly Rate:</span>
-                  <span>$6,500</span>
-                </div>
-                <div class="detail-line">
-                  <span>Security Deposit:</span>
-                  <span>$1,000</span>
-                </div>
-                <div class="detail-line highlight">
-                  <span>Platform Fees:</span>
-                  <span>$0</span>
-                </div>
-                <div class="detail-line highlight">
-                  <span>Service Charges:</span>
-                  <span>$0</span>
-                </div>
-              </div>
-              <div class="savings-highlight">You Save $1,300+ (17% Discount!)</div>
-            </div>
-          </div>
-
-          <div class="direct-booking-benefits">
-            <h3>Why Book Direct?</h3>
-            <div class="benefits-grid">
-              <div class="benefit-card">
-                <div class="benefit-icon">💰</div>
-                <h4>Best Price Guaranteed</h4>
-                <p>17% discount off regular rates - no platform fees or hidden charges</p>
-              </div>
-              <div class="benefit-card">
-                <div class="benefit-icon">📞</div>
-                <h4>Direct Communication</h4>
-                <p>Speak directly with the owner for personalized service and local tips</p>
-              </div>
-              <div class="benefit-card">
-                <div class="benefit-icon">⚡</div>
-                <h4>Faster Response</h4>
-                <p>Quick answers to questions and immediate booking confirmation</p>
-              </div>
-              <div class="benefit-card">
-                <div class="benefit-icon">🎁</div>
-                <h4>Special Perks</h4>
-                <p>Exclusive amenities and local recommendations from your hosts</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="booking-cta">
-            <a href="mailto:info@searench.com" class="btn btn-primary btn-large">
-              Book Direct & Save $1,300+
-            </a>
-            <p class="booking-note">
-              <em>*Security deposit fully refundable. Weekly rentals Saturday to Saturday, June-September.</em>
-            </p>
-          </div>
-        </div>
-      </section>
+     
 
       <!-- Contact Section -->
       <section class="contact" id="contact">
@@ -1164,7 +1121,7 @@ const seoData = {
             height="100"
             class="footer-logo"
           />
-          <p>&copy; 2024 Sea Reach. Point Pleasant Beach, NJ. All rights reserved.</p>
+          <p>&copy; 2025 Sea Reach. Point Pleasant Beach, NJ. All rights reserved.</p>
         </div>
       </footer>
 
@@ -1634,6 +1591,7 @@ const seoData = {
       position: relative;
       overflow: hidden;
       border-radius: 15px;
+      height: 100%;
     }
 
     .outdoor-small-grid {
@@ -1641,6 +1599,7 @@ const seoData = {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       gap: 15px;
+      height: 100%;
     }
 
     .outdoor-small {
@@ -1719,25 +1678,88 @@ const seoData = {
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
+      position: relative;
     }
 
     .interior-item:hover {
       transform: translateY(-10px);
     }
 
-    .interior-info {
-      padding: 30px;
+    .interior-item .image-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
     }
 
-    .interior-info h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: #2c3e50;
+    .interior-item .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .interior-info p {
-      color: #666;
-      font-size: 1.1rem;
+    .interior-item .photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .interior-item:hover .photo-overlay {
+      transform: translateY(0);
+    }
+
+    /* Mobile Styles for Outdoor and Interior */
+    @media (max-width: 768px) {
+      .outdoor-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .outdoor-large {
+        height: 400px;
+      }
+
+      .outdoor-small-grid {
+        height: 400px;
+      }
+
+      .interior-item .image-container {
+        height: 300px;
+      }
+
+      photo-overlay {
+        transform: translateY(0); /* Always show on mobile */
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); /* Darker gradient for better readability */
+      }
+
+      .photo-overlay h3 {
+        font-size: 1.1rem;
+      }
+
+      .photo-overlay p {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .outdoor-large {
+        height: 300px;
+      }
+
+      .outdoor-small-grid {
+        height: 300px;
+      }
+
+      .interior-item .image-container {
+        height: 250px;
+      }
     }
 
     /* Bedrooms Gallery */
@@ -1765,25 +1787,45 @@ const seoData = {
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
+      position: relative;
     }
 
     .bedroom-item:hover {
       transform: translateY(-10px);
     }
 
-    .bedroom-info {
-      padding: 30px;
+    .bedroom-item .gallery-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
     }
 
-    .bedroom-info h3 {
-      font-size: 1.5rem;
+    .bedroom-info-clean {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .bedroom-item:hover .bedroom-info-clean {
+      transform: translateY(0);
+    }
+
+    .bedroom-info-clean h3 {
+      font-size: 1.3rem;
       margin-bottom: 10px;
-      color: #2c3e50;
+      color: white;
     }
 
-    .bedroom-info p {
-      color: #666;
-      font-size: 1.1rem;
+    .bedroom-info-clean p {
+      color: #fff;
+      font-size: 1rem;
       margin-bottom: 15px;
     }
 
@@ -1791,19 +1833,74 @@ const seoData = {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px;
-      background: #f8f9fa;
-      border-radius: 10px;
+      padding: 10px;
+      background: rgba(46, 139, 139, 0.2);
+      border-radius: 8px;
+      margin-top: 10px;
     }
 
     .bed-type {
       font-weight: 600;
-      color: #2c3e50;
+      color: #fff;
     }
 
     .sleeps {
-      color: #2e8b8b;
+      color: #fff;
       font-weight: 600;
+    }
+
+    /* Mobile Styles for Bedrooms */
+    @media (max-width: 768px) {
+      .bedroom-item .gallery-image {
+        height: 300px;
+      }
+
+      .bedroom-info-clean {
+        transform: translateY(0); /* Always show on mobile */
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); /* Darker gradient for better readability */
+      }
+
+      .bedroom-info-clean h3 {
+        font-size: 1.1rem;
+      }
+
+      .bedroom-info-clean p {
+        font-size: 0.9rem;
+      }
+
+      .bed-details {
+        padding: 8px;
+      }
+
+      .bed-type, .sleeps {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bedroom-item .gallery-image {
+        height: 250px;
+      }
+
+      .bedroom-info-clean {
+        padding: 15px;
+      }
+
+      .bedroom-info-clean h3 {
+        font-size: 1rem;
+      }
+
+      .bedroom-info-clean p {
+        font-size: 0.85rem;
+      }
+
+      .bed-details {
+        padding: 6px;
+      }
+
+      .bed-type, .sleeps {
+        font-size: 0.85rem;
+      }
     }
 
     /* Beach Access */
@@ -2225,35 +2322,58 @@ const seoData = {
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
+      position: relative;
+      height: 100%;
     }
 
     .attraction-card:hover {
       transform: translateY(-10px);
     }
 
+    .attraction-card .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .attraction-info {
-      padding: 30px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .attraction-card:hover .attraction-info {
+      transform: translateY(0);
     }
 
     .attraction-info h3 {
       font-size: 1.3rem;
       margin-bottom: 10px;
-      color: #2c3e50;
+      color: white;
     }
 
     .attraction-info p {
-      color: #2e8b8b;
+      color: #fff;
       font-weight: 600;
       margin-bottom: 15px;
     }
 
     .attraction-info ul {
       list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
     .attraction-info li {
       padding: 5px 0;
-      color: #666;
+      color: #fff;
       position: relative;
       padding-left: 20px;
     }
@@ -2264,6 +2384,53 @@ const seoData = {
       left: 0;
       color: #2e8b8b;
       font-weight: bold;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .attraction-card {
+        height: 400px; /* Fixed height for mobile */
+      }
+      
+      .attraction-info {
+        transform: translateY(0); /* Always show on mobile */
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); /* Darker gradient for better readability */
+        padding: 15px;
+      }
+      
+      .attraction-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+      
+      .attraction-info p {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+      
+      .attraction-info li {
+        font-size: 0.9rem;
+        padding: 3px 0;
+      }
+    }
+
+    /* Small Mobile Styles */
+    @media (max-width: 480px) {
+      .attraction-card {
+        height: 350px; /* Slightly smaller height for very small screens */
+      }
+      
+      .attraction-info {
+        padding: 12px;
+      }
+      
+      .attraction-info h3 {
+        font-size: 1.1rem;
+      }
+      
+      .attraction-info li {
+        font-size: 0.85rem;
+      }
     }
 
     /* Features Section */
@@ -2649,7 +2816,7 @@ const seoData = {
       width: 100px;
       height: auto;
       margin-bottom: 20px;
-      filter: brightness(0) invert(1);
+      /* filter: brightness(-1) invert(); */
     }
 
     /* Responsive Design */
