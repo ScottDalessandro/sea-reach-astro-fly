@@ -19,7 +19,6 @@ import livingRoomTv from '../assets/images/living-room-tv.jpg';
 import livingRoomOppo from '../assets/images/Living-Room-Oppo copy.jpg';
 import garageGameroom from '../assets/images/garage-gameroom.jpg';
 import outdoorShower from '../assets/images/outdoor-shower.jpg';
-import office1Upstairs from '../assets/images/office-1-upstairs.jpg';
 import frontCouch from '../assets/images/front-couch.jpg';
 import porchDesk from '../assets/images/porch-desk.jpg';
 import bedroomSurf from '../assets/images/bedroom-surf.jpg';
@@ -34,9 +33,11 @@ import lastWave from '../assets/images/lastwave-scott-casey.webp';
 import logo from '../assets/logos/sea-reach-logo-light.png';
 import swingsBoardwalk from '../assets/images/swings-jenkinsons-blurry.webp';
 import bamBamBurgers from '../assets/images/bam-bam-burgers.webp';
-import miniGolf from '../assets/images/mini-golf-2.webp';
-import arcade from '../assets/images/arcade.webp';
 import trainBoardwalk from '../assets/images/train-boardwalk-full.webp';
+import miniGolf from '../assets/images/mini-golf-2.webp';
+import familyPhoto from '../assets/images/family-photo.png';
+import bathroom from '../assets/images/bathroom.jpg';
+import office2 from '../assets/images/office-2.jpg';
 
 
 const seoData = {
@@ -159,7 +160,7 @@ const seoData = {
               <span class="nav-brand">Sea Reach</span>
             </div>
             <div class="nav-links" id="nav-links">
-              <a href="#gallery" class="nav-link">Photos</a>
+              <a href="#gallery" class="nav-link">📷 Photos</a>
               <a href="#outdoor" class="nav-link">🌊 Outside</a>
               <a href="#interior" class="nav-link">🏠 Interior</a>
               <a href="#bedrooms" class="nav-link">🛏️ Bedrooms</a>
@@ -208,7 +209,7 @@ const seoData = {
             />
             <h1 class="hero-title">Your Beach Home Away From Home</h1>
             <p class="hero-subtitle">
-              🏖️ 4-Min Walk to Beach 
+              🏖️ 4-Min Walk to Beach & Boardwalk - Point Pleasant Beach, NJ
             </p>
             <div class="hero-highlights">
               <div class="highlight-beach">
@@ -223,22 +224,22 @@ const seoData = {
                 <span class="highlight-number">4</span>
                 <span class="highlight-text">Min Walk to Beach</span>
               </div>
-              <div class="highlight-beach">
+              <!-- <div class="highlight-beach">
                 <span class="highlight-icon">🚿</span>
                 <span class="highlight-text">Outdoor Shower</span>
-              </div>
+              </div> -->
             </div>
             <div class="hero-cta">
               <a href="#gallery" class="btn-beach">
                 Explore the House
               </a>
               <a
-                href="https://www.vrbo.com/2823698"
+                href="#booking"
                 class="btn-beach-outline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Book Now on VRBO
+                Book Now
               </a>
             </div>
           </div>
@@ -612,6 +613,78 @@ const seoData = {
                 </div>
               </div>
             </div>
+			<div class="interior-item">
+				<div class="image-container">
+				  <Image
+					src={bathroom || "/placeholder.svg"}
+					alt="Bathroom"
+					width={600}
+					height={400}
+					class="gallery-image"
+					format="webp"
+					quality={75}
+					loading="lazy"
+				  />
+				  <div class="photo-overlay">
+					<h3>Bathroom</h3>
+					<!-- <p>Get away from the kids in this cozy spot or hang out with them on the couch. Great second living room.</p> -->
+				  </div>
+				</div>
+			</div>
+			<div class="interior-item">
+			  <div class="image-container">
+				<Image
+				  src={porchDesk || "/placeholder.svg"}
+				  alt="Porch Desk"
+				  width={600}
+				  height={400}
+				  class="gallery-image"
+				  format="jpg"
+				  quality={75}
+				  loading="lazy"
+				/>
+					<div class="photo-overlay">
+						<h3>Wraparound Porch Desk</h3>
+						<p>Great lighting and temperature controlled</p>
+					</div>
+				</div>
+			</div>
+			<div class="interior-item">
+				<div class="image-container">
+				  <Image
+					src={office2 || "/placeholder.svg"}
+					alt="Second Floor Desk"
+					width={600}
+					height={400}
+					class="gallery-image"
+					format="jpg"
+					quality={75}
+					loading="lazy"
+				  />
+					  <div class="photo-overlay">
+						  <h3>Upstairs Desk</h3>
+						  <!-- <p></p> -->
+					  </div>
+				  </div>
+			  </div>
+			  <div class="interior-item">
+				<div class="image-container">
+				  <Image
+					src={diningRoomFull || "/placeholder.svg"}
+					alt="Dining Room"
+					width={600}
+					height={400}
+					class="gallery-image"
+					format="jpg"
+					quality={75}
+					loading="lazy"
+				  />
+					  <div class="photo-overlay">
+						  <h3>Dining Room</h3>
+						  <p>Great for family meals, seats 8</p>
+					  </div>
+				  </div>
+			  </div>
           </div>
         </div>
       </section>
@@ -637,7 +710,7 @@ const seoData = {
                 <h3>Master Bedroom</h3>
                 <p>Queen bed with vaulted ceiling and compass decor</p>
                 <div class="bed-details">
-                  <span class="bed-type">👑 King Bed</span>
+                  <span class="bed-type">👑 Queen Bed</span>
                   <span class="sleeps">Sleeps 2</span>
                 </div>
               </div>
@@ -722,10 +795,10 @@ const seoData = {
                 </div>
               </div>
               <div class="distance-card">
-                <div class="distance-number">15</div>
+                <div class="distance-number">8</div>
                 <div class="distance-text">
-                  <strong>Minutes</strong>
-                  <span>to Downtown</span>
+                  <strong>Beach Badges Included</strong>
+                  <span><a href="https://jenkinsons.com/beach/">Jenkinson's Beach Day Pass Rates (check savings)</a></span>
                 </div>
               </div>
             </div>
@@ -944,6 +1017,7 @@ const seoData = {
                   <li>Bam Bam Burgers</li>
                   <li>B2 Bistro</li>
 				  <li>Spanos</li>
+				  <li>Hoffman's Ice Cream</li>
                 </ul>
               </div>
             </div>
@@ -980,16 +1054,10 @@ const seoData = {
 				  loading="lazy"
 				/>
 				<div class="attraction-info">
-				  <h3>🛍️ Shopping & More</h3>
+				  <h3>Mini Golf</h3>
 				  <p>
-					<strong>15 min walk</strong>
-				  </p>
-				  <ul>
-					<li>Stop & Shop Grocery</li>
-					<li>Beach Bagel & Coffee</li>
-					<li>Boutique Shopping</li>
-					<li>Antique Stores</li>
-				  </ul>
+					<strong>5 min walk</strong>
+				  </p>				  
 				</div>
 			  </div>
 			  <div class="attraction-card">
@@ -1002,16 +1070,10 @@ const seoData = {
 				  loading="lazy"
 				/>
 				<div class="attraction-info">
-				  <h3>🛍️ Shopping & More</h3>
+				  <h3>🛍️ Boardwalk Kids Train</h3>
 				  <p>
-					<strong>15 min walk</strong>
-				  </p>
-				  <ul>
-					<li>Stop & Shop Grocery</li>
-					<li>Beach Bagel & Coffee</li>
-					<li>Boutique Shopping</li>
-					<li>Antique Stores</li>
-				  </ul>
+					<strong>6 min walk</strong>
+				  </p>				  
 				</div>
 			  </div>
           </div>
@@ -1111,9 +1173,44 @@ const seoData = {
             >
               View on VRBO
             </a>
-            <a href="mailto:info@searench.com" class="btn btn-secondary">
+			<a
+              href="https://www.airbnb.com/rooms/8605514"
+              class="btn btn-secondary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on Airbnb
+            </a>
+			
+            <a href="mailto:sdaless22@gmail.com" class="btn btn-secondary">
               Contact Owner
             </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us Section -->
+      <section class="about-us-section">
+        <div class="container about-us-flex">
+          <div class="about-us-text">
+            <h2>About Us</h2>
+            <p>The Jersey Shore has been the place we call home in the summer for generations. My grandparents had a home just down the beach since my mother was little, spending summers jamming 5 kids into a 3 bedroom house for 2 months with zero A/C and loving every minute.</p>
+            <p>My dad owned stands on Jenkinson's boardwalk in college, which is where he first met my mom. My little sister and I would come down to that same A/C-less beach house and squeeze into those 3 bedrooms with all of our cousins, sandy feet and all.</p>
+            <p>We'd go fishing with my grandfather, paint seashells with my grandmother, and stay on the beach until someone rang the dinner bell. Our summers were filled with sea glass, sandcastles and sun-kissed memories.</p>
+            <div class="about-us-highlight">
+              <strong>So it's only fitting that we continue the tradition by having our own beach house (don't worry, this one has A/C). We hope your days here are just as memorable as ours, and that you'll come back each summer to make more.</strong>
+            </div>
+          </div>
+          <div class="about-us-image">
+            <Image
+              src={familyPhoto}
+              alt="Our Family at the Jersey Shore"
+              width="500"
+              height="700"
+              class="about-us-img"
+              style="border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); object-fit: cover; width: 100%; height: auto;"
+            />
+            <div class="about-us-caption">Creating new memories while honoring old traditions.</div>
           </div>
         </div>
       </section>
@@ -3347,6 +3444,89 @@ const seoData = {
       .interior-item .image-container {
         max-width: 100%;
         height: 220px;
+      }
+    }
+    .about-us-section {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .about-us-flex {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .about-us-text {
+      flex: 1 1 400px;
+      min-width: 320px;
+      max-width: 600px;
+    }
+    .about-us-text h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #2c3e50;
+      margin-bottom: 32px;
+    }
+    .about-us-text p {
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+      color: #333;
+      line-height: 1.7;
+    }
+    .about-us-highlight {
+      background: #f8f9fa;
+      border-left: 5px solid #2e8b8b;
+      padding: 20px 24px;
+      margin-top: 24px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #2c3e50;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(46,139,139,0.06);
+    }
+    .about-us-image {
+      flex: 1 1 320px;
+      min-width: 280px;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .about-us-img {
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      object-fit: cover;
+    }
+    .about-us-caption {
+      font-size: 1rem;
+      color: #888;
+      margin-top: 12px;
+      font-style: italic;
+      text-align: center;
+    }
+    @media (max-width: 900px) {
+      .about-us-flex {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .about-us-image {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 600px) {
+      .about-us-section {
+        padding: 40px 0;
+      }
+      .about-us-text h2 {
+        font-size: 1.5rem;
+        margin-bottom: 18px;
+      }
+      .about-us-highlight {
+        font-size: 1rem;
+        padding: 14px 12px;
       }
     }
   </style>
