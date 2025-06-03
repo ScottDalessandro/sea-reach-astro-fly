@@ -250,18 +250,27 @@ export default function BookingCalendar() {
                 <span>Guests:</span>
                 <span>{totalGuests}</span>
               </div>
-              <div className="summary-line">
-                <span>Platform Rate:</span>
+              {/* <div className="summary-line">
+                <span>Refundable Security Deposit:</span>
                 <span className="crossed-out">${platformTotal}</span>
+              </div> */}
+
+              <div className="summary-line">
+                <span>Refundable Security Deposit:</span>
+                <span className="">~$1,000</span>
               </div>
-              <div className="summary-line highlight">
-                <span>Direct Booking Rate:</span>
+              <div className="summary-line">
+                <span>Direct Booking Rate: </span>
                 <span>{`$${totalPrice}`}</span>
               </div>
-              <div className="summary-line savings">
+              <div className="summary-line highlight">
+                <span>Direct Booking Rate + Security Deposit (refundable): </span>
+                <span>{`$${totalPrice + 1000}`}</span>
+              </div>
+              {/* <div className="summary-line savings">
                 <span>You Save:</span>
                 <span>{`$${savings}`}</span>
-              </div>
+              </div> */}
             </div>
           </div>
         )}
@@ -275,8 +284,9 @@ export default function BookingCalendar() {
         </button>
         <p className="booking-disclaimer">
           <em>
-            *Clicking "Send Booking Request" will open your email client with booking details. Security deposit of $1,000 required. All bookings subject to availability confirmation.
+            *Clicking "Send Booking Request" will open a form where you can request weeks and send a message if you have questions. All bookings subject to availability confirmation. Security Deposit is refundable.
           </em>
+          
         </p>
       </div>
     </div>

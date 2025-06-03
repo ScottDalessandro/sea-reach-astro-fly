@@ -372,7 +372,7 @@ const seoData = {
 					</p>
 				  </div>
 				  <div class="testimonial-author">
-					<strong>Samantha and Ashton Schneider.</strong>
+					<strong>Samantha and Ashton Schneider</strong>
 					<span>2 Families, 8 total • July 2024</span>
 				  </div>
 				</div>
@@ -1225,7 +1225,13 @@ const seoData = {
             height="100"
             class="footer-logo"
           />
-          <p>&copy; 2025 Sea Reach. Point Pleasant Beach, NJ. All rights reserved.</p>
+          <div class="footer-content">
+            <p class="copyright">&copy; 2025 Sea Reach. Point Pleasant Beach, NJ. All rights reserved.</p>
+            <div class="footer-contact">
+              <h3>Contact Us</h3>
+              <a href="mailto:sdaless22@gmail.com" class="footer-email">sdaless22@gmail.com</a>
+            </div>
+          </div>
         </div>
       </footer>
 
@@ -2947,7 +2953,54 @@ const seoData = {
       width: 100px;
       height: auto;
       margin-bottom: 20px;
-      /* filter: brightness(-1) invert(); */
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .copyright {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer-contact {
+      margin-top: 10px;
+    }
+
+    .footer-contact h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .footer-email {
+      color: #2e8b8b;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-email:hover {
+      color: #20b2aa;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        gap: 15px;
+      }
+      
+      .footer-contact h3 {
+        font-size: 1.1rem;
+      }
+      
+      .footer-email {
+        font-size: 1rem;
+      }
     }
 
     /* Responsive Design */
