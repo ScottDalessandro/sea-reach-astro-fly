@@ -7,13 +7,13 @@ const weeks = [
   { label: 'June 21-28', price: 'BOOKED', available: false },
   { label: 'June 28-July 5', price: 'BOOKED', available: false },
   { label: 'July 5-12', price: 'BOOKED', available: false },
-  { label: 'July 12-19', price: 6800, available: true },
+  { label: 'July 12-19', price: 'CONTACT US', available: true },
   { label: 'July 19-26', price: 'BOOKED', available: false },
   { label: 'July 26-Aug 2', price: 'BOOKED', available: false },
   { label: 'Aug 2-9', price: 'BOOKED', available: false },
   { label: 'Aug 9-16', price: 'BOOKED', available: false },
   { label: 'Aug 16-23', price: 'BOOKED', available: false },
-  { label: 'Aug 23-30', price: 7300, available: true },
+  { label: 'Aug 23-30', price: "CONTACT US", available: true },
   { label: 'Aug 30-Sep 6', price: 'BOOKED', available: false },
   { label: 'Sep 6-13', price: 'BOOKED', available: false },
   { label: 'Sep 13-20', price: 'BOOKED', available: false },
@@ -187,11 +187,46 @@ export default function BookingCalendar() {
   return !showForm ? (
     <div className="booking-calendar" id="booking-calendar">
       <div className="booking-header">
-        <h2>Check Availability & Book</h2>
-        <p>Weekly rentals Saturday to Saturday • Select your preferred week(s)</p>
+        <h2>Book Your Stay</h2>
+        <p>Weekly rentals Saturday to Saturday</p>
       </div>
       <div className="booking-form">
-        {/* Guest Selection */}
+        {/* Booking Notice */}
+        <div className="booking-notice" style={{
+          background: 'linear-gradient(135deg, #e8f4f8 0%, #d4e8ed 100%)',
+          border: '2px solid #2c5f6e',
+          borderRadius: '12px',
+          padding: '2rem',
+          textAlign: 'center',
+          margin: '1rem 0',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}>
+          <h3 style={{ color: '#2c5f6e', marginBottom: '1rem', fontSize: '1.5rem' }}>
+            Now Accepting Bookings for the 2026 Season!
+          </h3>
+          <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem', color: '#333' }}>
+            We are currently accepting reservations for our beautiful oceanfront rental property.
+            Contact us to check availability and book your perfect getaway.
+          </p>
+          <a
+            href="mailto:sdaless22@gmail.com"
+            className="book-now-btn"
+            style={{
+              display: 'inline-block',
+              textDecoration: 'none',
+              padding: '0.75rem 1.5rem',
+              fontSize: '1rem',
+              width: 'auto',
+              maxWidth: '320px'
+            }}
+          >
+            Email Us to Book: sdaless22@gmail.com
+          </a>
+        </div>
+
+        {/* Guest Selection - Commented out for now
         <div className="guest-selector">
           <h4>👥 Guests (Max 8)</h4>
           <div className="guest-controls">
@@ -216,7 +251,9 @@ export default function BookingCalendar() {
             Total: <span>{totalGuests}</span> of 8 guests
           </p>
         </div>
-        {/* Week Selection */}
+        */}
+
+        {/* Week Selection - Commented out for now
         <div className="week-selector">
           <h4>🗓️ Available Weeks</h4>
           <div className="months-grid">
@@ -237,7 +274,9 @@ export default function BookingCalendar() {
             ))}
           </div>
         </div>
-        {/* Booking Summary */}
+        */}
+
+        {/* Booking Summary - Commented out for now
         {selectedWeeks.length > 0 && (
           <div className="booking-summary" id="booking-summary">
             <h4>📋 Booking Summary</h4>
@@ -250,11 +289,6 @@ export default function BookingCalendar() {
                 <span>Guests:</span>
                 <span>{totalGuests}</span>
               </div>
-              {/* <div className="summary-line">
-                <span>Refundable Security Deposit:</span>
-                <span className="crossed-out">${platformTotal}</span>
-              </div> */}
-
               <div className="summary-line">
                 <span>Refundable Security Deposit:</span>
                 <span className="">~$1,000</span>
@@ -267,14 +301,12 @@ export default function BookingCalendar() {
                 <span>Direct Booking Rate + Security Deposit (refundable): </span>
                 <span>{`$${totalPrice + 1000}`}</span>
               </div>
-              {/* <div className="summary-line savings">
-                <span>You Save:</span>
-                <span>{`$${savings}`}</span>
-              </div> */}
             </div>
           </div>
         )}
-        {/* Book Now Button */}
+        */}
+
+        {/* Book Now Button - Commented out for now
         <button
           className="book-now-btn"
           disabled={selectedWeeks.length === 0}
@@ -286,8 +318,8 @@ export default function BookingCalendar() {
           <em>
             *Clicking "Send Booking Request" will open a form where you can request weeks and send a message if you have questions. All bookings subject to availability confirmation. Security Deposit is refundable.
           </em>
-          
         </p>
+        */}
       </div>
     </div>
   ) : (
