@@ -211,7 +211,7 @@ export default function BookingCalendar() {
             Contact us to check availability and book your perfect getaway.
           </p>
           <a
-            href="mailto:sdaless22@gmail.com"
+            href="mailto:ahoy@sea-reach.com"
             className="book-now-btn"
             style={{
               display: 'inline-block',
@@ -222,7 +222,7 @@ export default function BookingCalendar() {
               maxWidth: '320px'
             }}
           >
-            Email Us to Book: sdaless22@gmail.com
+            Email Us to Book: ahoy@sea-reach.com
           </a>
         </div>
 

@@ -2,62 +2,94 @@
 // Sea Reach - Point Pleasant Beach Rental Property
 export const prerender = true;
 import { Image } from 'astro:assets';
-import BookingCalendar from '../components/BookingCalendarIsland.astro';
-import BookDirectSave from '../components/BookDirectSave.astro';
-import '../components/BookingCalendar.css';
 
 // Import local images for optimization
 import houseBackyard from '../assets/images/house-backyard.jpg';
 import kitchen from '../assets/images/kitchen.jpeg';
 import outdoorSeatsFirePit from '../assets/images/outdoor-seats-fire-pit.jpg';
 import masterBedroom1 from '../assets/images/master-bedroom-1.jpg';
-import masterBedroom2 from '../assets/images/Master-BD-2.jpg';
-import diningRoom from '../assets/images/dining-room.jpg';
-import diningRoomFull from '../assets/images/dining-room-full.jpg';
-import livingRoomWide from '../assets/images/living-room-wide.jpg';
-import livingRoomTv from '../assets/images/living-room-tv.jpg';
-import livingRoomOppo from '../assets/images/Living-Room-Oppo copy.jpg';
 import garageGameroom from '../assets/images/garage-gameroom.jpg';
-import outdoorShower from '../assets/images/outdoor-shower.jpg';
-import frontCouch from '../assets/images/front-couch.jpg';
 import porchDesk from '../assets/images/porch-desk.jpg';
 import bedroomSurf from '../assets/images/bedroom-surf.jpg';
 import bedroomBunk from '../assets/images/bedroom-bunk.jpeg';
 import bedroom3 from '../assets/images/bedroom-3.jpeg';
 import outdoorDining from '../assets/images/outdoor-dining.jpg';
 import backyardSlipNSlide from '../assets/images/backyard-slip-n-slide.webp';
-import driveway from '../assets/images/driveway.webp';
 import beachFun from '../assets/images/beckett-beach-sand.webp';
 import boardwalkFun from '../assets/images/jenkinsons-big-chair-kids.webp';
 import lastWave from '../assets/images/lastwave-scott-casey.webp';
 import logo from '../assets/logos/sea-reach-logo-light.png';
-import swingsBoardwalk from '../assets/images/swings-jenkinsons-blurry.webp';
-import bamBamBurgers from '../assets/images/bam-bam-burgers.webp';
-import trainBoardwalk from '../assets/images/train-boardwalk-full.webp';
+import trainBoardwalk from '../assets/images/train-boardwalk.webp';
 import miniGolf from '../assets/images/mini-golf-2.webp';
-import familyPhoto from '../assets/images/family-photo.png';
+import familyPhoto from '../assets/images/family-photo.jpg';
+import arcade from '../assets/images/arcade.webp';
+import swingsBoardwalk from '../assets/images/swings-boardwalk.jpg';
+import diningRoomFull from '../assets/images/dining-room-full.jpg';
+import diningRoom from '../assets/images/dining-room.jpg';
+import frontCouch from '../assets/images/front-couch.jpg';
+import fireplaceWithTV from '../assets/images/fireplace-with-TV.jpg';
+import crewPiratesGarage from '../assets/images/the-crew-pirates-garage.jpg';
+import swingRideBoardwalk from '../assets/images/swing-ride-boardwalk.jpg';
+import miniGolfPhoto from '../assets/images/mini-golf.jpg';
+import tatumGlassesCouch from '../assets/images/tatum-glasses-couch.jpg';
+import outdoorShower from '../assets/images/outdoor-shower.jpg';
 import bathroom from '../assets/images/bathroom.jpg';
 import office2 from '../assets/images/office-2.jpg';
+import masterBD2 from '../assets/images/Master-BD-2.jpg';
+import livingRoomTV from '../assets/images/living-room-tv.jpg';
+import livingRoomOppo from '../assets/images/Living-Room-Oppo copy.jpg';
+import sunsetRide from '../assets/images/sunset-ride-vertical.jpg';
+import PhotoLightboxIsland from '../components/PhotoLightboxIsland.astro';
 
+// Gallery photos in tour order
+const galleryPhotos = [
+  { img: livingRoomTV, alt: 'Living room with couch, TV and fireplace' },
+  { img: kitchen, alt: 'Gourmet kitchen with granite counters' },
+  { img: diningRoomFull, alt: 'Dining table set for eight' },
+  { img: fireplaceWithTV, alt: 'Fireplace and TV close-up' },
+  { img: frontCouch, alt: 'Wraparound porch lounge area' },
+  { img: porchDesk, alt: 'Wraparound porch desk and work area' },
+  { img: masterBedroom1, alt: 'Master bedroom with vaulted ceiling' },
+  { img: masterBD2, alt: 'Master bedroom alternate view' },
+  { img: bedroomSurf, alt: 'Queen bedroom with coastal decor' },
+  { img: bedroom3, alt: 'Third bedroom with full bed' },
+  { img: bedroomBunk, alt: 'Bunk room with twin bunks' },
+  { img: outdoorDining, alt: 'Outdoor dining area' },
+  { img: houseBackyard, alt: 'Backyard at Sea Reach' },
+  { img: garageGameroom, alt: 'Garage game room with ping pong' },
+  { img: bathroom, alt: 'Full bathroom' },
+  { img: outdoorShower, alt: 'Private outdoor shower' },
+  { img: office2, alt: 'Dedicated office workspace' },
+  { img: diningRoom, alt: 'Dining room with hardwood floors and modern light fixture' },
+  { img: outdoorSeatsFirePit, alt: 'Fire pit and outdoor seating', wide: true },
+];
+
+// Derive lightbox-compatible image data (using Astro-resolved src strings)
+const lightboxImages = galleryPhotos.map(p => ({
+  src: typeof p.img === 'string' ? p.img : p.img.src,
+  width: p.img.width || 1600,
+  height: p.img.height || 1200,
+  alt: p.alt,
+}));
 
 const seoData = {
-  title: "Sea Reach - Point Pleasant Beach Rental | 4BR Beach House",
-  description: "Beautiful 4BR beach house just 4 minutes from Point Pleasant Beach. Includes 8 beach badges, modern amenities, and prime location near boardwalk.",
+  title: "Sea Reach Beach House | Point Pleasant Beach, NJ — Book Direct",
+  description: "4-bedroom beach house 1.5 blocks from Point Pleasant Beach. Beach badges, chairs & umbrellas included. Book direct and save vs. platforms.",
   canonical: "https://sea-reach.com",
   ogImage: "https://sea-reach.com/images/outdoor-seats-fire-pit.png"
 };
 ---
 
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{seoData.title}</title>
     <meta name="description" content={seoData.description} />
     <link rel="canonical" href={seoData.canonical} />
-    
-    <!-- Open Graph / Facebook -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={seoData.canonical} />
     <meta property="og:title" content={seoData.title} />
@@ -73,3514 +105,1255 @@ const seoData = {
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-      {
+    {
         "@context": "https://schema.org",
         "@type": "LodgingBusiness",
         "name": "Sea Reach Beach House",
-        "description": "4BR beach house rental in Point Pleasant Beach, NJ",
+        "description": "4BR beach house rental in Point Pleasant Beach, NJ. Beach badges, chairs & umbrellas included every week.",
         "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "106 Atlantic Ave",
-          "addressLocality": "Point Pleasant Beach",
-          "addressRegion": "NJ",
-          "addressCountry": "US"
+            "@type": "PostalAddress",
+            "streetAddress": "106 Atlantic Ave",
+            "addressLocality": "Point Pleasant Beach",
+            "addressRegion": "NJ",
+            "addressCountry": "US"
         },
         "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "40.0909",
-          "longitude": "-74.0487"
+            "@type": "GeoCoordinates",
+            "latitude": "40.0909",
+            "longitude": "-74.0487"
         },
         "url": "https://sea-reach.com",
-        "telephone": "info@sea-reach.com",
-        "priceRange": "$7500-$900",
         "amenityFeature": [
-          "Beach Access",
-          "WiFi",
-          "Parking",
-          "Kitchen",
-          "Air Conditioning",
-          "Fireplace",
-          "Outdoor Space"
+            "Beach Access",
+            "Beach Badges Included",
+            "Beach Chairs Included",
+            "WiFi",
+            "6-Car Parking",
+            "Kitchen",
+            "Air Conditioning",
+            "Fire Pit",
+            "Game Room",
+            "Outdoor Shower"
         ]
-      }
+    }
     </script>
-	    <script>
-			// This script will run on the client side
-			document.addEventListener('DOMContentLoaded', () => {
-			  // Modal functionality
-			  const showModalButtons = document.querySelectorAll('[data-show-modal]');
-			  const hideModalButtons = document.querySelectorAll('[data-hide-modal]');
-			  const modal = document.getElementById('booking-modal');
-			  
-			  showModalButtons.forEach(button => {
-				button.addEventListener('click', () => {
-				  if (modal) {
-					modal.style.display = 'flex';
-					document.body.style.overflow = 'hidden';
-				  }
-				});
-			  });
-			  
-			  hideModalButtons.forEach(button => {
-				button.addEventListener('click', () => {
-				  if (modal) {
-					modal.style.display = 'none';
-					document.body.style.overflow = 'auto';
-				  }
-				});
-			  });
-			  
-			  // Close modal when clicking outside content
-			  if (modal) {
-				modal.addEventListener('click', (e) => {
-				  if (e.target === modal) {
-					modal.style.display = 'none';
-					document.body.style.overflow = 'auto';
-				  }
-				});
-			  }
-			});
-		  </script>
-  </head>
-  <body>
-    <div class="min-h-screen">
-      <!-- Navigation Bar -->
-      <nav class="navbar">
-        <div class="container">
-          <div class="nav-content">
-            <div class="nav-logo">
-              <Image
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav transparent" id="mainNav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+            <Image
                 src={logo}
-                alt="Sea Reach Logo"
-                width="60"
-                height="60"
+                alt="Sea Reach Beach House"
+                height={64}
                 class="nav-logo-img"
                 loading="eager"
-              />
-              <span class="nav-brand">Sea Reach</span>
-            </div>
-            <div class="nav-links" id="nav-links">
-              <a href="#gallery" class="nav-link">📷 Photos</a>
-              <a href="#outdoor" class="nav-link">🌊 Outside</a>
-              <a href="#interior" class="nav-link">🏠 Interior</a>
-              <a href="#bedrooms" class="nav-link">🛏️ Bedrooms</a>
-              <a href="#attractions" class="nav-link">📍 Local Attractions</a>
-              <a href="#booking" class="nav-link book-now-btn">Book Now</a>
-            </div>
-            <div class="nav-mobile">
-              <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">☰</button>
-            </div>
-          </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobile-menu">
-          <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">×</button>
-          <a href="#gallery" class="mobile-nav-link">Photos</a>
-          <a href="#outdoor" class="mobile-nav-link">🌊 Outside</a>
-          <a href="#interior" class="mobile-nav-link">🏠 Interior</a>
-          <a href="#bedrooms" class="mobile-nav-link">🛏️ Bedrooms</a>
-          <a href="#attractions" class="mobile-nav-link">📍 Local Attractions</a>
-          <a href="#booking" class="mobile-nav-link">Book Now</a>
-        </div>
-      </nav>
-
-      <!-- Hero Section with Beach House Photo -->
-      <section class="hero-beach">
-        <div class="hero-background">
-          <Image
-            src={houseBackyard || "/placeholder.svg"}
-            alt="Sea Reach Beach House Exterior"
-            class="hero-bg-image"
-            loading="eager"
-            format="webp"
-            quality={85}
-          />
-          <div class="hero-overlay"></div>
-        </div>
-        <div class="container">
-          <div class="hero-content">
-            <Image
-              src={logo}
-              alt="Sea Reach Logo"
-              width="180"
-              height="180"
-              class="logo-hero"
-              style="max-width: 180px; width: 100%; height: auto; display: block; margin: 48px auto 0 auto; object-fit: contain;"
             />
-            <h1 class="hero-title">Your Beach Home Away From Home</h1>
-            <p class="hero-subtitle">
-              🏖️ 4-Min Walk to Beach & Boardwalk - Point Pleasant Beach, NJ
-            </p>
-            <div class="hero-highlights">
-              <div class="highlight-beach">
-                <span class="highlight-number">4</span>
-                <span class="highlight-text">Bedrooms</span>
-              </div>
-              <div class="highlight-beach">
-                <span class="highlight-number">2</span>
-                <span class="highlight-text">Bathrooms</span>
-              </div>
-              <div class="highlight-beach">
-                <span class="highlight-number">4</span>
-                <span class="highlight-text">Min Walk to Beach</span>
-              </div>
-              <!-- <div class="highlight-beach">
-                <span class="highlight-icon">🚿</span>
-                <span class="highlight-text">Outdoor Shower</span>
-              </div> -->
-            </div>
-            <div class="hero-cta">
-              <a href="#gallery" class="btn-beach">
-                Explore the House
-              </a>
-              <a
-                href="#booking"
-                class="btn-beach-outline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book Now
-              </a>
-            </div>
-          </div>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#week">The House</a>
+            <a href="#story">Our Story</a>
+            <a href="#zones">Seven Zones</a>
+            <a href="#gallery">Photos</a>
+            <a href="#included">What's Included</a>
+            <a href="#neighborhood">The Neighborhood</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact" class="btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Book Now</a>
         </div>
-      </section>
-<!-- Property Gallery - Clean Layout -->
-<section class="property-gallery" id="gallery">
-	<div class="container">
-	  <div class="gallery-header">
-		<h2>Welcome to Sea Reach</h2>
-		<p class="gallery-subtitle">Your perfect beach getaway awaits</p>
-	  </div>
-	  
-	  <div class="gallery-grid-clean">
-		<div class="gallery-item-clean">
-		  <Image
-			src={livingRoomWide || "/placeholder.svg"}
-			alt="Sea Reach - Beautiful Open Living Space"
-			class="gallery-image-clean"
-			format="webp"
-			quality={90}
-			loading="lazy"
-		  />
-		  <div class="gallery-info-clean">
-			<h3>🛋️ Open Concept Living</h3>
-			<p>Spacious, modern design with hardwood floors perfect for family gatherings</p>
-		  </div>
-		</div>
-		<div class="gallery-item-clean">
-		  <Image
-			src={outdoorSeatsFirePit || "/placeholder.svg"}
-			alt="Evening Fire Pit"
-			class="gallery-image-clean"
-			format="webp"
-			
-			quality={90}
-			loading="lazy"
-		  />
-		  <div class="gallery-info-clean">
-			<h3>🔥 Fire Pit Nights</h3>
-			<p>Perfect for evening relaxation and making memories</p>
-		  </div>
-		</div>
-		
-		<div class="gallery-item-clean">
-		  <Image
-			src={kitchen || "/placeholder.svg"}
-			alt="Gourmet Kitchen"
-			class="gallery-image-clean"
-			format="webp"
-			quality={90}
-			
-			loading="lazy"
-		  />
-		  <div class="gallery-info-clean">
-			<h3>🍳 Gourmet Kitchen</h3>
-			<p>Fully equipped with granite countertops and stainless steel appliances</p>
-		  </div>
-		</div>
-		
-		
-		<div class="gallery-item-clean">
-		  <Image
-			src={outdoorShower || "/placeholder.svg"}
-			alt="Private Outdoor Shower"
-			class="gallery-image-clean"
-			loading="lazy"
-		  />
-		  <div class="gallery-info-clean">
-			<h3>🚿 Private Outdoor Shower</h3>
-			<p>Rinse off the sand and salt after perfect beach days</p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about">
-	<div class="container">
-	  <h2>About Sea Reach</h2>
-	  <div class="about-content">
-		<p class="lead">This beach home has it all - ease, comfort and LOCATION!</p>
-		<p>
-		  Located at 106 Atlantic Ave, this 4BR + 2BA home boasts a modern kitchen, hardwood floors, enclosed
-		  wraparound front porch and private outdoor living and dining space. Garage lounge features extra living
-		  space and a ping pong table - perfect for indoor/outdoor hangouts, sandy feet and all.
-		</p>
-		<p>
-		  Just steps from Point Pleasant Beach's beautiful beaches and sprawling boardwalk. Rides, games, food,
-		  beach and entertainment are only a short walk away - no need to drive around looking for parking!
-		</p>
-	  </div>
-	</div>
-  </section>
-
-
-
-        <!-- Booking Calendar Section -->
-		<section class="booking-section" id="booking">
-			<div class="container">
-			  <div class="booking-header">
-				<h2>Check Availability & Book Your Stay</h2>
-				<p class="booking-subtitle">Weekly rentals Saturday to Saturday • June through September</p>
-			  </div>
-			  <BookingCalendar />
-			</div>
-		  </section>
-
-		  <!-- Guest Reviews -->
-		  <section class="testimonials">
-			<div class="container">
-			  <h2>What Our Guests Say</h2>
-			  <div class="reviews-header">
-				<div class="rating-display">
-				  <div class="stars">⭐⭐⭐⭐⭐</div>
-				  <div class="rating-text">
-					<span class="rating-number">5.0</span>
-					<span class="review-count">Five-Star Reviews on VRBO & Airbnb</span>
-				  </div>
-				</div>
-			  </div>
-	
-			  <div class="testimonials-grid">
-				<div class="testimonial-card">
-				  <div class="testimonial-content">
-					<p>
-					  "Perfect location! We walked to the beach and boardwalk every day. The house was spotless and had
-					  everything we needed. The kids loved the ping pong table and fire pit! Very spacious for our party of 8!"
-					</p>
-				  </div>
-				  <div class="testimonial-author">
-					<strong>Samantha and Ashton Schneider</strong>
-					<span>2 Families, 8 total • July 2024</span>
-				  </div>
-				</div>
-	
-				<div class="testimonial-card">
-				  <div class="testimonial-content">
-					<p>
-					  "Amazing value with the beach badges included! Saved us hundreds of dollars. The house is beautiful
-					  and the location can't be beat. We'll definitely be back!"
-					</p>
-				  </div>
-				  <div class="testimonial-author">
-					<strong>Dave & Hanna Clary</strong>
-					<span>Couple • July 2024</span>
-				  </div>
-				</div>
-	
-				<div class="testimonial-card">
-				  <div class="testimonial-content">
-					<p>
-					  "Best beach house rental we've ever had! Clean, comfortable, and so close to everything. The outdoor
-					  shower and fire pit, and garage hangout were perfect after long beach days."
-					</p>
-				  </div>
-				  <div class="testimonial-author">
-					<strong>The McDonnell Family</strong>
-					<span>Family of 8 • August 2023</span>
-				  </div>
-				</div>
-			  </div>
-	
-			  <div class="reviews-cta">
-				<a
-				  href="https://www.vrbo.com/2823698"
-				  class="btn btn-primary"
-				  target="_blank"
-				  rel="noopener noreferrer"
-				>
-				  View All Five-Star Reviews
-				</a>
-			  </div>
-			</div>
-		  </section>
-
-		   <!-- Rental Info -->
-		   <section class="rental-info">
-			<div class="container">
-			  <h2>Rental Information</h2>
-			  <div class="rental-details">
-				<div class="rental-card">
-				  <h3>📅 Availability</h3>
-				  <p>
-					Weekly Rentals (7 nights) or longer
-					<br />
-					Saturday to Saturday
-					<br />
-					June - September
-				  </p>
-				</div>
-	
-				<div class="rental-card">
-				  <h3>🏖️ Includes</h3>
-				  <p>
-					8 Adult Beach Badges
-					<br />
-					Beach Chairs & Towels
-					<br />                
-				  </p>
-				</div>
-	
-				<div class="rental-card">
-				  <h3>📋 House Rules</h3>
-				  <p>
-					No Smoking
-					<br />
-					No Pets
-					<br />
-					No Prom Groups
-				  </p>
-				</div>
-			  </div>
-			</div>
-		  </section>
-
-      <!-- Outside Spaces Section -->
-      <section class="outdoor-gallery" id="outdoor">
-        <div class="container">
-          <h2>🌊 Outside Spaces</h2>
-          <p class="section-subtitle">something here</p>
-          <div class="outdoor-grid">
-            <div class="outdoor-large">
-              <Image
-                src={garageGameroom || "/placeholder.svg"}
-                alt="Detached Garage with TV and Game Room"
-                width="800"
-                height="500"
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="photo-overlay">
-                <h3>Detached Garage with TV and Game Room</h3>
-                <p>Great for indoor/outdoor hangouts, sandy feet and all.</p>
-              </div>
-            </div>
-            <div class="outdoor-small-grid">
-              <div class="outdoor-small">
-                <Image
-                  src={outdoorDining || "/placeholder.svg"}
-                  alt="Outdoor Dining"
-                  width="380"
-                  height="240"
-                  class="gallery-image"
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h4>Outdoor Dining & BBQ</h4>
-                </div>
-              </div>
-              <div class="outdoor-small">
-                <Image
-                  src={backyardSlipNSlide || "/placeholder.svg"}
-                  alt="Backyard Fun"
-                  width="380"
-                  height="240"
-                  class="gallery-image"
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h4>Backyard fun!</h4>
-                </div>
-              </div>
-              <div class="outdoor-small">
-                <Image
-                  src={outdoorShower || "/placeholder.svg"}
-                  alt="Outdoor Shower"
-                  width="380"
-                  height="240"
-                  class="gallery-image"
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h4>Private Outdoor Shower</h4>
-                </div>
-              </div>
-              <div class="outdoor-small">
-                <Image
-                  src={driveway || "/placeholder.svg"}
-                  alt="Parking Area"
-                  width="380"
-                  height="240"
-                  class="gallery-image"
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h4>6-Car Driveway</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Interior Spaces Section -->
-      <section class="interior-gallery" id="interior">
-        <div class="container">
-          <h2>🏠 Interior Spaces</h2>
-          <p class="section-subtitle">Comfortable, modern spaces designed for relaxation</p>
-          <div class="interior-grid">
-            <div class="interior-item">
-              <div class="image-container">
-                <Image
-                  src={livingRoomOppo || "/placeholder.svg"}
-                  alt="Open Concept Living Room"
-                  width={600}
-                  height={400}
-                  class="gallery-image"
-                  format="webp"
-                  quality={75}
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h3>Open Concept Living</h3>
-                  <p>Spacious living area with hardwood floors and modern coastal design</p>
-                </div>
-              </div>
-            </div>
-            <div class="interior-item">
-              <div class="image-container">
-                <Image
-                  src={kitchen || "/placeholder.svg"}
-                  alt="Fully Equipped Modern Kitchen"
-                  width={600}
-                  height={400}
-                  class="gallery-image"
-                  format="webp"
-                  quality={75}
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h3>Gourmet Kitchen</h3>
-                  <p>Fully equipped with modern appliances and everything you need</p>
-                </div>
-              </div>
-            </div>
-            <div class="interior-item">
-              <div class="image-container">
-                <Image
-                  src={diningRoom || "/placeholder.svg"}
-                  alt="Elegant Dining Room"
-                  width={600}
-                  height={400}
-                  class="gallery-image"
-                  format="webp"
-                  quality={75}
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h3>Dining Room</h3>
-                  <p>Perfect for family meals with coastal artwork</p>
-                </div>
-              </div>
-            </div>
-            <div class="interior-item">
-              <div class="image-container">
-                <Image
-                  src={frontCouch || "/placeholder.svg"}
-                  alt="Front Couch"
-                  width={600}
-                  height={400}
-                  class="gallery-image"
-                  format="webp"
-                  quality={75}
-                  loading="lazy"
-                />
-                <div class="photo-overlay">
-                  <h3>Front Room</h3>
-                  <p>Get away from the kids in this cozy spot or hang out with them on the couch. Great second living room.</p>
-                </div>
-              </div>
-            </div>
-			<div class="interior-item">
-				<div class="image-container">
-				  <Image
-					src={bathroom || "/placeholder.svg"}
-					alt="Bathroom"
-					width={600}
-					height={400}
-					class="gallery-image"
-					format="webp"
-					quality={75}
-					loading="lazy"
-				  />
-				  <div class="photo-overlay">
-					<h3>Bathroom</h3>
-					<!-- <p>Get away from the kids in this cozy spot or hang out with them on the couch. Great second living room.</p> -->
-				  </div>
-				</div>
-			</div>
-			<div class="interior-item">
-			  <div class="image-container">
-				<Image
-				  src={porchDesk || "/placeholder.svg"}
-				  alt="Porch Desk"
-				  width={600}
-				  height={400}
-				  class="gallery-image"
-				  format="jpg"
-				  quality={75}
-				  loading="lazy"
-				/>
-					<div class="photo-overlay">
-						<h3>Wraparound Porch Desk</h3>
-						<p>Great lighting and temperature controlled</p>
-					</div>
-				</div>
-			</div>
-			<div class="interior-item">
-				<div class="image-container">
-				  <Image
-					src={office2 || "/placeholder.svg"}
-					alt="Second Floor Desk"
-					width={600}
-					height={400}
-					class="gallery-image"
-					format="jpg"
-					quality={75}
-					loading="lazy"
-				  />
-					  <div class="photo-overlay">
-						  <h3>Upstairs Desk</h3>
-						  <!-- <p></p> -->
-					  </div>
-				  </div>
-			  </div>
-			  <div class="interior-item">
-				<div class="image-container">
-				  <Image
-					src={diningRoomFull || "/placeholder.svg"}
-					alt="Dining Room"
-					width={600}
-					height={400}
-					class="gallery-image"
-					format="jpg"
-					quality={75}
-					loading="lazy"
-				  />
-					  <div class="photo-overlay">
-						  <h3>Dining Room</h3>
-						  <p>Great for family meals, seats 8</p>
-					  </div>
-				  </div>
-			  </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Bedrooms Section -->
-      <section class="bedrooms-gallery" id="bedrooms">
-        <div class="container">
-          <h2>🛏️ Bedrooms</h2>
-          <p class="section-subtitle">Comfortable sleeping arrangements for up to 8 guests</p>
-          <div class="bedrooms-grid">
-            <div class="bedroom-item">
-              <Image
-                src={masterBedroom1 || "/placeholder.svg"}
-                alt="Master Bedroom with Vaulted Ceiling"
-                width={600}
-                height={400}
-                class="gallery-image"
-                format="webp"
-                quality={75}
-                loading="lazy"
-              />
-              <div class="bedroom-info-clean">
-                <h3>Master Bedroom</h3>
-                <p>Queen bed with vaulted ceiling and compass decor</p>
-                <div class="bed-details">
-                  <span class="bed-type">👑 Queen Bed</span>
-                  <span class="sleeps">Sleeps 2</span>
-                </div>
-              </div>
-            </div>
-            <div class="bedroom-item">
-              <Image
-                src={bedroomSurf || "/placeholder.svg"}
-                alt="Queen Bedroom"
-                width="600"
-                height="400"
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="bedroom-info-clean">
-                <h3>Queen Bedroom</h3>
-                <p>Comfortable queen bed with coastal-themed decor</p>
-                <div class="bed-details">
-                  <span class="bed-type">👸 Queen Bed</span>
-                  <span class="sleeps">Sleeps 2</span>
-                </div>
-              </div>
-            </div>
-            <div class="bedroom-item">
-              <Image
-                src={bedroom3 || "/placeholder.svg"}
-                alt="Second Full Bedroom"
-                width="600"
-                height="400"
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="bedroom-info-clean">
-                <h3>Third Bedroom</h3>
-                <p>Another comfortable full bed with beach-themed touches</p>
-                <div class="bed-details">
-                  <span class="bed-type">👸 Full Bed</span>
-                  <span class="sleeps">Sleeps 2</span>
-                </div>
-              </div>
-            </div>
-            <div class="bedroom-item">
-              <Image
-                src={bedroomBunk || "/placeholder.svg"}
-                alt="Bunk Room"
-                width="600"
-                height="400"
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="bedroom-info-clean">
-                <h3>Bunk Room</h3>
-                <p>Perfect for kids with twin bunk beds</p>
-                <div class="bed-details">
-                  <span class="bed-type">🛏️ Twin Bunks</span>
-                  <span class="sleeps">Sleeps 2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Location & Beach Access -->
-      <section class="beach-access">
-        <div class="container">
-          <h2>Just Steps to Paradise</h2>
-          <p class="section-subtitle">Experience the best of Point Pleasant Beach</p>
-          <div class="beach-grid">
-            <div class="beach-info">
-              <div class="distance-card">
-                <div class="distance-number">4</div>
-                <div class="distance-text">
-                  <strong>Minutes</strong>
-                  <span>Walk to Beach</span>
-                </div>
-              </div>
-              <div class="distance-card">
-                <div class="distance-number">1.5</div>
-                <div class="distance-text">
-                  <strong>Blocks</strong>
-                  <span>from Ocean</span>
-                </div>
-              </div>
-              <div class="distance-card">
-                <div class="distance-number">8</div>
-                <div class="distance-text">
-                  <strong>Beach Badges Included</strong>
-                  <span><a href="https://jenkinsons.com/beach/">Jenkinson's Beach Day Pass Rates (check savings)</a></span>
-                </div>
-              </div>
-            </div>
-            <div class="beach-photos">
-              <Image
-                src={swingsBoardwalk}
-                alt="Point Pleasant Beach Boardwalk"
-                width="600"
-                height="400"
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="photo-overlay">
-                <h3>Point Pleasant Beach Boardwalk</h3>
-                <p>Rides, games, food & entertainment</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Location & Dining */
-      <section class="maps-dining" id="dining">
-        <div class="container">
-          <h2>Perfect Location</h2>
-          <p class="section-subtitle">Everything within easy walking distance</p>
-
-          <div class="location-grid">
-            <div class="walking-distances">
-              <h3>🚶‍♂️ Walking Times from Sea Reach</h3>
-              <div class="distance-list">
-                <div class="distance-item">
-                  <span class="time">4 min</span>
-                  <span class="destination">Point Pleasant Beach</span>
-                </div>
-                <div class="distance-item">
-                  <span class="time">5 min</span>
-                  <span class="destination">Jenkinson's Mini Golf</span>
-                </div>
-                <div class="distance-item">
-                  <span class="time">6 min</span>
-                  <span class="destination">Jenkinson's Arcade & Food Shack</span>
-                </div>
-                <div class="distance-item">
-                  <span class="time">8 min</span>
-                  <span class="destination">Jenkinson's Rides</span>
-                </div>
-                <div class="distance-item">
-                  <span class="time">11 min</span>
-                  <span class="destination">Tiki Bar</span>
-                </div>
-                <div class="distance-item">
-                  <span class="time">15 min</span>
-                  <span class="destination">Downtown Dining</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="family-benefits">
-              <h3>👨‍👩‍👧‍👦 Family-Friendly Highlights</h3>
-              <div class="benefit-list">
-                <div class="benefit-item">
-                  <span class="benefit-icon">🎆</span>
-                  <span class="benefit-text">Thursday Night Fireworks</span>
-                </div>
-                <div class="benefit-item">
-                  <span class="benefit-icon">🏖️</span>
-                  <span class="benefit-text">8 Beach Badges Included = $900+ Savings</span>
-                </div>
-                <div class="benefit-item">
-                  <span class="benefit-icon">🎢</span>
-                  <span class="benefit-text">Boardwalk Rides & Games</span>
-                </div>
-                <div class="benefit-item">
-                  <span class="benefit-icon">🍦</span>
-                  <span class="benefit-text">Boardwalk Treats & Ice Cream</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="savings-section">
-              <h3>💰 Beach Badge & Equipment Savings</h3>
-              <p class="dining-section-subtitle">
-                See how much you save with included beach badges, chairs & umbrellas!
-              </p>
-
-              <div class="savings-breakdown">
-                <div class="savings-card">
-                  <h4>If You Bought Daily</h4>
-                  <div class="price-breakdown">
-                    <div class="price-line">
-                      8 Adult Beach Badges × $14 = <strong>$112/day</strong>
-                    </div>
-                    <div class="price-line">
-                      8 Beach Chairs × $11 = <strong>$88/day</strong>
-                    </div>
-                    <div class="price-line">
-                      4 Beach Umbrellas × $12 = <strong>$48/day</strong>
-                    </div>
-                    <div class="price-line total-line">
-                      Daily Total = <strong>$248/day</strong>
-                    </div>
-                    <div class="price-line">
-                      7 Days × $248 = <strong>$1,736/week</strong>
-                    </div>
-                    <div class="weekend-note">*Weekends & holidays are $15 for badges - even more savings!</div>
-                  </div>
-                </div>
-
-                <div class="savings-vs">VS</div>
-
-                <div class="savings-card included">
-                  <h4>Sea Reach Includes</h4>
-                  <div class="price-breakdown">
-                    <div class="price-line">
-                      8 Adult Beach Badges = <strong>FREE</strong>
-                    </div>
-                    <div class="price-line">
-                      8 Beach Chairs = <strong>FREE</strong>
-                    </div>
-                    <div class="price-line">
-                      Beach Umbrellas = <strong>FREE</strong>
-                    </div>
-                    <div class="price-line">
-                      All Week Long = <strong>$0</strong>
-                    </div>
-                    <div class="savings-highlight">You Save $900+!</div>
-                  </div>
-                </div>
-              </div>
-
-              <p class="savings-note">
-                <em>
-                  *Based on Point Pleasant Beach 2024 rates: $14/day badges (ages 12+), $15 weekends/holidays. Beach
-                  chairs $11/day, umbrellas $12/day. Your Sea Reach rental includes everything for the entire week!
-                </em>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-
-      <!-- Local Attractions -->
-      <section class="local-attractions" id="attractions">
-        <div class="container">
-          <h2>📍 Local Attractions</h2>
-          <p class="section-subtitle">Everything you need within walking distance</p>
-          <div class="attractions-grid">
-            <div class="attraction-card">
-              <Image
-                src={beachFun || "/placeholder.svg"}
-                alt="Beach Activities"
-                width="800"
-                
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="attraction-info">
-                <h3>🏖️ Beach Activities</h3>
-                <p>
-                  <strong>2-4 min walk</strong>
-                </p>
-                <ul>
-                  <li>Swimming & Sunbathing</li>
-                  <li>Beach Volleyball</li>
-                  <li>Surfing & Water Sports</li>
-                  <li>8 Beach Badges Included!</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="attraction-card">
-              <Image
-                src={boardwalkFun || "/placeholder.svg"}
-                alt="Boardwalk Entertainment"
-                width="800"
-                
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="attraction-info">
-                <h3>🎢 Boardwalk Fun</h3>
-                <p>
-                  <strong>5-8 min walk</strong>
-                </p>
-                <ul>
-                  <li>Amusement Rides</li>
-                  <li>Arcade Games</li>
-                  <li>Mini Golf</li>
-                  <li>Boardwalk Food</li>
-				  <li>Fireworks</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="attraction-card">
-              <Image
-                src={lastWave || "/placeholder.svg"}
-                alt="Local Dining"
-                width="800"
-                
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="attraction-info">
-                <h3>🍺 Local Dining</h3>
-                <p>
-                  <strong>15 min walk</strong>
-                </p>
-                <ul>
-				  <li>The Food Shack</li>
-                  <li>Last Wave Brewing Co</li>
-                  <li>Rosie's Pizza</li>
-                  <li>Bam Bam Burgers</li>
-                  <li>B2 Bistro</li>
-				  <li>Spanos</li>
-				  <li>Hoffman's Ice Cream</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="attraction-card">
-              <Image
-                src={bamBamBurgers}
-                alt="Shopping & Services"
-                width="800"
-                
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="attraction-info">
-                <h3>🛍️ Shopping & More</h3>
-                <p>
-                  <strong>15 min walk</strong>
-                </p>
-                <ul>
-                  <li>Beach Bagel & Coffee</li>
-                  <li>Boutique Shopping</li>
-                  <li>Antique Stores</li>
-                </ul>
-              </div>
-            </div>
-
-			<div class="attraction-card">
-				<Image
-				  src={miniGolf}
-				  alt="Castaway Cove Mini Golf"
-				  width="800"
-				  
-				  class="gallery-image"
-				  loading="lazy"
-				/>
-				<div class="attraction-info">
-				  <h3>Mini Golf</h3>
-				  <p>
-					<strong>5 min walk</strong>
-				  </p>				  
-				</div>
-			  </div>
-			  <div class="attraction-card">
-				<Image
-				  src={trainBoardwalk}
-				  alt="Castaway Cove Mini Golf"
-				  width="800"
-				  
-				  class="gallery-image"
-				  loading="lazy"
-				/>
-				<div class="attraction-info">
-				  <h3>🛍️ Boardwalk Kids Train</h3>
-				  <p>
-					<strong>6 min walk</strong>
-				  </p>				  
-				</div>
-			  </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Features Grid -->
-      <section class="features" id="features">
-        <div class="container">
-          <h2>Property Features</h2>
-          <div class="features-grid">
-            <div class="feature-card">
-              <h3>🏠 Living Space</h3>
-              <ul>
-                <li>Open Floor Plan</li>
-                <li>Central AC</li>
-                <li>Hardwood Floors</li>                
-                <li>Enclosed Wraparound Porch</li>
-              </ul>
-            </div>
-
-            <div class="feature-card">
-              <h3>🍳 Kitchen & Dining</h3>
-              <ul>
-                <li>Fully Equipped Modern Kitchen</li>
-                <li>Dishwasher & Microwave</li>
-                <li>Coffee Pot, Blender & Toaster</li>
-                <li>Weber Gas BBQ Grill</li>
-                <li>Private Outdoor Dining Space</li>
-              </ul>
-            </div>
-
-            <div class="feature-card">
-              <h3>🏖️ Beach & Outdoor</h3>
-              <ul>
-                <li>8 Beach Badges Included</li>
-                <li>Private Outdoor Shower</li>
-                <li>Beach Chairs & Towels</li>
-                <li>Outdoor Gas Fire Pit</li>
-                <li>Beach Games Available</li>
-              </ul>
-            </div>
-
-            <div class="feature-card">
-              <h3>🎮 Entertainment</h3>
-              <ul>
-                <li>Garage Lounge with TV</li>
-                <li>Ping Pong Table</li>
-                <li>Xfinity TV Service</li>
-                <li>WiFi (Indoor & Outdoor)</li>
-                <li>2 Office Spaces with Desks</li>
-              </ul>
-            </div>
-
-            <div class="feature-card">
-              <h3>🚗 Parking & Storage</h3>
-              <ul>
-                <li>6 Car Driveway</li>
-                <li>Unfinished Garage Space</li>
-                <li>Extra Storage Available</li>
-              </ul>
-            </div>
-
-            <div class="feature-card">
-              <h3>🛏️ Comfort</h3>
-              <ul>
-                <li>Pillows & Quilts Provided</li>
-                <li>Bed Sheets (on request)</li>
-                <li>Comfortable Seating Areas</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-     
-
-      <!-- Contact Section -->
-      <section class="contact" id="contact">
-        <div class="container">
-          <h2>Ready to Book Your Stay?</h2>
-          <p class="contact-text">
-            It's time to unpack, unplug and unwind. Welcome to Sea Reach, your beach home-away-from-home.
-          </p>
-          <div class="contact-buttons">
-            <a
-              href="#booking"
-              class="btn btn-primary"
-            >
-              Book Now
-            </a>
-            <a
-              href="https://www.vrbo.com/2823698"
-              class="btn btn-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on VRBO
-            </a>
-			<a
-              href="https://www.airbnb.com/rooms/8605514"
-              class="btn btn-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on Airbnb
-            </a>
-			
-            <a href="mailto:sdaless22@gmail.com" class="btn btn-secondary">
-              Contact Owner
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- About Us Section -->
-      <section class="about-us-section">
-        <div class="container about-us-flex">
-          <div class="about-us-text">
-            <h2>About Us</h2>
-            <p>The Jersey Shore has been the place we call home in the summer for generations. My grandparents had a home just down the beach since my mother was little, spending summers jamming 5 kids into a 3 bedroom house for 2 months with zero A/C and loving every minute.</p>
-            <p>My dad owned stands on Jenkinson's boardwalk in college, which is where he first met my mom. My little sister and I would come down to that same A/C-less beach house and squeeze into those 3 bedrooms with all of our cousins, sandy feet and all.</p>
-            <p>We'd go fishing with my grandfather, paint seashells with my grandmother, and stay on the beach until someone rang the dinner bell. Our summers were filled with sea glass, sandcastles and sun-kissed memories.</p>
-            <div class="about-us-highlight">
-              <strong>So it's only fitting that we continue the tradition by having our own beach house (don't worry, this one has A/C). We hope your days here are just as memorable as ours, and that you'll come back each summer to make more.</strong>
-            </div>
-          </div>
-          <div class="about-us-image">
-            <Image
-              src={familyPhoto}
-              alt="Our Family at the Jersey Shore"
-              width="500"
-              height="700"
-              class="about-us-img"
-              style="border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); object-fit: cover; width: 100%; height: auto;"
-            />
-            <div class="about-us-caption">Creating new memories while honoring old traditions.</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="footer">
-        <div class="container">
-          <Image
-            src={logo}
-            alt="Sea Reach Logo"
-            width="100"
-            height="100"
-            class="footer-logo"
-          />
-          <div class="footer-content">
-            <p class="copyright">&copy; 2025 Sea Reach. Point Pleasant Beach, NJ. All rights reserved.</p>
-            <div class="footer-contact">
-              <h3>Contact Us</h3>
-              <a href="mailto:sdaless22@gmail.com" class="footer-email">sdaless22@gmail.com</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-	        <!-- Booking Modal -->
-			<div id="booking-modal" class="modal-overlay" style="display: none;" onclick="hideBookingModal()">
-				<div class="modal-content" onclick="event.stopPropagation()">
-				  <button class="modal-close" onclick="hideBookingModal()">×</button>
-				  <BookingCalendar isModal={true} />
-				</div>
-			  </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
-    <!-- Add this script just before </body> -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        // Hamburger menu logic
-        const navToggle = document.getElementById('nav-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuClose = document.getElementById('mobile-menu-close');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-        function openMenu() {
-          if (mobileMenu) {
-            mobileMenu.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-          }
-        }
-        function closeMenu() {
-          if (mobileMenu) {
-            mobileMenu.style.display = 'none';
-            document.body.style.overflow = 'auto';
-          }
-        }
-        if (navToggle) {
-          navToggle.addEventListener('click', openMenu);
-        }
-        if (mobileMenuClose) {
-          mobileMenuClose.addEventListener('click', closeMenu);
-        }
-        mobileNavLinks.forEach(link => {
-          link.addEventListener('click', closeMenu);
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+        <iconify-icon icon="solar:close-circle-linear" style="font-size: 32px; color: #1b2e50;" width="32" height="32"></iconify-icon>
+    </button>
+    <a href="#week" onclick="closeMobile()">The House</a>
+    <a href="#story" onclick="closeMobile()">Our Story</a>
+    <a href="#zones" onclick="closeMobile()">Seven Zones</a>
+    <a href="#gallery" onclick="closeMobile()">Photos</a>
+    <a href="#included" onclick="closeMobile()">What's Included</a>
+    <a href="#neighborhood" onclick="closeMobile()">The Neighborhood</a>
+    <a href="#faq" onclick="closeMobile()">FAQ</a>
+    <a href="#contact" class="btn-primary" onclick="closeMobile()" style="margin-top: 8px;">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg">
+        <Image src={crewPiratesGarage} alt="The crew in pirate costumes in the garage"
+            class="hero-bg-img hero-slide active" loading="eager" format="webp" quality={85} />
+        <Image src={swingRideBoardwalk} alt="Swing ride on the boardwalk"
+            class="hero-bg-img hero-slide" loading="lazy" format="webp" quality={85} />
+        <Image src={miniGolfPhoto} alt="Mini golf at the shore"
+            class="hero-bg-img hero-slide" loading="lazy" format="webp" quality={85} />
+        <Image src={tatumGlassesCouch} alt="Relaxing on the couch at Sea Reach"
+            class="hero-bg-img hero-slide" loading="lazy" format="webp" quality={85} />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="hero-content">
+            <div class="hero-eyebrow">POINT PLEASANT BEACH, NJ</div>
+            <h1>Where Sandy Feet and Slow Mornings Are the Only Plans You'll Need</h1>
+            <p class="hero-sub">A 4-bedroom beach house 1.5 blocks from Point Pleasant Beach — with everything you need for the week already waiting for you.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary btn-primary-lg">Book Your Week</a>
+                <a href="#week" class="btn-secondary btn-secondary-white" style="padding: 14px 34px;">See What a Week Looks Like</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-stats">
+        <div class="hero-stats-inner">
+            <div>
+                <div class="stat-value">4 min</div>
+                <div class="stat-label">Walk to Beach</div>
+            </div>
+            <div>
+                <div class="stat-value">4</div>
+                <div class="stat-label">Bedrooms</div>
+            </div>
+            <div class="hero-platform-ratings">
+                <a href="https://www.vrbo.com/2823698" target="_blank" rel="noopener noreferrer" class="hero-rating-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-18.693 -10.001675 162.006 60.01005" aria-label="VRBO" class="hero-brand-logo hero-brand-vrbo">
+                        <path fill="white" d="M110 12.93v.06c7.73.65 10 6.14 9.89 9.33-.18 9.24-7.34 16.68-18.89 17.59v.05c12.69-.76 20.12-7.32 20.28-16.72-.02-3.46-2.54-9.8-11.28-10.31z"/><path fill="white" d="M101 39.8a18.92 18.92 0 0017.65-18.44c0-2.92-2-7.72-8.72-8.26v.05c5.56.59 7.52 4.64 7.48 7.29-.16 8.91-7.07 18.35-16.35 19.3z"/><path fill="white" d="M101.08 39.63c8.21-.85 14.82-11.41 15-20.16 0-2.37-1.51-5.68-6.2-6.21v.06c3.69.56 5 3.13 5 5.24-.15 8.57-6.59 20.07-13.66 21z"/><path fill="white" d="M101.19 39.4v.07c6-.87 12.19-13.48 12.34-21.88a4 4 0 00-3.73-4.15v.06a2.93 2.93 0 012.43 3.18C112 24.89 106 38.51 101.19 39.4zm-3.77-3.26c.14-7.9 6.37-21.78 11-22.72v-.07c-5.8.86-12.21 13.69-12.36 21.83a3.93 3.93 0 003.74 4.22v-.06a2.8 2.8 0 01-2.38-3.2z"/><path fill="white" d="M94.87 34.26c.15-8.35 6.86-20.07 13.68-21v-.06c-8 .85-14.83 11.57-15 20.1 0 2.38 1.56 5.9 6.2 6.28v-.06c-3.62-.47-4.92-3.15-4.88-5.26z"/><path fill="white" d="M92.32 32.38c.15-8.75 7.28-18.35 16.31-19.3v-.06A19.26 19.26 0 0091 31.41c0 2.92 2 7.88 8.73 8.32v-.06c-5.8-.52-7.45-4.67-7.41-7.29z"/><path fill="white" d="M89.77 30.5c.16-9.19 8.08-16.71 18.94-17.58v-.06c-12.16.75-20.12 7.31-20.28 16.67-.07 3.46 2.46 9.86 11.19 10.36-7.62-.6-9.9-6.2-9.85-9.39zm-6.18-17.44c-4.19-.57-9.25 1.89-12.1 6.21l.05.07c2.7-3.88 7.26-6.19 11-5.67 2.52.34 4.25 2.25 3.9 6-.89 9.55-8.94 20.28-21.82 20.25v.07A22.63 22.63 0 0088 19.7c.35-4.14-1.57-6.25-4.41-6.64z"/><path fill="white" d="M84.93 19.63c.31-3.29-1.16-5-3.47-5.31-3.33-.45-7.38 1.58-9.83 5.15l.05.06c2.25-3.08 5.85-5 8.74-4.6 2 .27 3.32 1.77 3 4.67-.77 8.22-8.61 19.52-18.76 20.15C76 39.74 84.09 28.59 84.93 19.63z"/><path fill="white" d="M64.8 39.55v.06C74.25 38.48 81.25 27 82 19.56c.22-2.44-.9-3.74-2.57-4-2.52-.35-5.66 1.35-7.6 4.07v.06c1.85-2.39 4.43-3.81 6.47-3.53 1.44.2 2.32 1.29 2.13 3.28-.63 6.78-7.06 18.32-15.63 20.11z"/><path fill="white" d="M64.91 39.32v.09c7-1.88 13.49-14 14-20 .14-1.53-.54-2.43-1.66-2.58-1.67-.23-3.79 1-5.34 3v.06c1.29-1.54 3-2.63 4.25-2.46.81.11 1.34.82 1.23 1.95C77 24.62 71 36.72 64.91 39.32zm-1.1-6.81a20.91 20.91 0 00-1.58 5.12 1.91 1.91 0 001 1.62 1.88 1.88 0 00.3.12v-.09a1.19 1.19 0 01-.34-1.08A25.43 25.43 0 0165 33L78 0l-1.83.36c.1.42-3.41 9.05-3.55 9.48z"/><path fill="white" d="M61.42 31.48A22.37 22.37 0 0060 36.41c-.16 1.81 1.42 2.79 3.54 3.11v-.06c-1.45-.26-2.57-1-2.44-2.4a25.35 25.35 0 011.52-5l8.66-22.28c.21-.59 3.5-8.55 3-9.06l-1.78.36v.1c.07 1.94-2.18 7.25-2.64 8.5z"/><path fill="white" d="M67.16 9.57L59 30.46a19.13 19.13 0 00-1.38 4.61c-.22 2.55 1.87 4.31 5.78 4.58a10.2 10.2 0 01-2.36-.55 3 3 0 01-2.27-3.28A20.07 20.07 0 0160.23 31l8.32-21.38c.42-1.13 2.8-6.53 2.23-8.18l-1.72.34v.1c.94 1.29-1.35 6.29-1.9 7.69z"/><path fill="white" d="M64.2 10l-7.54 19.44a16.07 16.07 0 00-1.26 4.34c-.27 3.19 2.5 5.8 8 6-4.61-.26-7.12-2.44-6.87-5.32A16.82 16.82 0 0157.85 30l7.79-20c.7-1.83 2.77-6.32 1.65-7.82l-1.77.36v.1C66.72 4.29 65 8 64.2 10z"/><path fill="white" d="M63.32 39.9c-6.21-.27-9.34-3.3-9-6.82A15 15 0 0155.46 29l7.19-18.58c.9-2.32 2.58-5.82 1.26-7.55l-1.63.34v.1c1.39 1.56.1 4.12-.85 6.71l-7.16 18.4a13.27 13.27 0 00-1.11 4c-.34 3.83 3.07 7.3 10.14 7.51zm-8.18-23.42c-.13-2.47-1.59-3.6-3.36-3.6-3.22 0-6 2.54-7.75 6v-1.22c-.14-2.69-2-4.78-5.31-4.78-7 0-10.45 4.61-11.6 9.83h.06c1.22-4.89 4.48-9.3 10.77-9.3a4.4 4.4 0 014.79 4.31c.17 3.17-.88 5.64-2 8.49l-5.1 13.33H37l5.1-13.22c.34-.91.66-1.76.95-2.58 1-2.1 2.25-4.25 2.9-4.25.48 0 .63.41.66.78a11.28 11.28 0 01-1.51 5.67l.06.06a10.54 10.54 0 002.63-6.3c0-.69-.34-1.18-1-1.18-1.09 0-2.48 2.24-3.5 4.61.12-.38.22-.76.32-1.13 1.09-2.37 2.6-4.39 4-4.39.86 0 1.38.59 1.43 1.56.12 2.36-2 5.8-3.78 6.93l.06.06c2.42-1.08 5.08-4.63 4.93-7.53-.07-1.29-.75-2-1.83-2-1.78 0-3.5 2.07-4.69 4.63 0-.2.08-.4.11-.61 1.33-2.75 3.28-4.93 5.45-4.93 1.18 0 2.08.8 2.16 2.36.19 3.44-3.06 7.1-6 8.17l.06.06c3.61-.92 7.38-4.79 7.17-8.77-.1-1.88-1.17-2.79-2.56-2.79-2.5.01-4.73 2.25-6.12 5.25v-.49c1.59-3.22 4.1-5.66 7-5.66 1.56 0 2.85 1 3 3.18.24 4.57-4 8.44-8.32 9.41l.06.05c5-.76 9.67-4.9 9.4-10.01z"/><path fill="white" d="M41.49 17.82a4 4 0 00-4.29-3.92c-5.58 0-8.79 4.15-9.92 8.81h.07c1.24-4.34 4.08-8.27 9.07-8.27a3.46 3.46 0 013.78 3.44c.14 2.63-1.1 5.53-2.09 8.17l-5.26 13.49h1.4l5.15-13.38c1.1-2.75 2.24-5.49 2.09-8.34z"/><path fill="white" d="M39 17.93a3 3 0 00-3.28-3c-4.38 0-7.06 3.78-8.22 7.79h.06c1.23-3.73 3.75-7.25 7.39-7.25A2.56 2.56 0 0137.69 18c.11 2.09-1.33 5.48-2.28 7.85L30 39.54h1.45l5.31-13.6c.94-2.47 2.34-5.59 2.24-8.01z"/><path fill="white" d="M36.45 18.09A2.08 2.08 0 0034.19 16c-3 0-5.39 3.26-6.53 6.71h.07c1.19-3.08 3.23-6.18 5.68-6.18a1.57 1.57 0 011.75 1.62c.09 1.66-1.59 5.43-2.39 7.52l-5.56 13.87h1.39l5.46-13.76c.94-2.2 2.49-5.78 2.39-7.69z"/><path fill="white" d="M33.93 18.25A1.15 1.15 0 0032.69 17c-1.77 0-3.68 2.79-4.83 5.69h.07c1.16-2.58 2.95-5.16 4-5.16.43 0 .71.22.74.76.06 1.13-1.82 5.37-2.58 7.2l-5.66 14h1.4l5.61-13.92c.79-1.94 2.56-5.97 2.49-7.32zM18.64 30.12l.9-1.89-3.05-15.56c-.85-4.38.17-6.29 3.61-6.95v-.06h-3.18c-.92.46-2.87 1.84-1.78 7z"/><path fill="white" d="M16.84 33.88l.89-1.88-4-19.43c-.75-3.77-.43-5.73.82-6.85v-.06h-2.16c-.66 1.41-.86 2.82-.1 6.55zM15 37.63l.89-1.86-5-23.61c-.88-3.67-.68-5.35-.32-6.5H8.66a21.46 21.46 0 00.76 5.88zM6.91 5.66H4.66v.06c1 1.22 1.3 2.71 2.1 6l6 27.83h1.35l-6-27.92a51.08 51.08 0 01-1.2-5.97zm-4.5 0H0v.06c2.2.87 3.28 2.54 4.15 6.45l5.93 27.37h1.35L5.46 12C4.43 7.22 3.35 6.34 2.41 5.66zm30.66 0C30.23 7.32 28.54 10.39 25 18l.09.05c4.09-7.66 6.42-10.71 11.7-12.3v-.09zM24.8 17.85l.09.06C28.25 10 29.13 7.79 30.5 5.72v-.06h-2.72v.08c.28 3.17-.78 6.09-2.98 12.11z"/><path fill="white" d="M24.62 17.73l.09.06c2.13-7.09 2.82-10.22.94-12.13H23v.06c3 1.06 3.62 4.09 1.62 12.01zM122 14.76v1.35h-.2v-1.35h-.58v-.19h1.38v.19zm2.3 1.35V14.8l-.48 1.29h-.23l-.43-1.29v1.31h-.19l.06-1.54h.35l.4 1.29.46-1.29h.32l.06 1.54z"/>
+                    </svg>
+                    <span class="hero-rating-stars">
+                        <iconify-icon icon="solar:star-bold" width="14" height="14"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="14" height="14"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="14" height="14"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="14" height="14"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="14" height="14"></iconify-icon>
+                    </span>
+                </a>
+                <a href="https://www.airbnb.com/rooms/8605514" target="_blank" rel="noopener noreferrer" class="hero-rating-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320.1 99.9" aria-label="Airbnb" class="hero-brand-logo hero-brand-airbnb">
+                        <path fill="white" d="M168.7,25.1c0,3.6-2.9,6.5-6.5,6.5s-6.5-2.9-6.5-6.5s2.8-6.5,6.5-6.5C165.9,18.7,168.7,21.6,168.7,25.1z M141.9,38.2c0,0.6,0,1.6,0,1.6s-3.1-4-9.7-4c-10.9,0-19.4,8.3-19.4,19.8c0,11.4,8.4,19.8,19.4,19.8c6.7,0,9.7-4.1,9.7-4.1v1.7c0,0.8,0.6,1.4,1.4,1.4h8.1V36.8c0,0-7.4,0-8.1,0C142.5,36.8,141.9,37.5,141.9,38.2z M141.9,62.3c-1.5,2.2-4.5,4.1-8.1,4.1c-6.4,0-11.3-4-11.3-10.8s4.9-10.8,11.3-10.8c3.5,0,6.7,2,8.1,4.1V62.3z M157.4,36.8h9.6v37.6h-9.6V36.8z M300.8,35.8c-6.6,0-9.7,4-9.7,4V18.7h-9.6v55.7c0,0,7.4,0,8.1,0c0.8,0,1.4-0.7,1.4-1.4v-1.7l0,0c0,0,3.1,4.1,9.7,4.1c10.9,0,19.4-8.4,19.4-19.8C320.1,44.2,311.6,35.8,300.8,35.8z M299.2,66.3c-3.7,0-6.6-1.9-8.1-4.1V48.8c1.5-2,4.7-4.1,8.1-4.1c6.4,0,11.3,4,11.3,10.8S305.6,66.3,299.2,66.3z M276.5,52.1v22.4h-9.6V53.2c0-6.2-2-8.7-7.4-8.7c-2.9,0-5.9,1.5-7.8,3.7v26.2h-9.6V36.8h7.6c0.8,0,1.4,0.7,1.4,1.4v1.6c2.8-2.9,6.5-4,10.2-4c4.2,0,7.7,1.2,10.5,3.6C275.2,42.2,276.5,45.8,276.5,52.1z M218.8,35.8c-6.6,0-9.7,4-9.7,4V18.7h-9.6v55.7c0,0,7.4,0,8.1,0c0.8,0,1.4-0.7,1.4-1.4v-1.7l0,0c0,0,3.1,4.1,9.7,4.1c10.9,0,19.4-8.4,19.4-19.8C238.2,44.2,229.7,35.8,218.8,35.8z M217.2,66.3c-3.7,0-6.6-1.9-8.1-4.1V48.8c1.5-2,4.7-4.1,8.1-4.1c6.4,0,11.3,4,11.3,10.8S223.6,66.3,217.2,66.3z M191.2,35.8c2.9,0,4.4,0.5,4.4,0.5v8.9c0,0-8-2.7-13,3v26.3h-9.6V36.8c0,0,7.4,0,8.1,0c0.8,0,1.4,0.7,1.4,1.4v1.6C184.3,37.7,188.2,35.8,191.2,35.8z M91.5,71c-0.5-1.2-1-2.5-1.5-3.6c-0.8-1.8-1.6-3.5-2.3-5.1l-0.1-0.1c-6.9-15-14.3-30.2-22.1-45.2l-0.3-0.6c-0.8-1.5-1.6-3.1-2.4-4.7c-1-1.8-2-3.7-3.6-5.5C56,2.2,51.4,0,46.5,0c-5,0-9.5,2.2-12.8,6c-1.5,1.8-2.6,3.7-3.6,5.5c-0.8,1.6-1.6,3.2-2.4,4.7l-0.3,0.6C19.7,31.8,12.2,47,5.3,62l-0.1,0.2c-0.7,1.6-1.5,3.3-2.3,5.1c-0.5,1.1-1,2.3-1.5,3.6c-1.3,3.7-1.7,7.2-1.2,10.8c1.1,7.5,6.1,13.8,13,16.6c2.6,1.1,5.3,1.6,8.1,1.6c0.8,0,1.8-0.1,2.6-0.2c3.3-0.4,6.7-1.5,10-3.4c4.1-2.3,8-5.6,12.4-10.4c4.4,4.8,8.4,8.1,12.4,10.4c3.3,1.9,6.7,3,10,3.4c0.8,0.1,1.8,0.2,2.6,0.2c2.8,0,5.6-0.5,8.1-1.6c7-2.8,11.9-9.2,13-16.6C93.2,78.2,92.8,74.7,91.5,71z M46.4,76.2c-5.4-6.8-8.9-13.2-10.1-18.6c-0.5-2.3-0.6-4.3-0.3-6.1c0.2-1.6,0.8-3,1.6-4.2c1.9-2.7,5.1-4.4,8.8-4.4c3.7,0,7,1.6,8.8,4.4c0.8,1.2,1.4,2.6,1.6,4.2c0.3,1.8,0.2,3.9-0.3,6.1C55.3,62.9,51.8,69.3,46.4,76.2z M86.3,80.9c-0.7,5.2-4.2,9.7-9.1,11.7c-2.4,1-5,1.3-7.6,1c-2.5-0.3-5-1.1-7.6-2.6c-3.6-2-7.2-5.1-11.4-9.7c6.6-8.1,10.6-15.5,12.1-22.1c0.7-3.1,0.8-5.9,0.5-8.5c-0.4-2.5-1.3-4.8-2.7-6.8c-3.1-4.5-8.3-7.1-14.1-7.1s-11,2.7-14.1,7.1c-1.4,2-2.3,4.3-2.7,6.8c-0.4,2.6-0.3,5.5,0.5,8.5c1.5,6.6,5.6,14.1,12.1,22.2c-4.1,4.6-7.8,7.7-11.4,9.7c-2.6,1.5-5.1,2.3-7.6,2.6c-2.7,0.3-5.3-0.1-7.6-1c-4.9-2-8.4-6.5-9.1-11.7c-0.3-2.5-0.1-5,0.9-7.8c0.3-1,0.8-2,1.3-3.2c0.7-1.6,1.5-3.3,2.3-5l0.1-0.2c6.9-14.9,14.3-30.1,22-44.9l0.3-0.6c0.8-1.5,1.6-3.1,2.4-4.6c0.8-1.6,1.7-3.1,2.8-4.4c2.1-2.4,4.9-3.7,8-3.7c3.1,0,5.9,1.3,8,3.7c1.1,1.3,2,2.8,2.8,4.4c0.8,1.5,1.6,3.1,2.4,4.6l0.3,0.6C67.7,34.8,75.1,50,82,64.9L82,65c0.8,1.6,1.5,3.4,2.3,5c0.5,1.2,1,2.2,1.3,3.2C86.4,75.8,86.7,78.3,86.3,80.9z"/>
+                    </svg>
+                    <span class="hero-rating-stars">
+                        <iconify-icon icon="solar:star-bold" width="14" height="14"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="14" height="14"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="14" height="14"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="14" height="14"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="14" height="14"></iconify-icon>
+                    </span>
+                </a>
+            </div>
+            <div>
+                <div class="stat-value">6 cars</div>
+                <div class="stat-label">Parking</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- A WEEK AT SEA REACH -->
+<section class="section section-sand" id="week">
+    <div class="container">
+        <div class="fade-in" style="text-align: center; margin-bottom: 48px;">
+            <div class="eyebrow eyebrow-center">YOUR WEEK</div>
+            <h2 class="text-center">A Week at Sea Reach</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: 55% 42%; gap: 48px; align-items: start;" class="fade-in week-layout">
+            <div class="week-text">
+                <p>You pull into the driveway on Saturday and start unloading the car. The kids are already arguing about who gets the bunk room. You open the front door, drop the cooler in the kitchen, and notice the beach badges sitting on the counter — eight of them, ready to go. The chairs and umbrellas are in the garage. You haven't been here five minutes, and tomorrow is already handled.</p>
+                <p>By Sunday morning, you've found your rhythm. Coffee on the wraparound porch while the house is still quiet. The beach is a four-minute walk, and you're learning to take it slow — flip-flops, towels over shoulders, no rush. The kids sprint ahead. You let them.</p>
+                <p>The afternoons take care of themselves. Someone fires up the grill. The ping pong table in the garage becomes the most popular spot in the house. By evening, everyone ends up around the fire pit — sandy, sunburned, happy. The kind of tired that comes from a day with absolutely nothing on the schedule.</p>
+                <p>By Wednesday, you realize you haven't moved the car. You don't need to. The boardwalk is a short walk. The beach is right there. The house has everything. Somewhere around Thursday, someone says it —</p>
+                <div class="pull-quote">"Can we just come back every year?"</div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#story" class="btn-secondary">Meet the Family Behind Sea Reach</a>
+                </div>
+            </div>
+            <div>
+                <Image
+                    src={backyardSlipNSlide}
+                    alt="Kids playing in the backyard at Sea Reach"
+                    style="aspect-ratio: 3/4; border-radius: 20px; object-fit: cover; width: 100%; height: auto;"
+                    format="webp"
+                    quality={85}
+                    loading="lazy"
+                />
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="section section-white" id="story">
+    <div class="container">
+        <div class="story-grid fade-in">
+            <div>
+                <div class="eyebrow">OUR FAMILY</div>
+                <h2>Three Generations of Jersey Shore Summers</h2>
+                <p class="subheadline" style="margin-bottom: 32px;">The D'Alessandro family has been making shore memories since before the boardwalk had arcades.</p>
+                <div class="story-text">
+                    <p>The Jersey Shore has been the place we call home in the summer for generations.</p>
+                    <p>My grandparents had a beach house just down the shore since my mother was little — five kids crammed into three bedrooms for two months with zero A/C, loving every minute of it.</p>
+                    <p>My dad ran stands on Jenkinson's boardwalk in college. That's where he first met my mom. My sister and I grew up in that same beach house, squeezing in with all our cousins, sandy feet and all. We'd fish with my grandfather, paint seashells with my grandmother, and stay on the beach until someone rang the dinner bell.</p>
+                    <p>Our summers were filled with sea glass, sandcastles, and sun-kissed memories.</p>
+                    <p>So it's only fitting that we continue the tradition with our own beach house. (Don't worry — this one has A/C.)</p>
+                    <p>We hope your days here are just as memorable as ours, and that you'll come back each summer to make more.</p>
+                </div>
+                <div class="story-signature">— The D'Alessandro Family</div>
+                <div style="margin-top: 32px;">
+                    <a href="#zones" class="btn-secondary">Explore the House</a>
+                </div>
+            </div>
+            <div class="story-images">
+                <div class="story-img">
+                    <Image
+                        src={familyPhoto}
+                        alt="The D'Alessandro Family at the Jersey Shore"
+                        style="aspect-ratio: 3/4; object-fit: cover; object-position: top; width: 100%; height: auto; display: block;"
+                        format="webp"
+                        quality={85}
+                        loading="lazy"
+                    />
+                </div>
+                <div class="story-img">
+                    <Image
+                        src={lastWave}
+                        alt="Shore lifestyle at Point Pleasant Beach"
+                        style="aspect-ratio: 4/3; object-fit: cover; width: 100%; height: auto; display: block;"
+                        format="webp"
+                        quality={85}
+                        loading="lazy"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEVEN ZONES -->
+<section class="section section-sand" id="zones">
+    <div class="container">
+        <div class="fade-in" style="text-align: center; margin-bottom: 48px;">
+            <div class="eyebrow eyebrow-center">ROOM FOR EVERYONE</div>
+            <h2 class="text-center">Seven Places to Be. One House to Love.</h2>
+            <p class="subheadline subheadline-center" style="margin-top: 16px;">Every family beach rental makes the same promise — "plenty of space." Sea Reach actually delivers. Seven distinct zones, each with its own personality, so every age group finds their spot.</p>
+        </div>
+        <div class="zones-grid fade-in">
+            <div class="card zone-card">
+                <div class="zone-img-wrap">
+                    <Image src={frontCouch} alt="The Wraparound Porch lounge at Sea Reach" class="zone-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>The Wraparound Porch</h3>
+                    <p>Morning coffee before anyone else is awake. Evening reading with the sound of the neighborhood settling down. Temperature-controlled, enclosed, and the quietest seat in the house — until the kids find you.</p>
+                    <a href="#gallery" class="zone-gallery-link">View in gallery</a>
+                </div>
+            </div>
+            <div class="card zone-card">
+                <div class="zone-img-wrap">
+                    <Image src={livingRoomOppo} alt="Open living room with couch and porch view" class="zone-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>The Living Room</h3>
+                    <p>The hub. Hardwood floors, big couch, fireplace, and the kind of open layout where you can see everyone without being on top of them. This is where the whole house ends up at the end of the day.</p>
+                    <a href="#gallery" class="zone-gallery-link">View in gallery</a>
+                </div>
+            </div>
+            <div class="card zone-card">
+                <div class="zone-img-wrap">
+                    <Image src={kitchen} alt="Gourmet kitchen with granite counters" class="zone-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>The Kitchen</h3>
+                    <p>Granite counters, gas stove, and a dining table that seats eight. The kind of kitchen that makes you actually want to eat in — and you will.</p>
+                    <a href="#gallery" class="zone-gallery-link">View in gallery</a>
+                </div>
+            </div>
+        </div>
+        <div class="zones-row-2 fade-in">
+            <div class="card zone-card">
+                <div class="zone-img-wrap">
+                    <Image src={garageGameroom} alt="The Garage Lounge with ping pong" class="zone-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>The Garage Lounge</h3>
+                    <p>The secret weapon. Ping pong, TV, and a full hangout space that becomes the most popular room in the house. Perfect for sandy kids, teens who want their own world, or a rainy-afternoon refuge.</p>
+                    <a href="#gallery" class="zone-gallery-link">View in gallery</a>
+                </div>
+            </div>
+            <div class="card zone-card">
+                <div class="zone-img-wrap">
+                    <Image src={office2} alt="Dedicated office workspace at Sea Reach" class="zone-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>The Office Nook</h3>
+                    <p>A quiet upstairs workspace for anyone who needs to check in. Real desk, real chair, real WiFi — not a kitchen counter with a laptop.</p>
+                    <a href="#gallery" class="zone-gallery-link">View in gallery</a>
+                </div>
+            </div>
+        </div>
+        <div class="zones-row-2 fade-in">
+            <div class="card zone-card">
+                <div class="zone-img-wrap">
+                    <Image src={outdoorSeatsFirePit} alt="Fire pit and outdoor dining at Sea Reach" class="zone-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>Fire Pit & Outdoor Dining</h3>
+                    <p>Where the best conversations happen. Gas fire pit with seating, Weber grill, and private outdoor dining. By night three, this becomes the family ritual — dinner outside, fire after, kids catching fireflies.</p>
+                    <a href="#gallery" class="zone-gallery-link">View in gallery</a>
+                </div>
+            </div>
+            <div class="card zone-card">
+                <div class="zone-img-wrap">
+                    <Image src={houseBackyard} alt="The backyard at Sea Reach" class="zone-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>The Backyard</h3>
+                    <p>Slip-n-slide territory. Space for kids to run, outdoor shower to rinse off the sand, and the kind of breathing room that makes the house feel twice as big.</p>
+                    <a href="#gallery" class="zone-gallery-link">View in gallery</a>
+                </div>
+            </div>
+        </div>
+        <div class="fade-in" style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <p style="font-size: 1.05rem; line-height: 1.75; color: #4a4a4a; margin-bottom: 32px;">Most 4-bedroom rentals have a living room and a deck. Sea Reach has seven spaces for different moods, different times of day, and different people. Two families sharing? Kids in the garage, adults by the fire. Everyone's happy.</p>
+            <a href="#bedrooms" class="btn-secondary">See the Bedrooms</a>
+        </div>
+    </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section class="section section-white" id="gallery">
+    <div class="container">
+        <div class="fade-in" style="text-align: center; margin-bottom: 48px;">
+            <div class="eyebrow eyebrow-center">TAKE THE TOUR</div>
+            <h2 class="text-center">See Every Corner of Sea Reach</h2>
+        </div>
+        <div class="gallery-grid fade-in">
+            {galleryPhotos.map((photo, i) => (
+                <button
+                    class={`gallery-item ${photo.wide ? 'gallery-item-wide' : ''}`}
+                    data-gallery-index={i}
+                    type="button"
+                    aria-label={`View photo: ${photo.alt}`}
+                >
+                    <Image
+                        src={photo.img}
+                        alt={photo.alt}
+                        class="gallery-item-img"
+                        format="webp"
+                        quality={75}
+                        loading="lazy"
+                        widths={[400, 600, 800]}
+                        sizes="(max-width: 767px) 50vw, 33vw"
+                    />
+                    <div class="gallery-item-overlay">
+                        <iconify-icon icon="solar:maximize-square-linear" width="24" height="24"></iconify-icon>
+                    </div>
+                </button>
+            ))}
+        </div>
+        <PhotoLightboxIsland images={lightboxImages} />
+    </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="section section-white" id="included">
+    <div class="container">
+        <div class="fade-in" style="margin-bottom: 48px;">
+            <div class="eyebrow">IT'S ALL HERE</div>
+            <h2>Everything's Here. Everything's Ready.</h2>
+            <p class="subheadline" style="margin-top: 12px;">The things that make Sea Reach different aren't dramatic — they're the small stuff that other rentals leave off the list. When you arrive, all of it is waiting for you.</p>
+        </div>
+        <div class="included-grid fade-in">
+            <div>
+                <div class="included-category">
+                    <div class="included-category-title">On the Beach</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> 8 adult beach badges — no morning lines at the badge booth</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> 8 beach chairs — already in the garage, grab and go</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> 4 beach umbrellas — shade for the whole crew</div>
+                </div>
+                <div class="included-category">
+                    <div class="included-category-title">In the House</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Full gourmet kitchen — granite counters, everything you need to cook for eight</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Pillows, quilts, and fresh bed sheets in every room</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Central A/C throughout</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Xfinity TV and WiFi (indoor and outdoor)</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> 2 dedicated office spaces for anyone who needs to work</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Private outdoor shower — rinse off the sand before you come inside</div>
+                </div>
+                <div class="included-category">
+                    <div class="included-category-title">Outside</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Gas fire pit with seating</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Weber grill</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Outdoor dining area</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> 6-car private driveway — no parking meters, no hunting for spots</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Ping pong table and game room in the garage</div>
+                </div>
+                <p style="font-size: 1rem; line-height: 1.75; color: #4a4a4a; margin-top: 32px;">We've spent years thinking about what makes a beach week feel effortless — and then making sure it's all here when you arrive. No errands on day one. No scrambling to rent chairs or track down badges. Just show up, settle in, and start your vacation.</p>
+                <div style="margin-top: 28px;">
+                    <a href="#bedrooms" class="btn-secondary">See the Bedrooms</a>
+                </div>
+            </div>
+            <div class="included-img">
+                <Image
+                    src={sunsetRide}
+                    alt="Sunset at Jenkinson's boardwalk rides"
+                    style="height: 100%; min-height: 500px; object-fit: cover; border-radius: 20px; width: 100%; display: block;"
+                    format="webp"
+                    quality={85}
+                    loading="lazy"
+                />
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BEDROOMS -->
+<section class="section section-sand" id="bedrooms">
+    <div class="container">
+        <div class="fade-in" style="text-align: center; margin-bottom: 16px;">
+            <h2 class="text-center">Four Bedrooms. Real Beds. Everybody's Comfortable.</h2>
+            <p class="subheadline subheadline-center" style="margin-top: 12px;">Room for one family or two. Every bedroom has its own personality — and actual beds, not air mattresses.</p>
+        </div>
+        <div class="bedrooms-grid fade-in">
+            <div class="card">
+                <div class="bedroom-img-wrap">
+                    <Image src={masterBedroom1} alt="Master Bedroom with queen bed and vaulted ceiling" class="bedroom-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>Master Bedroom</h3>
+                    <div class="bedroom-tag">Queen bed · Sleeps 2</div>
+                    <p class="bedroom-desc">Vaulted ceiling with compass decor. The room parents claim first.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="bedroom-img-wrap">
+                    <Image src={bedroomSurf} alt="Queen bedroom with coastal decor" class="bedroom-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>Queen Bedroom</h3>
+                    <div class="bedroom-tag">Queen bed · Sleeps 2</div>
+                    <p class="bedroom-desc">Coastal-themed decor. Second-best room in the house — still really good.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="bedroom-img-wrap">
+                    <Image src={bedroom3} alt="Third bedroom with full bed" class="bedroom-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>Third Bedroom</h3>
+                    <div class="bedroom-tag">Full bed · Sleeps 2</div>
+                    <p class="bedroom-desc">Beach-themed touches. Cozy, quiet, straight shot to the bathroom.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="bedroom-img-wrap">
+                    <Image src={bedroomBunk} alt="Bunk room with twin bunk beds" class="bedroom-img" format="webp" quality={80} loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <h3>Bunk Room</h3>
+                    <div class="bedroom-tag">Twin bunks · Sleeps 2</div>
+                    <p class="bedroom-desc">The kids' room. They'll love it. You'll love that they're in their own space.</p>
+                </div>
+            </div>
+        </div>
+        <p class="fade-in" style="text-align: center; margin-top: 36px; font-size: 0.95rem; color: #7a7a7a;">All bedrooms include pillows, quilts, and fresh sheets. 2 full bathrooms. Central A/C throughout.</p>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-white">
+    <div class="container">
+        <div class="fade-in" style="text-align: center; margin-bottom: 16px;">
+            <div class="eyebrow eyebrow-center">GUEST REVIEWS</div>
+            <h2 class="text-center">Don't Take Our Word for It</h2>
+            <p class="subheadline subheadline-center" style="margin-top: 12px;">Here's what families say after their week at Sea Reach.</p>
+            <div class="platform-ratings">
+                <a href="https://www.vrbo.com/2823698" target="_blank" rel="noopener noreferrer" class="platform-badge">
+                    <svg class="platform-logo" viewBox="0 0 48 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VRBO">
+                        <text x="0" y="13" font-family="DM Sans, sans-serif" font-weight="700" font-size="14" fill="#1b449c">VRBO</text>
+                    </svg>
+                    <div class="platform-stars">
+                        <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="16" height="16"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="16" height="16"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="16" height="16"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="16" height="16"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="16" height="16"></iconify-icon>
+                    </div>
+                    <span class="platform-rating-text">5.0</span>
+                </a>
+                <a href="https://www.airbnb.com/rooms/8605514" target="_blank" rel="noopener noreferrer" class="platform-badge">
+                    <svg class="platform-logo" viewBox="0 0 20 22" xmlns="http://www.w3.org/2000/svg" aria-label="Airbnb">
+                        <path d="M10 1.5c-1.3 0-2.4.8-3.2 1.8-.8 1-1.4 2.3-2 3.7-.5 1.2-.9 2.5-1.3 3.6-.4 1.1-.7 2-.8 2.7-.2.9-.2 1.7 0 2.4.2.7.6 1.3 1.2 1.7.5.4 1.1.6 1.8.6.9 0 1.8-.4 2.7-1 .7-.5 1.3-1.1 1.6-1.4.3.3.9.9 1.6 1.4.9.6 1.8 1 2.7 1 .7 0 1.3-.2 1.8-.6.6-.4 1-1 1.2-1.7.2-.7.2-1.5 0-2.4-.1-.7-.4-1.6-.8-2.7-.4-1.1-.8-2.4-1.3-3.6-.6-1.4-1.2-2.7-2-3.7C12.4 2.3 11.3 1.5 10 1.5zm0 1.2c.8 0 1.6.6 2.3 1.5.7.9 1.3 2.1 1.8 3.4.5 1.2.9 2.4 1.2 3.5.4 1.1.6 1.9.7 2.5.2.7.1 1.3-.1 1.8-.1.4-.4.7-.8.9-.3.2-.7.3-1.1.3-.6 0-1.3-.3-2.1-.9-.6-.4-1.2-1-1.6-1.5l-.3-.3-.3.3c-.4.5-1 1.1-1.6 1.5-.8.6-1.5.9-2.1.9-.4 0-.8-.1-1.1-.3-.4-.2-.7-.5-.8-.9-.2-.5-.3-1.1-.1-1.8.1-.6.3-1.4.7-2.5.3-1.1.7-2.3 1.2-3.5.5-1.3 1.1-2.5 1.8-3.4C8.4 3.3 9.2 2.7 10 2.7z" fill="#FF5A5F"/>
+                    </svg>
+                    <div class="platform-stars">
+                        <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="16" height="16"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="16" height="16"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="16" height="16"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="16" height="16"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="16" height="16"></iconify-icon>
+                    </div>
+                    <span class="platform-rating-text">5.0</span>
+                </a>
+            </div>
+        </div>
+        <div class="testimonials-grid fade-in">
+            <div class="card testimonial-card">
+                <div class="testimonial-quote-mark">"</div>
+                <div class="testimonial-stars">
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                </div>
+                <p class="testimonial-text">"Sea Reach was the best vacation our family has ever taken. The location is literally a couple of blocks to the beach, and having the beach badges and chairs included saved us a fortune. The kids lived in the garage playing ping pong — we barely saw them! The fire pit at night was our favorite part. We're already booked for next summer."</p>
+                <div class="testimonial-attr">— Samantha & Ashton Schneider</div>
+                <span class="testimonial-pull">"The fire pit at night was our favorite part."</span>
+            </div>
+            <div class="card testimonial-card">
+                <div class="testimonial-quote-mark">"</div>
+                <div class="testimonial-stars">
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                </div>
+                <p class="testimonial-text">"We've rented in Point Pleasant for years and Sea Reach is hands-down the best house we've stayed in. It's spotless, the kitchen has everything you need, and the outdoor space is incredible. Six cars in the driveway — game changer when you have family visiting. Scott was responsive and made everything easy. Highly, highly recommend."</p>
+                <div class="testimonial-attr">— Dave & Hanna Clary</div>
+                <span class="testimonial-pull">"Six cars in the driveway — game changer."</span>
+            </div>
+            <div class="card testimonial-card">
+                <div class="testimonial-quote-mark">"</div>
+                <div class="testimonial-stars">
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" style="color: #e8c86a;" width="18" height="18"></iconify-icon>
+                </div>
+                <p class="testimonial-text">"We travel with another family every summer and finding a rental that works for 8 people is always the hardest part. Sea Reach solved it. Between the porch, the living room, the garage, and the fire pit, we never felt crowded. The walk to the beach is nothing. We've found our forever rental."</p>
+                <div class="testimonial-attr">— The McDonnell Family</div>
+                <span class="testimonial-pull">"We've found our forever rental."</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- THE NEIGHBORHOOD -->
+<section class="section section-sand" id="neighborhood">
+    <div class="container">
+        <div class="fade-in" style="text-align: center; margin-bottom: 16px;">
+            <div class="eyebrow eyebrow-center">THE NEIGHBORHOOD</div>
+            <h2 class="text-center">A Boardwalk Town — and You're Right in the Middle of It</h2>
+            <p class="subheadline subheadline-center" style="margin-top: 12px;">106 Atlantic Avenue, Point Pleasant Beach, NJ. Most families who stay here don't move their car from Saturday to Saturday — and not because there's nothing to do.</p>
+        </div>
+        <div class="neighborhood-grid fade-in">
+            <div class="map-placeholder">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3047.8!2d-74.0487!3d40.0909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z106+Atlantic+Ave%2C+Point+Pleasant+Beach%2C+NJ+08742!5e0!3m2!1sen!2sus!4v1"
+                    width="100%"
+                    height="100%"
+                    style="border:0; min-height: 400px;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Sea Reach Beach House location"
+                ></iframe>
+            </div>
+            <div>
+                <div class="walk-item">
+                    <iconify-icon icon="solar:walking-linear" class="walk-icon" width="22" height="22"></iconify-icon>
+                    <div>
+                        <div><span class="walk-name">Point Pleasant Beach</span> <span class="walk-time">4 min</span></div>
+                        <div class="walk-note">The beach. Your badges work here.</div>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <iconify-icon icon="solar:walking-linear" class="walk-icon" width="22" height="22"></iconify-icon>
+                    <div>
+                        <div><span class="walk-name">Jenkinson's Mini Golf</span> <span class="walk-time">5 min</span></div>
+                        <div class="walk-note">18 holes, family-friendly, open late</div>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <iconify-icon icon="solar:walking-linear" class="walk-icon" width="22" height="22"></iconify-icon>
+                    <div>
+                        <div><span class="walk-name">Jenkinson's Arcade & Food Shack</span> <span class="walk-time">6 min</span></div>
+                        <div class="walk-note">Games, pizza, ice cream, fried everything</div>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <iconify-icon icon="solar:walking-linear" class="walk-icon" width="22" height="22"></iconify-icon>
+                    <div>
+                        <div><span class="walk-name">Jenkinson's Rides</span> <span class="walk-time">8 min</span></div>
+                        <div class="walk-note">Boardwalk rides for all ages</div>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <iconify-icon icon="solar:walking-linear" class="walk-icon" width="22" height="22"></iconify-icon>
+                    <div>
+                        <div><span class="walk-name">Tiki Bar</span> <span class="walk-time">11 min</span></div>
+                        <div class="walk-note">Live music, drinks, ocean views</div>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <iconify-icon icon="solar:walking-linear" class="walk-icon" width="22" height="22"></iconify-icon>
+                    <div>
+                        <div><span class="walk-name">Downtown Dining</span> <span class="walk-time">15 min</span></div>
+                        <div class="walk-note">Restaurants, bars, shops along Arnold Ave</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fade-in" style="margin-top: 48px; max-width: 820px; margin-left: auto; margin-right: auto;">
+            <p style="text-align: center; font-size: 1.05rem; line-height: 1.75; color: #4a4a4a;">Point Pleasant Beach is one of those places where the boardwalk still feels like the boardwalk — the kind with skee-ball and funnel cake and rides your kids will beg to go back to. Sea Reach sits right in the center of it all, 1.5 blocks from the sand and a short walk from everything else. The 6-car driveway is there if you need it, but the real luxury is not needing it.</p>
+        </div>
+        <div class="photo-strip fade-in" style="margin-top: 40px;">
+            <div class="photo-strip-item">
+                <Image src={boardwalkFun} alt="Kids at Jenkinson's boardwalk" style="width: 100%; height: 100%; object-fit: cover;" format="webp" quality={75} loading="lazy" />
+            </div>
+            <div class="photo-strip-item">
+                <Image src={miniGolf} alt="Jenkinson's mini golf" style="width: 100%; height: 100%; object-fit: cover;" format="webp" quality={75} loading="lazy" />
+            </div>
+            <div class="photo-strip-item">
+                <Image src={arcade} alt="Jenkinson's arcade" style="width: 100%; height: 100%; object-fit: cover;" format="webp" quality={75} loading="lazy" />
+            </div>
+            <div class="photo-strip-item">
+                <Image src={trainBoardwalk} alt="Boardwalk kids train" style="width: 100%; height: 100%; object-fit: cover;" format="webp" quality={75} loading="lazy" />
+            </div>
+            <div class="photo-strip-item">
+                <Image src={swingsBoardwalk} alt="Boardwalk swings" style="width: 100%; height: 100%; object-fit: cover;" format="webp" quality={75} loading="lazy" />
+            </div>
+        </div>
+        <div class="fade-in" style="text-align: center; margin-top: 40px;">
+            <a href="#contact" class="btn-primary btn-primary-lg">Book Your Week</a>
+        </div>
+    </div>
+</section>
+
+<!-- BOOK DIRECT -->
+<section class="section section-white" id="book-direct">
+    <div class="container">
+        <div class="fade-in" style="text-align: center; margin-bottom: 16px;">
+            <div class="eyebrow eyebrow-center">BOOK SMART</div>
+            <h2 class="text-center">Same House. Same Week. Skip the Platform Fees.</h2>
+            <p class="subheadline subheadline-center" style="margin-top: 12px;">Sea Reach is listed on VRBO and Airbnb — but the families who've been here before know to book direct. Here's why.</p>
+        </div>
+        <div class="comparison-grid fade-in">
+            <div class="compare-card compare-card-platform">
+                <div class="compare-header">
+                    <iconify-icon icon="solar:buildings-linear" width="18" height="18" style="vertical-align: middle; margin-right: 6px;"></iconify-icon>
+                    Platform Booking
+                </div>
+                <div class="compare-line">
+                    <iconify-icon icon="solar:add-circle-linear" width="18" height="18" style="color: #c0392b; flex-shrink: 0;"></iconify-icon>
+                    <span>Service fees added to your total</span>
+                </div>
+                <div class="compare-line">
+                    <iconify-icon icon="solar:add-circle-linear" width="18" height="18" style="color: #c0392b; flex-shrink: 0;"></iconify-icon>
+                    <span>Booking fees on top of the rate</span>
+                </div>
+                <div class="compare-line">
+                    <iconify-icon icon="solar:add-circle-linear" width="18" height="18" style="color: #c0392b; flex-shrink: 0;"></iconify-icon>
+                    <span>Higher total than what the owner charges</span>
+                </div>
+            </div>
+            <div class="compare-card compare-card-direct">
+                <div class="best-value-badge">BEST VALUE</div>
+                <div class="compare-header" style="color: #e8837e;">
+                    <iconify-icon icon="solar:home-smile-linear" width="18" height="18" style="vertical-align: middle; margin-right: 6px;"></iconify-icon>
+                    Book Direct
+                </div>
+                <div class="compare-line">
+                    <iconify-icon icon="solar:check-circle-linear" width="18" height="18" style="color: #3a9e6e; flex-shrink: 0;"></iconify-icon>
+                    <span>No platform fees</span>
+                </div>
+                <div class="compare-line">
+                    <iconify-icon icon="solar:check-circle-linear" width="18" height="18" style="color: #3a9e6e; flex-shrink: 0;"></iconify-icon>
+                    <span>No service charges</span>
+                </div>
+                <div class="compare-line">
+                    <iconify-icon icon="solar:check-circle-linear" width="18" height="18" style="color: #3a9e6e; flex-shrink: 0;"></iconify-icon>
+                    <span>No markup — just the rental rate</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="fade-in" style="text-align: center; margin-top: 56px;">
+            <h3 style="margin-bottom: 8px;">What could you do with the savings?</h3>
+        </div>
+        <div class="savings-ideas fade-in">
+            <div class="savings-idea">
+                <iconify-icon icon="solar:chef-hat-linear" width="32" height="32" style="color: #e8c86a;"></iconify-icon>
+                <p>A week of family dinners at the shore</p>
+            </div>
+            <div class="savings-idea">
+                <iconify-icon icon="hugeicons:surfboard" width="32" height="32" style="color: #e8c86a;"></iconify-icon>
+                <p>Surf lessons for every kid</p>
+            </div>
+            <div class="savings-idea">
+                <iconify-icon icon="solar:gamepad-linear" width="32" height="32" style="color: #e8c86a;"></iconify-icon>
+                <p>Two full days of boardwalk rides and games</p>
+            </div>
+            <div class="savings-idea">
+                <iconify-icon icon="solar:cup-star-linear" width="32" height="32" style="color: #e8c86a;"></iconify-icon>
+                <p>A nice bottle of wine every single night</p>
+            </div>
+        </div>
+
+        <div class="benefits-grid fade-in" style="margin-top: 56px;">
+            <div class="benefit-card">
+                <div class="benefit-icon"><iconify-icon icon="solar:tag-price-linear" width="24" height="24"></iconify-icon></div>
+                <h3>Best Price Guaranteed</h3>
+                <p>Same house, same dates — without the platform markup.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><iconify-icon icon="solar:phone-calling-linear" width="24" height="24"></iconify-icon></div>
+                <h3>Talk to the Owner</h3>
+                <p>Direct line to Scott. Real answers, local tips.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><iconify-icon icon="solar:check-read-linear" width="24" height="24"></iconify-icon></div>
+                <h3>Instant Confirmation</h3>
+                <p>No "host approval" wait. You book, you're in.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><iconify-icon icon="solar:chat-round-dots-linear" width="24" height="24"></iconify-icon></div>
+                <h3>Flexible Communication</h3>
+                <p>Text, email, or call. Whatever works.</p>
+            </div>
+        </div>
+
+        <div class="fade-in" style="text-align: center; margin-top: 56px;">
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:ahoy@sea-reach.com" class="btn-primary btn-primary-xl">Book Direct — Skip the Fees</a>
+                <a href="mailto:ahoy@sea-reach.com" class="btn-secondary">Have Questions? Contact the Owner</a>
+            </div>
+            <p style="font-size: 0.85rem; color: #7a7a7a; margin-top: 20px; font-style: italic;">Security deposit of $1,000 is fully refundable after your stay. Weekly rentals, Saturday to Saturday, June through September.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-sand" id="faq">
+    <div class="container">
+        <div class="fade-in" style="text-align: center; margin-bottom: 16px;">
+            <h2 class="text-center">Questions? We've Got Answers.</h2>
+            <p class="subheadline subheadline-center" style="margin-top: 12px;">Everything you need to know before you book.</p>
+        </div>
+        <div class="faq-list fade-in">
+            <div class="faq-item active">
+                <button class="faq-question" aria-expanded="true">
+                    How do I book, and what's required?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" style="max-height: 300px;">
+                    <div class="faq-answer-inner">Email us at <a href="mailto:ahoy@sea-reach.com">ahoy@sea-reach.com</a> with your preferred dates. We'll confirm availability and send you details. A $1,000 security deposit (fully refundable) is required to hold your week. No platform fees, no service charges, no hidden costs.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    What's included in the weekly rate?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Everything you need for a full beach week. Beach badges, chairs, umbrellas, full kitchen, grill, fire pit, ping pong, WiFi (indoor and outdoor), TV, A/C, outdoor shower, and a 6-car driveway. See the <a href="#included">What's Included</a> section above for the full list.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    How far is the beach?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">1.5 blocks. A 4-minute walk. You'll pass one street and you're on the sand. Jenkinson's boardwalk is 5-8 minutes on foot.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Is the security deposit actually refundable?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Yes, 100%. The deposit is returned in full after your stay, assuming no property damage. It's a standard precaution, not a hidden fee.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    What are the check-in and check-out times?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Rentals run Saturday to Saturday, June through September. We'll provide specific check-in/check-out details when you book.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Is the house good for two families sharing?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Absolutely — it's one of our most common booking types. Four bedrooms plus seven distinct hangout zones mean two families can share without feeling cramped. The garage lounge and fire pit give you natural separation when you want it.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Why is it cheaper to book direct?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Platforms like VRBO and Airbnb add service fees, platform fees, and additional taxes on top of the rental rate. When you book direct, those go away. Same house, same owner, same experience. See the <a href="#book-direct">Book Direct</a> section above for the exact breakdown.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    What's the cancellation policy?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Contact us directly. We're a family, not a corporation — we'll work with you on a case-by-case basis if plans change.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="contact">
+    <div class="final-cta-bg">
+        <Image
+            src={outdoorSeatsFirePit}
+            alt="Evening fire pit at Sea Reach"
+            style="width: 100%; height: 100%; object-fit: cover;"
+            format="webp"
+            quality={80}
+            loading="lazy"
+        />
+    </div>
+    <div class="final-cta-overlay"></div>
+    <div class="container final-cta-content">
+        <div class="fade-in">
+            <h2 style="margin-bottom: 20px;">Your Family's Best Week Starts Here</h2>
+            <p>Four bedrooms, seven zones, and everything you need for the week — 1.5 blocks from Point Pleasant Beach. A shore family's beach house, not a rental portfolio.</p>
+            <p style="margin-bottom: 36px; font-size: 1.15rem;">Come see why families call it their forever rental.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:ahoy@sea-reach.com" class="btn-primary btn-primary-xl">Book Your Week</a>
+                <a href="https://www.vrbo.com/2823698" class="btn-secondary btn-secondary-white" target="_blank" rel="noopener noreferrer">View on VRBO</a>
+                <a href="https://www.airbnb.com/rooms/8605514" class="btn-secondary btn-secondary-white" target="_blank" rel="noopener noreferrer">View on Airbnb</a>
+            </div>
+            <p class="fine-print">Weekly rentals, Saturday to Saturday, June through September. Email ahoy@sea-reach.com for availability.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <Image
+                    src={logo}
+                    alt="Sea Reach Beach House"
+                    height={120}
+                    class="footer-logo-img"
+                    loading="lazy"
+                />
+                <p>106 Atlantic Avenue<br/>Point Pleasant Beach, NJ 08742</p>
+                <p style="margin-top: 8px; font-size: 0.85rem;">A shore family's beach house. Est. 2022.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="#week">The House</a>
+                    <a href="#story">Our Story</a>
+                    <a href="#zones">Seven Zones</a>
+                    <a href="#gallery">Photos</a>
+                    <a href="#included">What's Included</a>
+                    <a href="#book-direct">Book Direct</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>Email: <a href="mailto:ahoy@sea-reach.com">ahoy@sea-reach.com</a></p>
+                <p style="margin-top: 8px;">VRBO: <a href="https://www.vrbo.com/2823698" target="_blank" rel="noopener noreferrer">Property #2823698</a></p>
+                <p>Airbnb: <a href="https://www.airbnb.com/rooms/8605514" target="_blank" rel="noopener noreferrer">Room #8605514</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">&copy; 2026 Sea Reach Beach House. All rights reserved.</div>
+    </div>
+</footer>
+
+<script>
+// HERO IMAGE FADER
+const heroSlides = document.querySelectorAll('.hero-slide');
+if (heroSlides.length > 1) {
+    let current = 0;
+    setInterval(() => {
+        heroSlides[current].classList.remove('active');
+        current = (current + 1) % heroSlides.length;
+        heroSlides[current].classList.add('active');
+    }, 7000);
+}
+
+// NAV SCROLL BEHAVIOR
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+        nav.classList.add('scrolled');
+        nav.classList.remove('transparent');
+    } else {
+        nav.classList.remove('scrolled');
+        nav.classList.add('transparent');
+    }
+});
+
+// MOBILE MENU
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+hamburger.addEventListener('click', () => { mobileMenu.classList.add('active'); });
+mobileClose.addEventListener('click', () => { mobileMenu.classList.remove('active'); });
+function closeMobile() { mobileMenu.classList.remove('active'); }
+
+// FAQ ACCORDION
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    btn.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        faqItems.forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.faq-answer').style.maxHeight = '0';
+            i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
         });
-      });
-    </script>
-  </body>
-  <style>
-    /* General Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      padding-top: 80px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Navigation Bar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .nav-brand {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #2c3e50;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .nav-link {
-      color: #2c3e50;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    .nav-link:hover {
-      color: #2e8b8b;
-    }
-
-    .nav-link.book-now-btn {
-      background: transparent;
-      color: #2e8b8b;
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      border: 2px solid #2e8b8b;
-      box-shadow: 0 4px 15px rgba(46, 139, 139, 0.1);
-      transition: all 0.3s ease;
-      max-width: 180px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .nav-link.book-now-btn:hover {
-      background: #2e8b8b;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(46, 139, 139, 0.2);
-    }
-
-    .mobile-nav-link.book-now-btn {
-      display: block;
-      background: transparent;
-      color: #2e8b8b;
-      padding: 0.5rem 1rem;
-      border-radius: 24px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-align: center;
-      margin: 1.2rem auto 0 auto;
-      border: 2px solid #2e8b8b;
-      box-shadow: 0 2px 8px rgba(46, 139, 139, 0.08);
-      width: 80%;
-      max-width: 220px;
-    }
-
-    .mobile-nav-link.book-now-btn:hover {
-      background: #2e8b8b;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(46, 139, 139, 0.15);
-    }
-
-    .nav-mobile {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .nav-mobile {
-        display: block;
-      }
-    }
-
-    /* Beachy Hero Section */
-    .hero-beach {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .hero-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 1;
-    }
-
-    .hero-bg-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 154, 139, 0.8) 0%,
-        rgba(254, 207, 239, 0.7) 50%,
-        rgba(135, 206, 235, 0.6) 100%
-      );
-      z-index: 2;
-    }
-
-    .hero-beach .container {
-      position: relative;
-      z-index: 3;
-    }
-
-    .hero-beach .hero-content {
-      text-align: center;
-      color: white;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .logo-hero {
-      width: 180px;
-      height: auto;
-      margin: 48px auto 0 auto;
-      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
-      max-width: 180px;
-      display: block;
-      object-fit: contain;
-    }
-
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 800;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-      line-height: 1.1;
-    }
-
-    .hero-beach .hero-subtitle {
-      font-size: 1.4rem;
-      margin-bottom: 40px;
-      font-weight: 600;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    .hero-beach .hero-highlights {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-
-    .highlight-beach {
-      text-align: center;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 20px;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      min-width: 140px;
-    }
-
-    .highlight-beach .highlight-number {
-      display: block;
-      font-size: 3rem;
-      font-weight: 800;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    .highlight-beach .highlight-icon {
-      display: block;
-      font-size: 3rem;
-      font-weight: 800;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    .highlight-beach .highlight-text {
-      font-size: 1rem;
-      font-weight: 600;
-      color: white;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-
-    .hero-cta {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .btn-beach {
-      display: inline-block;
-      padding: 18px 35px;
-      background: rgba(255, 255, 255, 0.9);
-      color: #2c3e50;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .btn-beach:hover {
-      background: white;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-beach-outline {
-      display: inline-block;
-      padding: 18px 35px;
-      background: transparent;
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      border: 2px solid white;
-    }
-
-    .btn-beach-outline:hover {
-      background: white;
-      color: #2c3e50;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Hero Gallery - Completely Fixed */
-    .hero-gallery-fixed {
-      width: 100%;
-      height: 600px;
-      background: #ffffff;
-      display: block;
-      position: relative;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .gallery-container {
-      width: 100%;
-      height: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0;
-      position: relative;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 0;
-      height: 100%;
-      width: 100%;
-    }
-
-    .gallery-main {
-      position: relative;
-      overflow: hidden;
-      height: 100%;
-      width: 100%;
-    }
-
-    .gallery-side {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      gap: 0;
-      height: 100%;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      height: 100%;
-      width: 100%;
-    }
-
-    .gallery-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-img:hover {
-      transform: scale(1.05);
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      color: white;
-      padding: 30px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-main:hover .gallery-overlay,
-    .gallery-item:hover .gallery-overlay {
-      transform: translateY(0);
-    }
-
-    .gallery-overlay h3 {
-      font-size: 1.5rem;
-      margin-bottom: 5px;
-      font-weight: 700;
-    }
-
-    .gallery-overlay h4 {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .gallery-overlay p {
-      margin: 5px 0 0 0;
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-
-    /* Section Styling */
-    .section-subtitle {
-      text-align: center;
-      font-size: 1.2rem;
-      color: #666;
-      margin-bottom: 50px;
-    }
-
-    /* About Section */
-    .about {
-      padding: 80px 0;
-      background: #f8f9fa;
-    }
-
-    .about h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      color: #2c3e50;
-    }
-
-    .about-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .lead {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #2e8b8b;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .about p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      text-align: justify;
-    }
-
-    /* Outdoor Gallery */
-    .outdoor-gallery {
-      padding: 80px 0;
-      background: #f8f9fa;
-    }
-
-    .outdoor-gallery h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    .outdoor-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 20px;
-      height: 600px;
-    }
-
-    .outdoor-large {
-      position: relative;
-      overflow: hidden;
-      border-radius: 15px;
-      height: 100%;
-    }
-
-    .outdoor-small-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 15px;
-      height: 100%;
-    }
-
-    .outdoor-small {
-      position: relative;
-      overflow: hidden;
-      border-radius: 15px;
-    }
-
-    .gallery-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-image:hover {
-      transform: scale(1.05);
-    }
-
-    .photo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      color: white;
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .outdoor-large:hover .photo-overlay,
-    .outdoor-small:hover .photo-overlay {
-      transform: translateY(0);
-    }
-
-    .photo-overlay h3 {
-      font-size: 1.3rem;
-      margin-bottom: 5px;
-      font-weight: 700;
-    }
-
-    .photo-overlay h4 {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .photo-overlay p {
-      margin-top: 10px;
-      font-size: 0.9rem;
-    }
-
-    /* Interior Gallery */
-    .interior-gallery {
-      padding: 80px 0;
-      background: #fff;
-    }
-
-    .interior-gallery h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    .interior-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 40px;
-    }
-
-    .interior-item {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-
-    .interior-item:hover {
-      transform: translateY(-10px);
-    }
-
-    .interior-item .image-container {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      overflow: hidden;
-    }
-
-    .interior-item .gallery-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .interior-item .photo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      color: white;
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .interior-item:hover .photo-overlay {
-      transform: translateY(0);
-    }
-
-    /* Mobile Styles for Outdoor and Interior */
-    @media (max-width: 768px) {
-      .outdoor-grid {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
-
-      .outdoor-large {
-        height: 400px;
-      }
-
-      .outdoor-small-grid {
-        height: 400px;
-      }
-
-      .interior-item .image-container {
-        height: 300px;
-      }
-
-      photo-overlay {
-        transform: translateY(0); /* Always show on mobile */
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); /* Darker gradient for better readability */
-      }
-
-      .photo-overlay h3 {
-        font-size: 1.1rem;
-      }
-
-      .photo-overlay p {
-        font-size: 0.85rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .outdoor-large {
-        height: 300px;
-      }
-
-      .outdoor-small-grid {
-        height: 300px;
-      }
-
-      .interior-item .image-container {
-        height: 250px;
-      }
-    }
-
-    /* Bedrooms Gallery */
-    .bedrooms-gallery {
-      padding: 80px 0;
-      background: #f8f9fa;
-    }
-
-    .bedrooms-gallery h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    .bedrooms-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 40px;
-    }
-
-    .bedroom-item {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-
-    .bedroom-item:hover {
-      transform: translateY(-10px);
-    }
-
-    .bedroom-item .gallery-image {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .bedroom-info-clean {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      color: white;
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .bedroom-item:hover .bedroom-info-clean {
-      transform: translateY(0);
-    }
-
-    .bedroom-info-clean h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      color: white;
-    }
-
-    .bedroom-info-clean p {
-      color: #fff;
-      font-size: 1rem;
-      margin-bottom: 15px;
-    }
-
-    .bed-details {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      background: rgba(46, 139, 139, 0.2);
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .bed-type {
-      font-weight: 600;
-      color: #fff;
-    }
-
-    .sleeps {
-      color: #fff;
-      font-weight: 600;
-    }
-
-    /* Mobile Styles for Bedrooms */
-    @media (max-width: 768px) {
-      .bedroom-item .gallery-image {
-        height: 300px;
-      }
-
-      .bedroom-info-clean {
-        transform: translateY(0); /* Always show on mobile */
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); /* Darker gradient for better readability */
-      }
-
-      .bedroom-info-clean h3 {
-        font-size: 1.1rem;
-      }
-
-      .bedroom-info-clean p {
-        font-size: 0.9rem;
-      }
-
-      .bed-details {
-        padding: 8px;
-      }
-
-      .bed-type, .sleeps {
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .bedroom-item .gallery-image {
-        height: 250px;
-      }
-
-      .bedroom-info-clean {
-        padding: 15px;
-      }
-
-      .bedroom-info-clean h3 {
-        font-size: 1rem;
-      }
-
-      .bedroom-info-clean p {
-        font-size: 0.85rem;
-      }
-
-      .bed-details {
-        padding: 6px;
-      }
-
-      .bed-type, .sleeps {
-        font-size: 0.85rem;
-      }
-    }
-
-    /* Beach Access */
-    .beach-access {
-      padding: 80px 0;
-      background: #fff;
-    }
-
-    .beach-access h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    .beach-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .beach-info {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .distance-card {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .distance-number {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #2e8b8b;
-      min-width: 80px;
-    }
-
-    .distance-text strong {
-      display: block;
-      font-size: 1.2rem;
-      color: #2c3e50;
-    }
-
-    .distance-text span {
-      color: #666;
-      font-size: 1rem;
-    }
-
-    .beach-photos {
-      position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      height: 400px;
-    }
-
-    /* Maps and Dining Section */
-    .maps-dining {
-      padding: 80px 0;
-      background: #f8f9fa;
-    }
-
-    .maps-dining h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    /* Location Grid */
-    .location-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    /* Walking Distances */
-    .walking-distances h3 {
-      font-size: 1.8rem;
-      margin-bottom: 30px;
-      color: #2c3e50;
-      text-align: center;
-    }
-
-    .distance-list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .distance-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .distance-item:hover {
-      transform: translateY(-3px);
-    }
-
-    .distance-item .time {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #2e8b8b;
-      min-width: 60px;
-    }
-
-    .distance-item .destination {
-      font-size: 1rem;
-      color: #2c3e50;
-      font-weight: 600;
-    }
-
-    /* Family Benefits */
-    .family-benefits h3 {
-      font-size: 1.8rem;
-      margin-bottom: 30px;
-      color: #2c3e50;
-      text-align: center;
-    }
-
-    .benefit-list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .benefit-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .benefit-item:hover {
-      transform: translateY(-3px);
-    }
-
-    .benefit-icon {
-      font-size: 1.5rem;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #ff9a8b, #fecfef);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .benefit-text {
-      font-size: 1rem;
-      color: #2c3e50;
-      font-weight: 600;
-    }
-
-    /* Enhanced Savings Section Styling */
-    .savings-section {
-      grid-column: 1 / -1;
-      margin-top: 40px;
-      padding: 40px;
-      background: linear-gradient(135deg, rgba(46, 139, 139, 0.05), rgba(32, 178, 170, 0.05));
-      border-radius: 20px;
-      border: 1px solid rgba(46, 139, 139, 0.2);
-    }
-
-    .savings-section h3 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #2c3e50;
-      text-align: center;
-    }
-
-    .dining-section-subtitle {
-      font-size: 1rem;
-      color: #666;
-      margin-bottom: 30px;
-      text-align: center;
-      font-style: italic;
-    }
-
-    .savings-breakdown {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 30px;
-      align-items: center;
-      margin: 40px 0;
-    }
-
-    .savings-card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .savings-card h4 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    .price-breakdown {
-      text-align: left;
-    }
-
-    .price-line {
-      padding: 8px 0;
-      font-size: 1rem;
-      color: #666;
-      border-bottom: 1px solid #eee;
-    }
-
-    .price-line:last-child {
-      border-bottom: none;
-    }
-
-    .price-line strong {
-      color: #2c3e50;
-      font-weight: 700;
-    }
-
-    .total-line {
-      border-top: 2px solid #2e8b8b;
-      border-bottom: 2px solid #2e8b8b;
-      font-weight: 600;
-      color: #2c3e50;
-      margin: 10px 0;
-      padding: 12px 0;
-    }
-
-    .weekend-note {
-      font-size: 0.9rem;
-      color: #e74c3c;
-      font-style: italic;
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid #eee;
-    }
-
-    .savings-vs {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #2e8b8b;
-      text-align: center;
-      background: linear-gradient(135deg, #2e8b8b, #20b2aa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .savings-card.included {
-      background: linear-gradient(135deg, rgba(46, 139, 139, 0.1), rgba(32, 178, 170, 0.1));
-      border: 2px solid #2e8b8b;
-    }
-
-    .savings-highlight {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #27ae60;
-      text-align: center;
-      background: linear-gradient(135deg, #27ae60, #2ecc71);
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 15px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    }
-
-    .savings-note {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 30px;
-      padding: 20px;
-      background: rgba(46, 139, 139, 0.05);
-      border-radius: 10px;
-      border-left: 4px solid #2e8b8b;
-    }
-
-    /* Testimonials Section */
-    .testimonials {
-      padding: 80px 0;
-      background: #fff;
-    }
-
-    .testimonials h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      color: #2c3e50;
-    }
-
-    .reviews-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .rating-display {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .stars {
-      font-size: 2rem;
-      color: #ffd700;
-    }
-
-    .rating-text {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .rating-number {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #2c3e50;
-    }
-
-    .review-count {
-      font-size: 1.1rem;
-      color: #666;
-      font-weight: 600;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-
-    .testimonial-card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .testimonial-content {
-      margin-bottom: 20px;
-    }
-
-    .testimonial-content p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #2c3e50;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .testimonial-author strong {
-      font-size: 1.1rem;
-      color: #2c3e50;
-    }
-
-    .testimonial-author span {
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    .reviews-cta {
-      text-align: center;
-    }
-
-    /* Local Attractions */
-    .local-attractions {
-      padding: 80px 0;
-      background: #f8f9fa;
-    }
-
-    .local-attractions h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    .attractions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .attraction-card {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      position: relative;
-      height: 100%;
-    }
-
-    .attraction-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .attraction-card .gallery-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .attraction-info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      color: white;
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .attraction-card:hover .attraction-info {
-      transform: translateY(0);
-    }
-
-    .attraction-info h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      color: white;
-    }
-
-    .attraction-info p {
-      color: #fff;
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
-
-    .attraction-info ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .attraction-info li {
-      padding: 5px 0;
-      color: #fff;
-      position: relative;
-      padding-left: 20px;
-    }
-
-    .attraction-info li:before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #2e8b8b;
-      font-weight: bold;
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .attraction-card {
-        height: 400px; /* Fixed height for mobile */
-      }
-      
-      .attraction-info {
-        transform: translateY(0); /* Always show on mobile */
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); /* Darker gradient for better readability */
-        padding: 15px;
-      }
-      
-      .attraction-info h3 {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-      }
-      
-      .attraction-info p {
-        font-size: 0.9rem;
-        margin-bottom: 10px;
-      }
-      
-      .attraction-info li {
-        font-size: 0.9rem;
-        padding: 3px 0;
-      }
-    }
-
-    /* Small Mobile Styles */
-    @media (max-width: 480px) {
-      .attraction-card {
-        height: 350px; /* Slightly smaller height for very small screens */
-      }
-      
-      .attraction-info {
-        padding: 12px;
-      }
-      
-      .attraction-info h3 {
-        font-size: 1.1rem;
-      }
-      
-      .attraction-info li {
-        font-size: 0.85rem;
-      }
-    }
-
-    /* Features Section */
-    .features {
-      padding: 80px 0;
-    }
-
-    .features h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      color: #2c3e50;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-    }
-
-    .feature-card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .feature-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    .feature-card ul {
-      list-style: none;
-    }
-
-    .feature-card li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-      position: relative;
-      padding-left: 20px;
-    }
-
-    .feature-card li:before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: #27ae60;
-      font-weight: bold;
-    }
-
-    .feature-card li:last-child {
-      border-bottom: none;
-    }
-
-    /* Rental Info Section */
-    .rental-info {
-      padding: 80px 0;
-      background: #f8f9fa;
-    }
-
-    .rental-info h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      color: #2c3e50;
-    }
-
-    .rental-details {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-
-    .rental-card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .rental-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    .rental-card p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    /* Direct Booking Section */
-    .direct-booking {
-      padding: 80px 0;
-      background: linear-gradient(135deg, rgba(46, 139, 139, 0.05), rgba(32, 178, 170, 0.1));
-    }
-
-    .direct-booking h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-
-    .booking-comparison {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 40px;
-      align-items: center;
-      margin: 50px 0;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .booking-card {
-      background: white;
-      padding: 40px 30px;
-      border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .booking-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .booking-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 25px;
-      color: #2c3e50;
-    }
-
-    .price-display {
-      margin-bottom: 30px;
-    }
-
-    .price-amount {
-      display: block;
-      font-size: 3rem;
-      font-weight: 800;
-      color: #2c3e50;
-      line-height: 1;
-    }
-
-    .price-period {
-      font-size: 1.1rem;
-      color: #666;
-      font-weight: 600;
-    }
-
-    .price-display.featured .price-amount {
-      color: #2e8b8b;
-    }
-
-    .booking-details {
-      text-align: left;
-      margin-bottom: 20px;
-    }
-
-    .detail-line {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-      font-size: 1rem;
-    }
-
-    .detail-line:last-child {
-      border-bottom: none;
-    }
-
-    .detail-line.highlight {
-      color: #27ae60;
-      font-weight: 600;
-    }
-
-    .platform-booking {
-      border: 2px solid #e0e0e0;
-    }
-
-    .direct-booking-card {
-      border: 3px solid #2e8b8b;
-      background: linear-gradient(135deg, rgba(46, 139, 139, 0.05), rgba(32, 178, 170, 0.05));
-      position: relative;
-    }
-
-    .direct-booking-card::before {
-      content: "BEST VALUE";
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #2e8b8b;
-      color: white;
-      padding: 8px 20px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .vs-divider {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .vs-text {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #2e8b8b;
-      background: linear-gradient(135deg, #2e8b8b, #20b2aa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .savings-badge {
-      background: linear-gradient(135deg, #27ae60, #2ecc71);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: 700;
-      font-size: 1rem;
-      box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    .direct-booking-benefits {
-      margin: 60px 0;
-    }
-
-    .direct-booking-benefits h3 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 40px;
-      color: #2c3e50;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-
-    .benefit-card {
-      background: white;
-      padding: 30px 20px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .benefit-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .benefit-card .benefit-icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      display: block;
-    }
-
-    .benefit-card h4 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-      color: #2c3e50;
-    }
-
-    .benefit-card p {
-      color: #666;
-      line-height: 1.6;
-    }
-
-    .booking-cta {
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    .btn-large {
-      padding: 20px 40px;
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-    }
-
-    .booking-note {
-      color: #666;
-      font-size: 0.9rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Contact Section */
-    .contact {
-      padding: 80px 0;
-      background: linear-gradient(135deg, #ff9a8b 0%, #fecfef 100%);
-      text-align: center;
-      color: #2c3e50;
-    }
-
-    .contact h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-    }
-
-    .contact-text {
-      font-size: 1.3rem;
-      margin-bottom: 40px;
-      font-style: italic;
-    }
-
-    .contact-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 15px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary {
-      background: #2c3e50;
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: #34495e;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #2c3e50;
-      border: 2px solid #2c3e50;
-    }
-
-    .btn-secondary:hover {
-      background: #2c3e50;
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    /* Footer */
-    .footer {
-      background: #2c3e50;
-      color: white;
-      padding: 40px 0;
-      text-align: center;
-    }
-
-    .footer-logo {
-      width: 100px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .copyright {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .footer-contact {
-      margin-top: 10px;
-    }
-
-    .footer-contact h3 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      color: white;
-    }
-
-    .footer-email {
-      color: #2e8b8b;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-
-    .footer-email:hover {
-      color: #20b2aa;
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      .footer-content {
-        gap: 15px;
-      }
-      
-      .footer-contact h3 {
-        font-size: 1.1rem;
-      }
-      
-      .footer-email {
-        font-size: 1rem;
-      }
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr auto;
-      }
-
-      .gallery-side {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        height: 300px;
-      }
-
-      .hero-gallery-fixed {
-        height: auto;
-      }
-
-      .location-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .savings-breakdown {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .savings-vs {
-        font-size: 1.5rem;
-        transform: rotate(90deg);
-      }
-
-      .outdoor-grid {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
-
-      .beach-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .hero-beach {
-        height: 80vh;
-        min-height: 500px;
-      }
-
-      .booking-comparison {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .vs-divider {
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      .vs-text {
-        transform: rotate(90deg);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .gallery-side {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-        height: 600px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .nav-mobile {
-        display: block;
-      }
-
-      .nav-brand {
-        font-size: 1.2rem;
-      }
-
-      .nav-logo-img {
-        width: 40px;
-        height: 40px;
-      }
-
-      body {
-        padding-top: 70px;
-      }
-
-      .hero-title {
-        font-size: 2.5rem;
-      }
-
-      .hero-beach .hero-subtitle {
-        font-size: 1.2rem;
-      }
-
-      .hero-beach .hero-highlights {
-        gap: 20px;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .highlight-beach {
-        width: 80%;
-        margin-bottom: 10px;
-      }
-
-      .highlight-beach .highlight-number,
-      .highlight-beach .highlight-icon {
-        font-size: 2.5rem;
-      }
-
-      .hero-cta {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn-beach,
-      .btn-beach-outline {
-        width: 250px;
-      }
-
-      .features-grid,
-      .interior-grid,
-      .bedrooms-grid,
-      .attractions-grid,
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn {
-        width: 250px;
-      }
-
-      .distance-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-      }
-
-      .benefit-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-      }
-
-      .benefits-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .booking-card {
-        padding: 30px 20px;
-      }
-
-      .price-amount {
-        font-size: 2.5rem;
-      }
-
-      .direct-booking {
-        padding: 60px 0;
-      }
-
-      .logo-hero {
-        width: 120px;
-        max-width: 120px;
-        margin: 24px auto 0 auto;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 15px;
-      }
-
-      .about,
-      .features,
-      .interior-gallery,
-      .outdoor-gallery,
-      .bedrooms-gallery,
-      .beach-access,
-      .local-attractions,
-      .rental-info,
-      .contact,
-      .testimonials,
-      .direct-booking {
-        padding: 60px 0;
-      }
-
-      .distance-card {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .distance-number {
-        min-width: auto;
-      }
-
-      .hero-beach {
-        height: 70vh;
-        min-height: 450px;
-      }
-
-      .logo-hero {
-        width: 150px;
-      }
-
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .hero-beach .hero-highlights {
-        gap: 15px;
-      }
-
-      .highlight-beach {
-        padding: 15px;
-        width: 90%;
-      }
-    }
-
-	/* Property Gallery - Clean Layout */
-	.property-gallery {
-    padding: 80px 0;
-    background: #f8f9fa;
-  }
-
-  .gallery-header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-
-  .gallery-header h2 {
-    font-size: 3rem;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    font-weight: 800;
-  }
-
-  .gallery-subtitle {
-    font-size: 1.3rem;
-    color: #666;
-    font-style: italic;
-  }
-
-  .gallery-grid-clean {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 40px;
-  }
-
-  .gallery-item-clean {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-
-  .gallery-item-clean:hover {
-    transform: translateY(-10px);
-  }
-
-  .gallery-image-clean {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-  }
-
-  .gallery-info-clean {
-    padding: 30px;
-  }
-
-  .gallery-info-clean h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #2c3e50;
-    font-weight: 700;
-  }
-
-  .gallery-info-clean p {
-    color: #666;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 0;
-  }
-  /* Booking Section */
-  .booking-section {
-      padding: 80px 0;
-      background: linear-gradient(135deg, rgba(46, 139, 139, 0.05), rgba(32, 178, 170, 0.1));
-    }
-
-    .booking-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .booking-header h2 {
-      font-size: 2.5rem;
-      color: #2c3e50;
-      margin-bottom: 15px;
-    }
-
-    .booking-subtitle {
-      font-size: 1.2rem;
-      color: #666;
-      font-style: italic;
-    }
-
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(255,255,255,0.98);
-      z-index: 2000;
-      padding: 40px 20px 20px 20px;
-      box-sizing: border-box;
-      transition: all 0.3s ease;
-      align-items: flex-start;
-    }
-    .mobile-menu-close {
-      background: none;
-      border: none;
-      font-size: 2.5rem;
-      color: #2c3e50;
-      align-self: flex-end;
-      margin-bottom: 30px;
-      cursor: pointer;
-    }
-    .mobile-nav-link {
-      display: block;
-      width: 100%;
-      padding: 18px 0;
-      font-size: 1.3rem;
-      color: #2c3e50;
-      text-decoration: none;
-      font-weight: 700;
-      border-bottom: 1px solid #eee;
-      transition: color 0.2s;
-    }
-    .mobile-nav-link:last-child {
-      border-bottom: none;
-    }
-    .mobile-nav-link:hover {
-      color: #2e8b8b;
-    }
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none !important;
-      }
-      .nav-mobile {
-        display: block;
-      }
-      .mobile-menu {
-        display: none;
-      }
-    }
-    /* Responsive improvements for hero and highlights */
-    @media (max-width: 768px) {
-      .hero-beach {
-        height: auto;
-        min-height: 400px;
-        padding-bottom: 40px;
-      }
-      .hero-beach .hero-content {
-        padding: 30px 0 0 0;
-      }
-      .hero-title {
-        font-size: 2.1rem;
-      }
-      .hero-beach .hero-highlights {
-        flex-direction: column;
-        gap: 15px;
-        margin-bottom: 30px;
-      }
-      .highlight-beach {
-        min-width: 0;
-        width: 90%;
-        margin: 0 auto;
-        padding: 15px;
-      }
-      .gallery-grid-clean {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
-      .gallery-image-clean {
-        height: 220px;
-      }
-    }
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 1.4rem;
-      }
-      .gallery-header h2 {
-        font-size: 2rem;
-      }
-      .gallery-image-clean {
-        height: 140px;
-      }
-      .gallery-info-clean {
-        padding: 18px;
-      }
-    }
-    /* Property Gallery Overlay */
-    .property-overlay-item {
-      position: relative;
-      overflow: hidden;
-    }
-    .property-photo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
-      color: white;
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-      z-index: 2;
-    }
-    .property-overlay-item:hover .property-photo-overlay {
-      transform: translateY(0);
-    }
-    .property-photo-overlay h3 {
-      font-size: 1.3rem;
-      margin-bottom: 5px;
-      font-weight: 700;
-    }
-    .property-photo-overlay p {
-      margin-top: 10px;
-      font-size: 1rem;
-    }
-    /* Ensure overlay is above image */
-    .property-overlay-item .gallery-image-clean {
-      display: block;
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-    }
-    @media (max-width: 768px) {
-      .property-photo-overlay {
-        padding: 12px;
-        font-size: 0.95rem;
-      }
-      .property-overlay-item .gallery-image-clean {
-        height: 180px;
-      }
-    }
-    .interior-item .image-container {
-      position: relative;
-      width: 100%;
-      max-width: 600px;
-      height: 400px;
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: 15px 15px 0 0;
-      display: block;
-    }
-    .interior-item .gallery-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .interior-item .photo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      color: white;
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .interior-item:hover .photo-overlay {
-      transform: translateY(0);
-    }
-    @media (max-width: 768px) {
-      .interior-item .image-container {
-        max-width: 100%;
-        height: 220px;
-      }
-    }
-    .about-us-section {
-      padding: 80px 0;
-      background: #fff;
-    }
-    .about-us-flex {
-      display: flex;
-      gap: 48px;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .about-us-text {
-      flex: 1 1 400px;
-      min-width: 320px;
-      max-width: 600px;
-    }
-    .about-us-text h2 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #2c3e50;
-      margin-bottom: 32px;
-    }
-    .about-us-text p {
-      font-size: 1.1rem;
-      margin-bottom: 18px;
-      color: #333;
-      line-height: 1.7;
-    }
-    .about-us-highlight {
-      background: #f8f9fa;
-      border-left: 5px solid #2e8b8b;
-      padding: 20px 24px;
-      margin-top: 24px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #2c3e50;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(46,139,139,0.06);
-    }
-    .about-us-image {
-      flex: 1 1 320px;
-      min-width: 280px;
-      max-width: 420px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .about-us-img {
-      width: 100%;
-      height: auto;
-      border-radius: 24px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-      object-fit: cover;
-    }
-    .about-us-caption {
-      font-size: 1rem;
-      color: #888;
-      margin-top: 12px;
-      font-style: italic;
-      text-align: center;
-    }
-    @media (max-width: 900px) {
-      .about-us-flex {
-        flex-direction: column;
-        gap: 32px;
-      }
-      .about-us-image {
-        max-width: 100%;
-      }
-    }
-    @media (max-width: 600px) {
-      .about-us-section {
-        padding: 40px 0;
-      }
-      .about-us-text h2 {
-        font-size: 1.5rem;
-        margin-bottom: 18px;
-      }
-      .about-us-highlight {
-        font-size: 1rem;
-        padding: 14px 12px;
-      }
-    }
-  </style>
+        if (!isActive) {
+            item.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    });
+    btn.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const next = item.nextElementSibling;
+            if (next) next.querySelector('.faq-question').focus();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prev = item.previousElementSibling;
+            if (prev) prev.querySelector('.faq-question').focus();
+        }
+    });
+});
+
+// SCROLL ANIMATIONS
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => { entry.target.classList.add('visible'); }, i * 100);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+fadeEls.forEach(el => observer.observe(el));
+
+// GALLERY LIGHTBOX BRIDGE
+document.querySelectorAll('[data-gallery-index]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const index = parseInt(btn.dataset.galleryIndex, 10);
+        if (window.__openGalleryLightbox) window.__openGalleryLightbox(index);
+    });
+});
+
+// RESPONSIVE WEEK LAYOUT
+function handleWeekLayout() {
+    const weekLayout = document.querySelector('.week-layout');
+    if (weekLayout) {
+        weekLayout.style.gridTemplateColumns = window.innerWidth < 768 ? '1fr' : '55% 42%';
+    }
+}
+window.addEventListener('resize', handleWeekLayout);
+handleWeekLayout();
+</script>
+
+<style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    body { font-family: 'DM Sans', Inter, system-ui, sans-serif; background: #fdf9f6; color: #4a4a4a; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+    .serif { font-family: 'DM Serif Display', Georgia, serif; }
+    .container { max-width: 1140px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+    /* NAV */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: all 0.3s ease; }
+    .nav.scrolled { background: #fdf9f6; border-bottom: 1px solid rgba(27,46,80,0.08); box-shadow: 0 2px 16px rgba(27,46,80,0.04); }
+    .nav-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 96px; }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo-img { width: auto; height: 64px; border-radius: 8px; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-size: 0.95rem; font-weight: 500; color: #1b2e50; text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; opacity: 0.85; }
+    .nav-links a:hover { opacity: 1; color: #e8837e; }
+    .nav.transparent .nav-links a { color: white; }
+    .nav.transparent .nav-links a:hover { color: #e8c86a; }
+    .btn-primary { background: #e8837e; color: white; border: none; border-radius: 12px; padding: 12px 28px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { background: #d6706b; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,131,126,0.35); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary-lg { padding: 16px 36px; font-size: 1.05rem; }
+    .btn-primary-xl { padding: 18px 44px; font-size: 1.05rem; }
+    .btn-secondary { background: transparent; border: 2px solid #1b2e50; color: #1b2e50; border-radius: 12px; padding: 14px 34px; font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+    .btn-secondary:hover { background: #1b2e50; color: white; }
+    .btn-secondary-white { border-color: white; color: white; }
+    .btn-secondary-white:hover { background: white; color: #1b2e50; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #1b2e50; margin: 5px 0; transition: all 0.3s; border-radius: 2px; }
+    .nav.transparent .hamburger span { background: white; }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: #fdf9f6; z-index: 1001; flex-direction: column; align-items: center; justify-content: center; gap: 48px; }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a { font-family: 'DM Sans', sans-serif; font-size: 1.25rem; font-weight: 500; color: #1b2e50; text-decoration: none; }
+    .mobile-close { position: absolute; top: 24px; right: 24px; background: none; border: none; cursor: pointer; }
+
+    /* HERO */
+    .hero { position: relative; min-height: 100vh; max-height: 900px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1b2e50, #2a4a7a); }
+    .hero-bg-img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
+    .hero-bg-img.active { opacity: 0.7; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(27,46,80,0.3), rgba(27,46,80,0.65)); }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; padding: 120px 0 140px; }
+    .hero-eyebrow { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #e8c86a; margin-bottom: 20px; }
+    .hero h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 4rem; font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; color: white; margin-bottom: 24px; }
+    .hero-sub { font-size: 1.2rem; color: white; opacity: 0.9; max-width: 540px; line-height: 1.7; margin-bottom: 36px; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-stats { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(27,46,80,0.5); border-top: 1px solid rgba(255,255,255,0.1); }
+    .hero-stats-inner { max-width: 1140px; margin: 0 auto; padding: 28px 24px; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
+    .stat-value { font-size: 1.75rem; font-weight: 700; color: white; line-height: 1.2; }
+    .stat-label { font-size: 0.8rem; text-transform: uppercase; color: white; opacity: 0.7; letter-spacing: 0.1em; margin-top: 4px; }
+    .hero-platform-ratings { display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .hero-rating-badge { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; color: white; padding: 6px 12px; border-radius: 8px; transition: background 0.2s ease; }
+    .hero-rating-badge:hover { background: rgba(255,255,255,0.1); }
+    .hero-brand-logo { height: auto; }
+    .hero-brand-vrbo { width: 72px; }
+    .hero-brand-airbnb { width: 80px; }
+    .hero-rating-stars { display: flex; gap: 2px; }
+    .hero-rating-stars iconify-icon { color: #e8c86a; }
+
+    /* SECTIONS */
+    .section { padding: 120px 0; }
+    .section-sand { background: #faf5ef; }
+    .section-white { background: #fdf9f6; }
+    .eyebrow { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #e8837e; margin-bottom: 16px; }
+    .eyebrow-center { text-align: center; }
+    h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 2.75rem; font-weight: 400; line-height: 1.15; color: #1b2e50; letter-spacing: -0.01em; margin-bottom: 16px; }
+    h2.text-center { text-align: center; }
+    h3 { font-family: 'DM Sans', sans-serif; font-size: 1.5rem; font-weight: 500; color: #1b2e50; letter-spacing: -0.01em; }
+    .subheadline { font-size: 1.2rem; color: #7a7a7a; line-height: 1.7; max-width: 680px; }
+    .subheadline-center { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* CARDS */
+    .card { background: #ffffff; border-radius: 20px; box-shadow: 0 4px 24px rgba(27,46,80,0.06); border: 1px solid rgba(27,46,80,0.06); transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94); overflow: hidden; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(27,46,80,0.1); }
+    .card-body { padding: 28px 28px 32px; }
+
+    /* WEEK */
+    .week-text { font-size: 1.15rem; line-height: 1.85; color: #4a4a4a; max-width: 760px; margin: 0 auto; }
+    .week-text p { margin-bottom: 24px; }
+    .pull-quote { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.35rem; color: #e8837e; text-align: center; margin-top: 40px; font-style: italic; }
+
+    /* STORY */
+    .story-grid { display: grid; grid-template-columns: 55% 45%; gap: 60px; align-items: start; }
+    .story-images { display: flex; flex-direction: column; gap: 16px; }
+    .story-img { border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(27,46,80,0.06); }
+    .story-signature { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: 1.15rem; color: #1b2e50; margin-top: 32px; }
+    .story-text p { margin-bottom: 20px; font-size: 1.1rem; line-height: 1.75; }
+
+    /* ZONES */
+    .zones-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; }
+    .zones-row-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 760px; margin: 0 auto 48px; }
+    .zone-img-wrap { aspect-ratio: 16/10; overflow: hidden; }
+    .zone-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .zone-card .card-body p { font-size: 0.95rem; color: #4a4a4a; line-height: 1.7; margin-top: 8px; }
+
+    /* ZONE GALLERY LINK */
+    .zone-gallery-link { display: inline-block; margin-top: 10px; font-size: 0.85rem; font-weight: 600; color: #e8837e; text-decoration: none; transition: color 0.2s; }
+    .zone-gallery-link:hover { color: #d6706b; text-decoration: underline; }
+
+    /* GALLERY */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .gallery-item { position: relative; border: none; padding: 0; background: none; cursor: pointer; border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(27,46,80,0.12); }
+    .gallery-item:focus-visible { outline: 3px solid #e8837e; outline-offset: 2px; }
+    .gallery-item-wide { grid-column: span 2; }
+    .gallery-item-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-item-overlay { position: absolute; inset: 0; background: rgba(27,46,80,0.0); display: flex; align-items: center; justify-content: center; transition: background 0.3s ease; color: white; opacity: 0; }
+    .gallery-item:hover .gallery-item-overlay { background: rgba(27,46,80,0.3); opacity: 1; }
+
+    /* INCLUDED */
+    .included-grid { display: grid; grid-template-columns: 58% 40%; gap: 48px; align-items: start; }
+    .included-category { margin-bottom: 32px; }
+    .included-category-title { font-size: 0.85rem; font-weight: 600; color: #e8837e; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+    .included-item { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; font-size: 1rem; line-height: 1.6; }
+    .included-item iconify-icon { color: #e8837e; flex-shrink: 0; margin-top: 3px; }
+    .included-img { border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(27,46,80,0.06); height: 100%; min-height: 560px; }
+
+    /* BEDROOMS */
+    .bedrooms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .bedroom-img-wrap { aspect-ratio: 4/3; overflow: hidden; }
+    .bedroom-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .bedroom-tag { display: inline-block; font-size: 0.8rem; font-weight: 600; color: #e8837e; background: rgba(232,131,126,0.08); padding: 4px 12px; border-radius: 20px; margin: 12px 0 8px; }
+    .bedroom-desc { font-size: 0.95rem; color: #4a4a4a; line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .testimonial-card { position: relative; padding: 36px 28px 28px; }
+    .testimonial-quote-mark { font-family: 'DM Serif Display', Georgia, serif; font-size: 5rem; color: #e8837e; opacity: 0.15; line-height: 1; position: absolute; top: 12px; left: 24px; }
+    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 16px; position: relative; z-index: 1; }
+    .testimonial-text { font-style: italic; font-size: 0.95rem; line-height: 1.75; color: #4a4a4a; position: relative; z-index: 1; margin-bottom: 16px; }
+    .testimonial-attr { font-weight: 700; color: #1b2e50; font-size: 0.95rem; margin-bottom: 16px; }
+    .testimonial-pull { display: inline-block; background: #faf5ef; color: #e8837e; font-size: 0.85rem; font-weight: 600; padding: 8px 16px; border-radius: 20px; font-style: italic; }
+
+    /* PLATFORM RATING BADGES */
+    .platform-ratings { display: flex; gap: 24px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+    .platform-badge { display: flex; align-items: center; gap: 10px; background: white; border: 1px solid rgba(27,46,80,0.08); border-radius: 12px; padding: 12px 20px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(27,46,80,0.04); }
+    .platform-badge:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(27,46,80,0.1); }
+    .platform-logo { height: 18px; width: auto; flex-shrink: 0; }
+    .platform-stars { display: flex; gap: 2px; }
+    .platform-rating-text { font-size: 1rem; font-weight: 700; color: #1b2e50; }
+
+    /* NEIGHBORHOOD */
+    .neighborhood-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; align-items: start; }
+    .map-placeholder { border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(27,46,80,0.06); border: 1px solid rgba(27,46,80,0.08); aspect-ratio: 1/1; max-height: 480px; }
+    .walk-item { display: flex; align-items: flex-start; gap: 12px; padding: 16px 0; border-bottom: 1px solid rgba(27,46,80,0.06); }
+    .walk-item:last-child { border-bottom: none; }
+    .walk-icon { color: #1b2e50; flex-shrink: 0; margin-top: 2px; }
+    .walk-name { font-weight: 600; color: #1b2e50; font-size: 1rem; }
+    .walk-time { display: inline-block; background: rgba(232,131,126,0.1); color: #e8837e; font-size: 0.8rem; font-weight: 600; padding: 2px 10px; border-radius: 12px; margin-left: 8px; }
+    .walk-note { font-size: 0.9rem; color: #7a7a7a; margin-top: 2px; }
+    .photo-strip { display: flex; gap: 16px; margin-top: 48px; overflow-x: auto; padding-bottom: 8px; }
+    .photo-strip-item { flex-shrink: 0; width: 280px; height: 200px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(27,46,80,0.06); transition: transform 0.3s ease; cursor: pointer; }
+    .photo-strip-item:hover { transform: scale(1.05); }
+
+    /* BOOK DIRECT */
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 760px; margin: 48px auto 0; align-items: stretch; }
+    .compare-card { border-radius: 20px; padding: 32px; background: white; }
+    .compare-card-platform { border: 1px solid #e0e0e0; }
+    .compare-card-direct { border: 2px solid #e8837e; background: rgba(232,131,126,0.03); position: relative; }
+    .compare-header { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #7a7a7a; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid rgba(27,46,80,0.06); }
+    .compare-line { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; font-size: 0.95rem; color: #4a4a4a; line-height: 1.5; }
+    .best-value-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #e8837e; color: white; padding: 6px 20px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
+    .savings-ideas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 860px; margin: 56px auto 0; }
+    .savings-idea { text-align: center; padding: 24px 16px; }
+    .savings-idea iconify-icon { color: #e8c86a; margin-bottom: 8px; }
+    .savings-idea p { font-size: 0.95rem; color: #1b2e50; font-weight: 500; line-height: 1.5; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 960px; margin: 56px auto 0; }
+    .benefit-card { text-align: center; padding: 28px 20px; }
+    .benefit-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(232,131,126,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .benefit-icon iconify-icon { color: #e8837e; }
+    .benefit-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .benefit-card p { font-size: 0.9rem; color: #7a7a7a; line-height: 1.6; }
+
+    /* FAQ */
+    .faq-list { max-width: 760px; margin: 48px auto 0; }
+    .faq-item { border-bottom: 1px solid rgba(27,46,80,0.08); }
+    .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; cursor: pointer; width: 100%; background: none; border: none; text-align: left; font-family: 'DM Sans', sans-serif; font-size: 1.1rem; font-weight: 600; color: #1b2e50; line-height: 1.5; }
+    .faq-question:focus { outline: 2px solid #e8837e; outline-offset: 4px; border-radius: 4px; }
+    .faq-icon { flex-shrink: 0; color: #e8837e; transition: transform 0.3s ease; margin-left: 16px; font-size: 1.25rem; }
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+    .faq-answer-inner { padding: 0 0 20px; font-size: 1rem; line-height: 1.75; color: #4a4a4a; }
+    .faq-answer a { color: #e8837e; }
+
+    /* FINAL CTA */
+    .final-cta { position: relative; padding: 120px 0; overflow: hidden; }
+    .final-cta-bg { position: absolute; inset: 0; }
+    .final-cta-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(27,46,80,0.55), rgba(27,46,80,0.75)); }
+    .final-cta-content { position: relative; z-index: 2; text-align: center; }
+    .final-cta h2 { color: white; }
+    .final-cta p { color: white; max-width: 680px; margin: 0 auto 36px; font-size: 1.15rem; line-height: 1.75; }
+    .final-cta .fine-print { color: white; opacity: 0.7; font-size: 0.85rem; margin-top: 24px; font-style: italic; }
+
+    /* FOOTER */
+    .footer { background: #1b2e50; color: white; padding: 60px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; }
+    .footer a { color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s; font-size: 0.95rem; }
+    .footer a:hover { opacity: 1; }
+    .footer-logo-img { height: 120px; width: auto; border-radius: 12px; margin-bottom: 16px; object-fit: contain; display: block; background: rgba(255,255,255,0.95); padding: 12px; }
+    .footer-brand p { opacity: 0.6; font-size: 0.9rem; line-height: 1.6; margin-top: 12px; }
+    .footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 32px; }
+    .footer-contact p { font-size: 0.95rem; opacity: 0.8; line-height: 1.7; }
+    .footer-bottom { margin-top: 48px; padding: 16px 0; background: rgba(0,0,0,0.15); text-align: center; font-size: 0.85rem; opacity: 0.6; }
+    .footer h4 { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; opacity: 0.5; }
+
+    /* SCROLL ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1139px) {
+        .section { padding: 80px 0; }
+        h2 { font-size: 2.25rem; }
+        .hero h1 { font-size: 3rem; }
+        .zones-grid { grid-template-columns: repeat(2, 1fr); }
+        .zones-row-2 { max-width: 100%; }
+        .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+        .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+        .testimonials-grid .card:last-child { grid-column: span 2; max-width: 50%; margin: 0 auto; }
+        .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+        .savings-ideas { grid-template-columns: repeat(2, 1fr); }
+        .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 767px) {
+        .section { padding: 60px 0; }
+        h2 { font-size: 2rem; }
+        .hero h1 { font-size: 2.5rem; }
+        .hero-content { text-align: center; padding: 100px 0 160px; max-width: 100%; }
+        .hero-sub { margin-left: auto; margin-right: auto; }
+        .hero-buttons { justify-content: center; flex-direction: column; align-items: center; }
+        .hero-stats-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .hero-platform-ratings { gap: 10px; }
+        .hero-rating-badge { padding: 4px 8px; }
+        .hero-brand-vrbo { width: 60px; }
+        .hero-brand-airbnb { width: 66px; }
+        .hero-rating-stars iconify-icon { width: 12px; height: 12px; }
+        .nav-links { display: none; }
+        .hamburger { display: block; }
+        .story-grid { grid-template-columns: 1fr; gap: 36px; }
+        .story-images { order: -1; }
+        .included-grid { grid-template-columns: 1fr; }
+        .included-img { min-height: 300px; max-height: 400px; order: -1; }
+        .zones-grid { grid-template-columns: 1fr; }
+        .zones-row-2 { grid-template-columns: 1fr; }
+        .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        .gallery-item-wide { grid-column: span 2; }
+        .bedrooms-grid { grid-template-columns: 1fr; }
+        .testimonials-grid { grid-template-columns: 1fr; }
+        .testimonials-grid .card:last-child { grid-column: span 1; max-width: 100%; }
+        .neighborhood-grid { grid-template-columns: 1fr; }
+        .comparison-grid { grid-template-columns: 1fr; }
+        .savings-ideas { grid-template-columns: 1fr 1fr; }
+        .benefits-grid { grid-template-columns: 1fr; }
+        .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+        .photo-strip { -webkit-overflow-scrolling: touch; }
+    }
+
+    @media (max-width: 479px) {
+        .hero h1 { font-size: 2rem; }
+        .savings-ideas { grid-template-columns: 1fr; }
+        .hero-buttons .btn-primary-lg, .hero-buttons .btn-secondary-white { width: 100%; text-align: center; }
+    }
+</style>
+</body>
 </html>
