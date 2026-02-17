@@ -93,7 +93,8 @@
 
         /* ZONES */
         .zones-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; }
-        .zones-row-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 760px; margin: 0 auto 48px; }
+        .zone-img-split { display: flex; gap: 0; }
+        .zone-img-split .zone-img { width: 50%; object-fit: cover; }
         .zone-img { aspect-ratio: 16/10; width: 100%; object-fit: cover; }
         .zone-card .card-body p { font-size: 0.95rem; color: #4a4a4a; line-height: 1.7; margin-top: 8px; }
 
@@ -206,7 +207,6 @@
             h2 { font-size: 2.25rem; }
             .hero h1 { font-size: 3rem; }
             .zones-grid { grid-template-columns: repeat(2, 1fr); }
-            .zones-row-2 { grid-template-columns: 1fr; max-width: 100%; }
             .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
             .testimonials-grid .card:last-child { grid-column: span 2; max-width: 50%; margin: 0 auto; }
             .benefits-grid { grid-template-columns: repeat(2, 1fr); }
@@ -229,7 +229,6 @@
             .included-grid { grid-template-columns: 1fr; }
             .included-img { min-height: 300px; max-height: 400px; order: -1; }
             .zones-grid { grid-template-columns: 1fr; }
-            .zones-row-2 { grid-template-columns: 1fr; }
             .bedrooms-grid { grid-template-columns: 1fr; }
             .testimonials-grid { grid-template-columns: 1fr; }
             .testimonials-grid .card:last-child { grid-column: span 1; max-width: 100%; }
@@ -263,7 +262,7 @@
         <div class="nav-links" id="navLinks">
             <a href="#zones">The House</a>
             <a href="#story">Our Story</a>
-            <a href="#zones">Five Zones</a>
+            <a href="#zones">Nine Zones</a>
             <a href="#included">What's Included</a>
             <a href="#neighborhood">The Neighborhood</a>
             <a href="#faq">FAQ</a>
@@ -282,7 +281,7 @@
     </button>
     <a href="#zones" onclick="closeMobile()">The House</a>
     <a href="#story" onclick="closeMobile()">Our Story</a>
-    <a href="#zones" onclick="closeMobile()">Five Zones</a>
+    <a href="#zones" onclick="closeMobile()">Nine Zones</a>
     <a href="#included" onclick="closeMobile()">What's Included</a>
     <a href="#neighborhood" onclick="closeMobile()">The Neighborhood</a>
     <a href="#faq" onclick="closeMobile()">FAQ</a>
@@ -386,13 +385,13 @@
     </div>
 </section>
 
-<!-- FIVE ZONES -->
+<!-- NINE ZONES -->
 <section class="section section-sand" id="zones">
     <div class="container">
         <div class="fade-in" style="text-align: center; margin-bottom: 48px;">
             <div class="eyebrow eyebrow-center">ROOM FOR EVERYONE</div>
-            <h2 class="text-center">Five Places to Be. One House to Love.</h2>
-            <p class="subheadline subheadline-center" style="margin-top: 16px;">Every family beach rental makes the same promise — "plenty of space." Sea Reach actually delivers. Five distinct zones, each with its own personality, so every age group finds their spot.</p>
+            <h2 class="text-center">Nine Places to Be. One House to Love.</h2>
+            <p class="subheadline subheadline-center" style="margin-top: 16px;">Every family beach rental makes the same promise — "plenty of space." Sea Reach actually delivers. Nine distinct zones, each with its own personality, so every age group finds their spot.</p>
         </div>
         <div class="zones-grid fade-in">
             <div class="card zone-card">
@@ -403,10 +402,26 @@
                 </div>
             </div>
             <div class="card zone-card">
-                <div class="img-placeholder zone-img" data-label="living-kitchen" style="background: linear-gradient(135deg, #b4a48e, #c4b49e);"></div>
+                <div class="img-placeholder zone-img" data-label="living-room" style="background: linear-gradient(135deg, #b4a48e, #c4b49e);"></div>
                 <div class="card-body">
-                    <h3>Open Living + Kitchen + Dining</h3>
-                    <p>The hub. Hardwood floors, gourmet kitchen with granite counters, and a dining table that seats all eight. This is where everyone ends up at the end of the day — and the beginning, too.</p>
+                    <h3>The Living Room</h3>
+                    <p>The hub. Hardwood floors, big couch, TV, and the kind of open layout where you can see everyone without being on top of them. This is where the whole house ends up at the end of the day.</p>
+                </div>
+            </div>
+            <div class="card zone-card">
+                <div class="img-placeholder zone-img" data-label="kitchen" style="background: linear-gradient(135deg, #a4947e, #b4a48e);"></div>
+                <div class="card-body">
+                    <h3>The Kitchen</h3>
+                    <p>Granite counters, gas stove, and everything you need to cook real meals on vacation. The kind of kitchen that makes you actually want to eat in — and you will.</p>
+                </div>
+            </div>
+        </div>
+        <div class="zones-grid fade-in">
+            <div class="card zone-card">
+                <div class="img-placeholder zone-img" data-label="dining-room" style="background: linear-gradient(135deg, #c4a48e, #d4b49e);"></div>
+                <div class="card-body">
+                    <h3>The Dining Room</h3>
+                    <p>A real dining room with a table that seats eight — not a breakfast bar with stools. Modern light fixture, hardwood floors, and the spot where every vacation meal becomes a memory.</p>
                 </div>
             </div>
             <div class="card zone-card">
@@ -416,13 +431,30 @@
                     <p>The secret weapon. Ping pong, TV, and a full hangout space that becomes the most popular room in the house. Perfect for sandy kids, teens who want their own world, or a rainy-afternoon refuge.</p>
                 </div>
             </div>
-        </div>
-        <div class="zones-row-2 fade-in">
             <div class="card zone-card">
-                <div class="img-placeholder zone-img" data-label="fire-pit-outdoor" style="background: linear-gradient(135deg, #d4a478, #e4b488);"></div>
+                <div class="zone-img-split" style="display: flex;">
+                    <div class="img-placeholder" data-label="office-upstairs" style="background: linear-gradient(135deg, #94847e, #a4948e); width: 50%; aspect-ratio: 8/10;"></div>
+                    <div class="img-placeholder" data-label="office-downstairs" style="background: linear-gradient(135deg, #a4947e, #b4a48e); width: 50%; aspect-ratio: 8/10;"></div>
+                </div>
                 <div class="card-body">
-                    <h3>Fire Pit & Outdoor Dining</h3>
-                    <p>Where the best conversations happen. Gas fire pit with seating, Weber grill, and private outdoor dining. By night three, this becomes the family ritual — dinner outside, fire after, kids catching fireflies.</p>
+                    <h3>Two Office Nooks</h3>
+                    <p>Two dedicated workspaces — one upstairs, one down. Real desks, real chairs, real WiFi. Not a kitchen counter with a laptop. Need to check in on vacation? At least do it from a proper desk.</p>
+                </div>
+            </div>
+        </div>
+        <div class="zones-grid fade-in">
+            <div class="card zone-card">
+                <div class="img-placeholder zone-img" data-label="fire-pit" style="background: linear-gradient(135deg, #d4a478, #e4b488);"></div>
+                <div class="card-body">
+                    <h3>The Fire Pit</h3>
+                    <p>Where the best conversations happen. Gas fire pit with comfortable seating — by night three, this becomes the family ritual. Kids catching fireflies, adults telling stories, everyone winding down together.</p>
+                </div>
+            </div>
+            <div class="card zone-card">
+                <div class="img-placeholder zone-img" data-label="outdoor-dining" style="background: linear-gradient(135deg, #c4b478, #d4c488);"></div>
+                <div class="card-body">
+                    <h3>Outdoor Dining</h3>
+                    <p>Private patio dining with the Weber grill steps away. Once you eat dinner outside with the evening breeze, you won't want to go back to the table inside. Most families don't.</p>
                 </div>
             </div>
             <div class="card zone-card">
@@ -434,7 +466,7 @@
             </div>
         </div>
         <div class="fade-in" style="text-align: center; max-width: 700px; margin: 0 auto;">
-            <p style="font-size: 1.05rem; line-height: 1.75; color: #4a4a4a; margin-bottom: 32px;">Most 4-bedroom rentals have a living room and a deck. Sea Reach has five spaces for different moods, different times of day, and different people. Two families sharing? Kids in the garage, adults by the fire. Everyone's happy.</p>
+            <p style="font-size: 1.05rem; line-height: 1.75; color: #4a4a4a; margin-bottom: 32px;">Most 4-bedroom rentals have a living room and a deck. Sea Reach has nine spaces for different moods, different times of day, and different people. Two families sharing? Kids in the garage, adults by the fire. Everyone's happy.</p>
             <a href="#bedrooms" class="btn-secondary">See the Bedrooms</a>
         </div>
     </div>
@@ -822,7 +854,7 @@
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">Absolutely — it's one of our most common booking types. Four bedrooms plus five distinct hangout zones mean two families can share without feeling cramped. The garage lounge and fire pit give you natural separation when you want it.</div>
+                    <div class="faq-answer-inner">Absolutely — it's one of our most common booking types. Four bedrooms plus nine distinct hangout zones mean two families can share without feeling cramped. The garage lounge and fire pit give you natural separation when you want it.</div>
                 </div>
             </div>
             <div class="faq-item">
@@ -856,7 +888,7 @@
     <div class="container final-cta-content">
         <div class="fade-in">
             <h2 style="margin-bottom: 20px;">Your Family's Best Week Starts Here</h2>
-            <p>Four bedrooms, five zones, and everything you need for the week — 1.5 blocks from Point Pleasant Beach. A shore family's beach house, not a rental portfolio.</p>
+            <p>Four bedrooms, nine zones, and everything you need for the week — 1.5 blocks from Point Pleasant Beach. A shore family's beach house, not a rental portfolio.</p>
             <p style="margin-bottom: 36px; font-size: 1.15rem;">Come see why families call it their forever rental.</p>
             <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
                 <a href="mailto:sdaless22@gmail.com" class="btn-primary btn-primary-xl">Book Your Week</a>
@@ -884,7 +916,7 @@
                 <div class="footer-links">
                     <a href="#zones">The House</a>
                     <a href="#story">Our Story</a>
-                    <a href="#zones">Five Zones</a>
+                    <a href="#zones">Nine Zones</a>
                     <a href="#included">What's Included</a>
                     <a href="#book-direct">Book Direct</a>
                     <a href="#faq">FAQ</a>
