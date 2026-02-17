@@ -478,12 +478,12 @@ const seoData = {
                     <div class="included-category-title">On the Beach</div>
                     <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> 8 adult beach badges — no morning lines at the badge booth</div>
                     <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> 8 beach chairs — already in the garage, grab and go</div>
-                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> 4 beach umbrellas — shade for the whole crew</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> 2 beach umbrellas — shade for the crew</div>
                 </div>
                 <div class="included-category">
                     <div class="included-category-title">In the House</div>
                     <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Full gourmet kitchen — granite counters, everything you need to cook for eight</div>
-                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Pillows, quilts, and fresh bed sheets in every room</div>
+                    <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Pillows and quilts in every room (bed sheets available on request for an additional fee)</div>
                     <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Central A/C throughout</div>
                     <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> Xfinity TV and WiFi (indoor and outdoor)</div>
                     <div class="included-item"><iconify-icon icon="solar:check-circle-linear" width="20" height="20"></iconify-icon> 2 dedicated office spaces for anyone who needs to work</div>
@@ -565,7 +565,7 @@ const seoData = {
                 </div>
             </div>
         </div>
-        <p class="fade-in" style="text-align: center; margin-top: 36px; font-size: 0.95rem; color: #7a7a7a;">All bedrooms include pillows, quilts, and fresh sheets. 2 full bathrooms. Central A/C throughout.</p>
+        <p class="fade-in" style="text-align: center; margin-top: 36px; font-size: 0.95rem; color: #7a7a7a;">All bedrooms include pillows and quilts. Bed sheets available on request for an additional fee. 2 full bathrooms. Central A/C throughout.</p>
     </div>
 </section>
 
@@ -1315,44 +1315,68 @@ handleWeekLayout();
         .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
     }
 
-    @media (max-width: 767px) {
-        .section { padding: 60px 0; }
-        h2 { font-size: 2rem; }
-        .hero h1 { font-size: 2.5rem; }
-        .hero-content { text-align: center; padding: 100px 0 160px; max-width: 100%; }
-        .hero-sub { margin-left: auto; margin-right: auto; }
-        .hero-buttons { justify-content: center; flex-direction: column; align-items: center; }
-        .hero-stats-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .hero-platform-ratings { gap: 10px; }
-        .hero-rating-badge { padding: 4px 8px; }
-        .hero-brand-vrbo { width: 60px; }
-        .hero-brand-airbnb { width: 66px; }
-        .hero-rating-stars iconify-icon { width: 12px; height: 12px; }
+    @media (max-width: 960px) {
         .nav-links { display: none; }
         .hamburger { display: block; }
+        .hero h1 { font-size: 2.75rem; }
+        .hero-content { max-width: 100%; }
         .story-grid { grid-template-columns: 1fr; gap: 36px; }
         .story-images { order: -1; }
         .included-grid { grid-template-columns: 1fr; }
         .included-img { min-height: 300px; max-height: 400px; order: -1; }
-        .zones-grid { grid-template-columns: 1fr; }
-        .zones-row-2 { grid-template-columns: 1fr; }
         .gallery-grid { grid-template-columns: repeat(2, 1fr); }
         .gallery-item-wide { grid-column: span 2; }
+        .bedrooms-grid { grid-template-columns: repeat(2, 1fr); }
+        .neighborhood-grid { grid-template-columns: 1fr; }
+        .comparison-grid { grid-template-columns: 1fr; }
+        .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 767px) {
+        .section { padding: 60px 0; }
+        h2 { font-size: 2rem; }
+        .hero h1 { font-size: 2.5rem; }
+        .hero-content { text-align: center; padding: 80px 0 120px; max-width: 100%; }
+        .hero-sub { margin-left: auto; margin-right: auto; font-size: 1.05rem; margin-bottom: 28px; }
+        .hero-buttons { justify-content: center; flex-direction: column; align-items: center; gap: 12px; }
+        .hero-buttons .btn-primary-lg { padding: 14px 32px; font-size: 1rem; }
+        .hero-buttons .btn-secondary-white { padding: 12px 28px; font-size: 0.95rem; }
+        .hero-stats { position: relative; }
+        .hero-stats-inner { grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 20px 16px; }
+        .stat-value { font-size: 1.4rem; }
+        .stat-label { font-size: 0.7rem; }
+        .hero-platform-ratings { gap: 10px; }
+        .hero-rating-badge { padding: 4px 8px; }
+        .hero-brand-vrbo { width: 54px; }
+        .hero-brand-airbnb { width: 60px; }
+        .hero-rating-stars iconify-icon { width: 11px; height: 11px; }
+        .final-cta { padding: 80px 0; }
+        .final-cta p { font-size: 1rem; }
+        .final-cta .btn-primary-xl { padding: 14px 32px; font-size: 1rem; }
+        .final-cta .btn-secondary-white { padding: 12px 24px; font-size: 0.9rem; }
+        .zones-grid { grid-template-columns: 1fr; }
+        .zones-row-2 { grid-template-columns: 1fr; }
         .bedrooms-grid { grid-template-columns: 1fr; }
         .testimonials-grid { grid-template-columns: 1fr; }
         .testimonials-grid .card:last-child { grid-column: span 1; max-width: 100%; }
-        .neighborhood-grid { grid-template-columns: 1fr; }
-        .comparison-grid { grid-template-columns: 1fr; }
         .savings-ideas { grid-template-columns: 1fr 1fr; }
         .benefits-grid { grid-template-columns: 1fr; }
-        .footer-grid { grid-template-columns: 1fr; gap: 32px; }
         .photo-strip { -webkit-overflow-scrolling: touch; }
     }
 
     @media (max-width: 479px) {
-        .hero h1 { font-size: 2rem; }
+        .hero h1 { font-size: 1.85rem; }
+        .hero-content { padding: 64px 0 100px; }
+        .hero-sub { font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; }
+        .hero-buttons .btn-primary-lg { width: auto; min-width: 200px; text-align: center; padding: 14px 32px; font-size: 0.95rem; }
+        .hero-buttons .btn-secondary-white { width: auto; min-width: 200px; text-align: center; padding: 11px 28px; font-size: 0.9rem; }
+        .hero-stats-inner { padding: 16px 12px; gap: 12px; }
+        .stat-value { font-size: 1.25rem; }
         .savings-ideas { grid-template-columns: 1fr; }
-        .hero-buttons .btn-primary-lg, .hero-buttons .btn-secondary-white { width: 100%; text-align: center; }
+        .btn-primary-xl { padding: 14px 28px; font-size: 0.95rem; }
+        .btn-secondary { padding: 12px 24px; font-size: 0.9rem; }
+        .final-cta { padding: 60px 0; }
+        .final-cta h2 { font-size: 1.75rem; }
     }
 </style>
 </body>
