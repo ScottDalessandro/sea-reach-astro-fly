@@ -4,4 +4,4 @@ import PhotoLightbox from './PhotoLightbox.jsx';
 const { images } = Astro.props;
 ---
 
-<PhotoLightbox client:visible images={images} />
+<PhotoLightbox client:load images={images} />
